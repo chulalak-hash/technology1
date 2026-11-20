@@ -721,6 +721,26 @@ body:has(.tlayout) .topbar-in{max-width:1480px}
 .tts-hint{font-size:13px;opacity:.9;display:flex;gap:4px;align-items:center}
 .tts-hl{background:#fff4c2!important;outline:3px solid #ffd34d;border-radius:8px;transition:background .2s}
 @media(max-width:640px){.tts-fab span,.tts-hint{display:none}.tts-fab{padding:12px}.tts-bar{bottom:76px}}
+.curr{margin:14px 0 4px;padding:0;overflow:hidden}
+.curr summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 18px;color:var(--ink)}
+.curr summary::-webkit-details-marker{display:none}
+.curr summary .ms{color:var(--violet)}
+.curr[open] summary>.ms:last-child{transform:rotate(180deg)}
+.curr-b{padding:0 18px 16px;display:grid;gap:8px}
+.curr-k{font-family:'Kanit';font-weight:600;color:var(--pink);margin-top:6px}
+.curr-i{display:flex;gap:8px;align-items:flex-start;font-size:15px}
+.curr-i .chip{white-space:nowrap}
+.curr-o{display:grid;gap:2px;background:var(--pink-bg);border-radius:14px;padding:10px 14px;font-size:15px}
+.curr-tbl td{vertical-align:top}
+.curr-obj div{margin-bottom:4px;font-size:14px}
+.curr-obj b{display:inline-block;min-width:16px;color:var(--pink)}
+.curr-exam td{background:#fff7e6}
+.curr-ratio{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 14px}
+.curr-ratio div{background:var(--pink-bg);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column}
+.curr-ratio span{font-size:14px;color:var(--ink2)}
+.curr-ratio b{font-family:'Kanit';font-size:26px;color:var(--pink)}
+@media print{.curr-tbl{font-size:12px}}
+.curr-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -1153,7 +1173,7 @@ function renderLesson(){
       '<a onclick="go(\'unit/'+encodeURIComponent(l.unitId)+'\')">หน่วยที่ '+(idx+1)+(L.unit?' '+esc(L.unit.title):'')+'</a>'+ic('chevron_right','font-size:18px')+'<span>'+esc(l.lessonId)+'</span></div>'+
     '<div class="card lesson-head"><div class="uic kwbox" style="'+grad(UNIT_COLORS[idx%6])+'">'+kawaii(lessonArt(l.lessonId)[0],58)+'</div><div>'+
       '<div class="muted kanit small">บทเรียน '+esc(l.lessonId)+(p?' · ทำแล้ว '+p.done+'/'+p.total+' ขั้น':'')+'</div><h2>'+esc(l.title)+'</h2>'+
-      (l.objective?'<div class="obj">'+ic('flag')+'<span>'+esc(l.objective)+'</span></div>':'')+'</div></div>'+
+      (l.objective?'<div class="obj">'+ic('flag')+'<span>'+esc(l.objective)+'</span></div>':'')+'</div></div>'+currBox(String(l.lessonId))+
     ((L.cheers&&L.cheers.length)?'<div class="cheer lesson-cheer"><div class="cs">'+(STICKERS[L.cheers[0].sticker]||STICKERS.star)[0]+'</div><div><b>ครูบอกว่า: '+esc(L.cheers[0].message)+'</b><div class="small muted">'+fmtDate(L.cheers[0].time)+'</div></div></div>':'')+
     lessonDateNote(L)+'<div class="stepper">'+steps+'</div>'+
     '<div class="phase-tags">'+['F','L','I','P'].map(function(k){ return '<div style="background:'+FLIP_COLORS[k][0]+'1f;color:'+FLIP_COLORS[k][0]+'"><b>'+k+'</b> '+esc(flipName(k).split(' (')[0])+'</div>'; }).join('')+'</div>'+
@@ -2148,7 +2168,7 @@ function asSum(D){
 /* ===================== คำอธิบายรายวิชาและตัวชี้วัด ===================== */
 function courseCard(){
   return '<div class="unit-c course-c" style="'+grad(['#3b2a6b','#8b5cf6'])+'" onclick="go(\'course\')"><div class="uc-art">'+kawaii('star',90,'bob')+'</div><div class="no">★</div>'+
-    '<div class="uic">'+ic('menu_book')+'</div><div class="lbl">ข้อมูลรายวิชา</div><h4>คำอธิบายรายวิชา และตัวชี้วัด</h4><p>มาตรฐาน ว 4.1 ตัวชี้วัด ม.1/1–ม.1/5 และโครงสร้างรายวิชา</p>'+
+    '<div class="uic">'+ic('menu_book')+'</div><div class="lbl">ข้อมูลรายวิชา</div><h4>คำอธิบายรายวิชา และตัวชี้วัด</h4><p>มาตรฐาน ว 4.1 ตัวชี้วัด ม.1/1–ม.1/5 โครงสร้างรายวิชา แผนรายชั่วโมง และการแบ่งคะแนน</p>'+
     '<div class="foot"><span></span><span>เปิดดู '+ic('arrow_forward','font-size:16px')+'</span></div></div>';
 }
 function renderCourse(){
@@ -2167,8 +2187,152 @@ function renderCourse(){
       '<div class="card panel" style="margin-bottom:16px"><h3>'+ic('flag')+'มาตรฐานการเรียนรู้</h3><div class="box" style="margin-top:6px">'+esc(C['มาตรฐานการเรียนรู้']||'')+'</div>'+
       '<h3 style="margin-top:16px">'+ic('checklist')+'ตัวชี้วัด</h3><div class="inds">'+ind+'</div><div class="small muted" style="margin-top:6px">รวม '+(ind.split('class="ind"').length-1)+' ตัวชี้วัด</div></div>'+
       '<div class="card panel"><h3>'+ic('account_tree')+'โครงสร้างรายวิชา</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>หน่วยการเรียนรู้</th><th>ตัวชี้วัด</th><th>เวลา (ชั่วโมง)</th></tr></thead><tbody>'+struct+
-        '<tr><td colspan="2"><b class="kanit">รวม</b></td><td class="kanit"><b>'+tot+'</b></td></tr></tbody></table></div></div></div>'+footer();
+        '<tr><td colspan="2"><b class="kanit">รวม</b></td><td class="kanit"><b>'+tot+'</b></td></tr></tbody></table></div></div>'+currAnalysis()+'</div>'+footer();
   }).catch(function(){});
+}
+
+
+/* ===================== วิเคราะห์หลักสูตร: มาตรฐาน ตัวชี้วัด จุดประสงค์ รายชั่วโมง และการแบ่งคะแนน =====================
+   ครูแก้ไขข้อมูลได้ที่ตัวแปร CURRIC ด้านล่าง (ข้อความตัวชี้วัดจะดึงจากชีต "คำอธิบายรายวิชา" ก่อน ถ้าไม่พบจึงใช้ข้อความในนี้) */
+var CURRIC = {
+  standard: 'ว 4.1 เข้าใจแนวคิดหลักของเทคโนโลยีเพื่อการดำรงชีวิตในสังคมที่มีการเปลี่ยนแปลงอย่างรวดเร็ว ใช้ความรู้และทักษะทางด้านวิทยาศาสตร์ คณิตศาสตร์ และศาสตร์อื่น ๆ เพื่อแก้ปัญหาหรือพัฒนางานอย่างมีความคิดสร้างสรรค์ด้วยกระบวนการออกแบบเชิงวิศวกรรม เลือกใช้เทคโนโลยีอย่างเหมาะสมโดยคำนึงถึงผลกระทบต่อชีวิต สังคม และสิ่งแวดล้อม',
+  ind: {
+    'ม.1/1':'อธิบายแนวคิดหลักของเทคโนโลยีในชีวิตประจำวัน และวิเคราะห์สาเหตุหรือปัจจัยที่ส่งผลต่อการเปลี่ยนแปลงของเทคโนโลยี',
+    'ม.1/2':'ระบุปัญหาหรือความต้องการในชีวิตประจำวัน รวบรวม วิเคราะห์ข้อมูลและแนวคิดที่เกี่ยวข้องกับปัญหา',
+    'ม.1/3':'ออกแบบวิธีการแก้ปัญหา โดยวิเคราะห์ เปรียบเทียบ และตัดสินใจเลือกข้อมูลที่จำเป็น นำเสนอแนวทางการแก้ปัญหาให้ผู้อื่นเข้าใจ วางแผนและดำเนินการแก้ปัญหา',
+    'ม.1/4':'ทดสอบ ประเมินผล และระบุข้อบกพร่องที่เกิดขึ้น พร้อมทั้งหาแนวทางการปรับปรุงแก้ไข และนำเสนอผลการแก้ปัญหา',
+    'ม.1/5':'ใช้ความรู้และทักษะเกี่ยวกับวัสดุ อุปกรณ์ เครื่องมือ กลไก ไฟฟ้า หรืออิเล็กทรอนิกส์ เพื่อแก้ปัญหาได้อย่างถูกต้อง เหมาะสม และปลอดภัย'
+  },
+  /* ชั่วโมงที่ · ตัวชี้วัด · จุดประสงค์ K/P/A ของแต่ละบทเรียน */
+  lessons: {
+    'L1.1':{t:'ความหมายของเทคโนโลยี',h:[1],ind:['ม.1/1'],
+      K:'อธิบายความหมายของเทคโนโลยีและจำแนกได้ว่าสิ่งใดเป็นเทคโนโลยี (ทั้งชิ้นงานและวิธีการ)',
+      P:'ยกตัวอย่างเทคโนโลยีในชีวิตประจำวันและระบุได้ว่าช่วยแก้ปัญหาหรือสนองความต้องการใด',
+      A:'ใฝ่เรียนรู้ ร่วมอภิปรายและแสดงความคิดเห็นอย่างตั้งใจ'},
+    'L1.2':{t:'ประโยชน์ของเทคโนโลยี',h:[2],ind:['ม.1/1'],
+      K:'อธิบายประโยชน์และผลกระทบของเทคโนโลยีต่อชีวิต สังคม และสิ่งแวดล้อม',
+      P:'วิเคราะห์ข้อดี–ข้อเสียของเทคโนโลยีในโรงเรียน และเสนอแนวทางใช้ให้เกิดประโยชน์',
+      A:'ตระหนักถึงการใช้เทคโนโลยีอย่างรับผิดชอบต่อสิ่งแวดล้อม'},
+    'L1.3':{t:'เทคโนโลยีในงานอาชีพ',h:[3],ind:['ม.1/1'],
+      K:'อธิบายการใช้เทคโนโลยีในงานอาชีพด้านการเกษตร อาหาร พลังงาน และการขนส่ง',
+      P:'สำรวจและนำเสนอเทคโนโลยีที่ใช้ในอาชีพของชุมชนหนองโตง',
+      A:'เห็นคุณค่าของอาชีพและภูมิปัญญาในชุมชน'},
+    'L2.1':{t:'การเปลี่ยนแปลงของเทคโนโลยี',h:[4],ind:['ม.1/1'],
+      K:'อธิบายการเปลี่ยนแปลงของเทคโนโลยีจากอดีตถึงปัจจุบัน',
+      P:'เปรียบเทียบเทคโนโลยีชนิดเดียวกันในอดีตกับปัจจุบันด้วยเส้นเวลา (timeline)',
+      A:'ทำงานกลุ่มอย่างรับผิดชอบ'},
+    'L2.2':{t:'สาเหตุหรือปัจจัยของการเปลี่ยนแปลงเทคโนโลยี',h:[5],ind:['ม.1/1'],
+      K:'วิเคราะห์สาเหตุหรือปัจจัยที่ทำให้เทคโนโลยีเปลี่ยนแปลงได้อย่างน้อย 3 ปัจจัย',
+      P:'คาดการณ์แนวโน้มของเทคโนโลยีในอนาคตพร้อมให้เหตุผลประกอบ',
+      A:'มีความคิดสร้างสรรค์และใฝ่เรียนรู้'},
+    'L3.1':{t:'องค์ประกอบของระบบทางเทคโนโลยี',h:[6],ind:['ม.1/1'],
+      K:'อธิบายองค์ประกอบของระบบทางเทคโนโลยี ได้แก่ ตัวป้อน กระบวนการ ผลลัพธ์ และข้อมูลย้อนกลับ',
+      P:'วิเคราะห์ระบบของเครื่องใช้ในชีวิตประจำวันและหาสาเหตุเมื่อระบบไม่ทำงาน',
+      A:'มุ่งมั่นในการทำงาน'},
+    'L3.2':{t:'ระบบทางเทคโนโลยีในชีวิตประจำวัน',h:[7],ind:['ม.1/1'],
+      K:'อธิบายความสัมพันธ์ขององค์ประกอบในระบบ และการใช้ข้อมูลย้อนกลับควบคุมการทำงาน',
+      P:'เขียนแผนภาพระบบทางเทคโนโลยีของระบบรดน้ำต้นไม้',
+      A:'ทำงานร่วมกับผู้อื่นอย่างสร้างสรรค์'},
+    'L4.1':{t:'วัสดุในชีวิตประจำวัน',h:[8],ind:['ม.1/5'],
+      K:'อธิบายสมบัติของวัสดุ เช่น ไม้ โลหะ พลาสติก กระดาษ',
+      P:'เลือกวัสดุให้เหมาะกับการสร้างชิ้นงานพร้อมให้เหตุผล',
+      A:'ประหยัดและใช้วัสดุเหลือใช้ให้เกิดประโยชน์'},
+    'L4.2':{t:'เครื่องมือช่างพื้นฐานและความปลอดภัย',h:[9],ind:['ม.1/5'],
+      K:'บอกชื่อ หน้าที่ และวิธีใช้เครื่องมือช่างพื้นฐานอย่างปลอดภัย',
+      P:'ใช้เครื่องมือวัด ตัด และต่อวัสดุได้ถูกต้องและปลอดภัย',
+      A:'ปฏิบัติตามกฎความปลอดภัยในการทำงาน'},
+    'L5.1':{t:'กลไกเบื้องต้น',h:[11],ind:['ม.1/5'],
+      K:'อธิบายหลักการทำงานของกลไก เช่น คาน ล้อและเพลา รอก เฟือง',
+      P:'ประยุกต์ใช้กลไกช่วยผ่อนแรงในการแก้ปัญหา',
+      A:'มุ่งมั่นในการทำงาน'},
+    'L5.2':{t:'ไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น',h:[12,13],ind:['ม.1/5'],
+      K:'อธิบายวงจรไฟฟ้าอย่างง่ายและหน้าที่ของอุปกรณ์อิเล็กทรอนิกส์ เช่น สวิตช์ ตัวต้านทาน LED แบตเตอรี่',
+      P:'ต่อวงจรไฟฟ้าอย่างง่าย (เช่น ไฟฉุกเฉิน) ได้ถูกต้องและปลอดภัย',
+      A:'ระมัดระวังความปลอดภัยในการใช้ไฟฟ้า'},
+    'L6.1':{t:'กระบวนการออกแบบเชิงวิศวกรรม: ระบุปัญหาถึงลงมือสร้าง',h:[14,15],ind:['ม.1/2','ม.1/3'],
+      K:'อธิบายขั้นตอนของกระบวนการออกแบบเชิงวิศวกรรม 6 ขั้น',
+      P:'ระบุปัญหา รวบรวมข้อมูล ออกแบบ เปรียบเทียบและเลือกแนวทางแก้ปัญหา วางแผน และสร้างชิ้นงาน',
+      A:'ทำงานร่วมกับผู้อื่นและรับผิดชอบหน้าที่ในทีม'},
+    'L6.2':{t:'กระบวนการออกแบบเชิงวิศวกรรม: ทดสอบและนำเสนอ',h:[16],ind:['ม.1/4'],
+      K:'อธิบายวิธีทดสอบ ประเมินผล และปรับปรุงชิ้นงาน',
+      P:'ทดสอบชิ้นงานตามเกณฑ์ ระบุข้อบกพร่อง ปรับปรุง และนำเสนอผลการแก้ปัญหา',
+      A:'ยอมรับความคิดเห็นของผู้อื่น'},
+    'L7.1':{t:'กรณีศึกษาการแก้ปัญหาตามกระบวนการออกแบบเชิงวิศวกรรม',h:[17],ind:['ม.1/2','ม.1/3','ม.1/4'],
+      K:'วิเคราะห์กรณีศึกษาและระบุได้ว่าแต่ละช่วงตรงกับขั้นใดของกระบวนการออกแบบเชิงวิศวกรรม',
+      P:'สรุปแนวทางการแก้ปัญหาจากกรณีศึกษาเป็นแผนผังความคิด',
+      A:'ใฝ่เรียนรู้'},
+    'L7.2':{t:'แก้ปัญหาในโรงเรียนด้วยกระบวนการออกแบบเชิงวิศวกรรม',h:[18,19],ind:['ม.1/2','ม.1/3','ม.1/4','ม.1/5'],
+      K:'อธิบายเหตุผลในการเลือกวิธีแก้ปัญหา วัสดุ และเครื่องมือของทีม',
+      P:'ใช้กระบวนการออกแบบเชิงวิศวกรรมครบ 6 ขั้นแก้ปัญหาจริงในโรงเรียน โดยใช้วัสดุ เครื่องมือ กลไก หรือไฟฟ้าอย่างปลอดภัย',
+      A:'มุ่งมั่นในการทำงานจนสำเร็จ'}
+  },
+  /* แผนรายชั่วโมง 20 ชั่วโมง: [ชั่วโมง, บทเรียน หรือ MID/FINAL, ขั้น FLIP-EDP ที่ทำในชั่วโมงนั้น] */
+  hours: [
+    [1,'L1.1','F L I P'],[2,'L1.2','F L I P'],[3,'L1.3','F L I P'],
+    [4,'L2.1','F L I P'],[5,'L2.2','F L I P'],
+    [6,'L3.1','F L I P'],[7,'L3.2','F L I P'],
+    [8,'L4.1','F L I P'],[9,'L4.2','F L I P'],
+    [10,'MID','สอบกลางภาค (หน่วยที่ 1–4)'],
+    [11,'L5.1','F L I P'],[12,'L5.2','F L I (เรียนรู้วงจร ออกแบบ)'],[13,'L5.2','I P (ต่อวงจร ทดสอบ นำเสนอ)'],
+    [14,'L6.1','F L (ระบุปัญหา รวบรวมข้อมูล)'],[15,'L6.1','I (ออกแบบ วางแผน สร้าง)'],[16,'L6.2','P (ทดสอบ ปรับปรุง นำเสนอ)'],
+    [17,'L7.1','F L I P'],[18,'L7.2','F L I (ระบุปัญหา ออกแบบ สร้าง)'],[19,'L7.2','P (ทดสอบ ปรับปรุง นำเสนอ)'],
+    [20,'FINAL','สอบปลายภาค (ทั้งรายวิชา)']
+  ],
+  /* การแบ่งคะแนน 100 คะแนน: ระหว่างภาค 70 (เก็บรายหน่วย 50 + กลางภาค 20) : ปลายภาค 30 */
+  scores: [
+    ['U1','ม.1/1',3,3,3],['U2','ม.1/1',2,3,2],['U3','ม.1/1',2,3,3],['U4','ม.1/5',2,2,4],
+    ['MID','ม.1/1, ม.1/5',1,20,0],
+    ['U5','ม.1/5',3,3,5],['U6','ม.1/2, ม.1/3, ม.1/4',3,3,6],['U7','ม.1/2–ม.1/5',3,2,8],
+    ['FINAL','ม.1/1–ม.1/5',1,30,0]
+  ],
+  ratio: 'ระหว่างภาค 70 : ปลายภาค 30'
+};
+var EVAL_TXT = {K:'แบบทดสอบก่อน–หลังเรียน / ใบงาน', P:'ชิ้นงาน/ใบงาน ตามเกณฑ์ Rubric', A:'แบบประเมินคุณลักษณะอันพึงประสงค์ รายชั่วโมง'};
+
+function curIndText(code){
+  var C=(S.home&&S.home.course)||{}, hit='';
+  String(C['ตัวชี้วัด']||'').split('\n').forEach(function(l){ var p=l.split('|'); if(p.length>1 && p[0].replace(/\s/g,'').indexOf(code.replace(/\s/g,''))>=0) hit=p.slice(1).join('|').trim(); });
+  return hit || CURRIC.ind[code] || '';
+}
+function curStd(){ var C=(S.home&&S.home.course)||{}; return C['มาตรฐานการเรียนรู้'] || CURRIC.standard; }
+function curLessonTitle(id){ var L=(S.home&&S.home.lessons)||[]; for(var i=0;i<L.length;i++){ if(String(L[i].lessonId)===id) return L[i].title; } return (CURRIC.lessons[id]||{}).t||id; }
+function curUnitTitle(uid){ var U=(S.home&&S.home.units)||[]; for(var i=0;i<U.length;i++){ if(String(U[i].unitId)===uid) return 'หน่วยที่ '+(i+1)+' '+U[i].title; } return uid; }
+function curHours(h){ return h.length>1?'ชั่วโมงที่ '+h[0]+'–'+h[h.length-1]+' ('+h.length+' ชม.)':'ชั่วโมงที่ '+h[0]+' (1 ชม.)'; }
+
+/* กล่องพับได้ในหน้าบทเรียน */
+function currBox(id){
+  var c=CURRIC.lessons[id]; if(!c) return '';
+  return '<details class="card curr"><summary>'+ic('verified')+'<b class="kanit">ตัวชี้วัด</b>'+
+    c.ind.map(function(k){ return '<span class="chip c-pink">ว 4.1 '+esc(k)+'</span>'; }).join('')+
+    '<span class="chip c-info">'+curHours(c.h)+'</span><span class="grow"></span><span class="small muted">จุดประสงค์การเรียนรู้</span>'+ic('expand_more','font-size:22px')+'</summary>'+
+    '<div class="curr-b"><div class="curr-k">จุดประสงค์การเรียนรู้ นักเรียนสามารถ</div>'+
+    [['K','ด้านความรู้ (K)'],['P','ด้านทักษะกระบวนการ (P)'],['A','ด้านเจตคติ (A)']].map(function(x){ return '<div class="curr-o"><b class="kanit">'+x[1]+'</b><span>'+esc(c[x[0]])+'</span><small class="muted">วัดด้วย: '+EVAL_TXT[x[0]]+'</small></div>'; }).join('')+
+    '<div class="small muted">ดูมาตรฐานและข้อความตัวชี้วัดเต็มได้ที่เมนู <a onclick="go(\'course\')">คำอธิบายรายวิชา</a></div></div></details>';
+}
+
+/* ส่วนวิเคราะห์หลักสูตรในหน้าคำอธิบายรายวิชา */
+function currAnalysis(){
+  var rows=CURRIC.hours.map(function(r){
+    if(r[1]==='MID'||r[1]==='FINAL') return '<tr class="curr-exam"><td class="kanit">'+r[0]+'</td><td colspan="4"><b>'+esc(r[2])+'</b></td><td>แบบทดสอบ</td></tr>';
+    var c=CURRIC.lessons[r[1]]||{};
+    return '<tr><td class="kanit">'+r[0]+'</td><td><span class="chip c-pink">'+esc(r[1])+'</span> '+esc(curLessonTitle(r[1]))+'</td><td>'+(c.ind||[]).map(esc).join('<br>')+'</td>'+
+      '<td class="curr-obj"><div><b>K</b> '+esc(c.K||'')+'</div><div><b>P</b> '+esc(c.P||'')+'</div><div><b>A</b> '+esc(c.A||'')+'</div></td><td class="kanit">'+esc(r[2])+'</td><td class="small">ทดสอบก่อน–หลัง · ใบงาน/ชิ้นงาน · ประเมินคุณลักษณะ</td></tr>';
+  }).join('');
+  var tK=0,tP=0,tA=0,tH=0;
+  var srows=CURRIC.scores.map(function(s){
+    var isEx=(s[0]==='MID'||s[0]==='FINAL'), tot=s[3]+s[4]; tH+=s[2]; tK+=s[3]; tP+=s[4];
+    var name= s[0]==='MID'?'<b>สอบกลางภาค</b>': s[0]==='FINAL'?'<b>สอบปลายภาค</b>': esc(curUnitTitle(s[0]));
+    return '<tr'+(isEx?' class="curr-exam"':'')+'><td>'+name+'</td><td>'+esc(s[1])+'</td><td class="kanit">'+s[2]+'</td><td class="kanit">'+(isEx?'-':s[3])+'</td><td class="kanit">'+(isEx?'-':s[4])+'</td><td class="kanit"><b>'+tot+'</b></td></tr>';
+  }).join('');
+  var unitK=0,unitP=0; CURRIC.scores.forEach(function(s){ if(s[0]!=='MID'&&s[0]!=='FINAL'){ unitK+=s[3]; unitP+=s[4]; } });
+  return '<div class="card panel" style="margin-top:16px"><div class="curr-head"><h3>'+ic('schedule')+'การวิเคราะห์หลักสูตรรายชั่วโมง (20 ชั่วโมง)</h3><button class="btn btn-ghost btn-sm no-print" onclick="window.print()">'+ic('print')+' พิมพ์</button></div>'+
+    '<div class="small muted" style="margin:2px 0 10px">ทุกบทเรียนจัดตามรูปแบบ FLIP-EDP: F ค้นหาปัญหา · L เรียนรู้และสืบค้น (ที่บ้าน) · I ออกแบบและสร้าง · P ทดสอบ นำเสนอ สะท้อนคิด (ในห้องเรียน)</div>'+
+    '<div class="tbl-wrap"><table class="tbl curr-tbl"><thead><tr><th>ชม.</th><th>บทเรียน</th><th>ตัวชี้วัด ว 4.1</th><th>จุดประสงค์การเรียนรู้</th><th>ขั้น FLIP-EDP</th><th>การวัดผล</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>'+
+    '<div class="card panel" style="margin-top:16px"><h3>'+ic('scoreboard')+'การแบ่งเวลาและคะแนน</h3>'+
+    '<div class="curr-ratio"><div><span>คะแนนเก็บรายหน่วย</span><b>'+(unitK+unitP)+'</b></div><div><span>สอบกลางภาค</span><b>20</b></div><div><span>สอบปลายภาค</span><b>30</b></div><div><span>รวม ('+esc(CURRIC.ratio)+')</span><b>100</b></div></div>'+
+    '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>หน่วยการเรียนรู้</th><th>ตัวชี้วัด</th><th>เวลา (ชม.)</th><th>K ความรู้</th><th>P ทักษะ/ชิ้นงาน</th><th>รวม</th></tr></thead><tbody>'+srows+
+    '<tr><td colspan="2"><b class="kanit">รวม</b></td><td class="kanit"><b>'+tH+'</b></td><td class="kanit"><b>'+unitK+'</b></td><td class="kanit"><b>'+unitP+'</b></td><td class="kanit"><b>100</b></td></tr></tbody></table></div>'+
+    '<div class="small muted" style="margin-top:8px">ด้านเจตคติ (A) ประเมินเป็นระดับคุณภาพจากแบบประเมินคุณลักษณะอันพึงประสงค์ อ่าน คิดวิเคราะห์ และเขียน และสมรรถนะสำคัญรายชั่วโมง แยกจากคะแนน 100 คะแนน</div></div>';
 }
 
 /* ===================== การสอบ (นักเรียน) ===================== */
