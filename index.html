@@ -8,7 +8,7 @@
 <script>
 /* ========== ตั้งค่า: วางลิงก์ Web app ของ Apps Script (ม.1) ระหว่างเครื่องหมาย ' ' ==========
    ต้องเป็นรูปแบบ https://script.google.com/macros/s/xxxxxxxx/exec  */
-var FLIP_API = 'https://script.google.com/a/macros/nongtong.ac.th/s/AKfycbzSjzBPGtNmXQ-IUsMBW8NMdPrJqfcjRUUN9b34dS2Xur-KYDIiI-llfKJcwtgpEBDQ/exec';
+var FLIP_API = 'https://script.google.com/a/macros/nongtong.ac.th/s/AKfycbwvOIqPQ4r0zzA5ZRIhKYOxxKIowFif_m7yUf7eSgatEfXlnxHJKoG_3W0lPhXKQjiN/exec';
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -866,6 +866,24 @@ body.q-on .fab,body.q-on #ttsBar{display:none!important}
 .news.news-fill>.news-c{flex:1 1 auto}
 .news.news-scroll{overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:#ffb3d1 transparent;mask-image:linear-gradient(#000 92%,transparent);-webkit-mask-image:linear-gradient(#000 92%,transparent)}
 .news.news-scroll::-webkit-scrollbar{width:6px}.news.news-scroll::-webkit-scrollbar-thumb{background:#ffb3d1;border-radius:9px}
+.gd-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.gd-tab{border:0;cursor:pointer;font-family:'Kanit';font-size:15px;padding:10px 18px;border-radius:999px;background:var(--pink-bg);color:var(--ink2);display:flex;align-items:center;gap:6px;min-height:44px}
+.gd-tab.on{background:linear-gradient(135deg,#ff4f9a,#b18cff);color:#fff;box-shadow:0 6px 14px rgba(255,79,154,.3)}
+.gd-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gd-s{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #f6dbe8;border-radius:18px;padding:14px;position:relative}
+.gd-n{position:absolute;top:-8px;left:-8px;width:28px;height:28px;border-radius:50%;background:var(--c);color:#fff;font-family:'Kanit';font-weight:600;display:grid;place-items:center;font-size:14px;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.gd-i{flex:none;width:46px;height:46px;border-radius:14px;background:var(--c);color:#fff;display:grid;place-items:center}
+.gd-i .ms{font-size:26px}
+.gd-s b{display:block;margin-bottom:2px;font-size:16px}
+.lr-f{display:inline-flex;align-items:center;gap:6px;font-size:15px}
+.lr-btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 8px}
+.lr-btns .btn{color:#fff}
+.lr-w{background:linear-gradient(135deg,#2b6fd6,#5b9bff)}.lr-x{background:linear-gradient(135deg,#16955a,#3fd7a7)}.lr-p{background:linear-gradient(135deg,#e5484d,#ff8a8a)}
+.lr-paper{background:#fff;max-width:900px;margin:16px auto;padding:44px 48px;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.08);font-family:'Sarabun','TH SarabunPSK',sans-serif;color:#000;overflow-x:auto}
+.lr-paper p,.lr-paper td,.lr-paper th{color:#000}
+.lr-logo img,#lrPrint .lr-logo img{width:64px;height:64px;object-fit:contain}
+#lrPrint{display:none}
+@media print{ body.lr-printing>*:not(#lrPrint){display:none!important} body.lr-printing #lrPrint{display:block;font-family:'Sarabun','TH SarabunPSK',sans-serif;color:#000} body.lr-printing{background:#fff!important} @page{size:A4;margin:14mm 12mm 12mm 16mm} }
 </style>
 </head>
 <body>
@@ -1140,6 +1158,7 @@ function route(){
   var h=location.hash.replace(/^#/,'').split('/');
   if(typeof QG!=='undefined'&&QG&&h[0]!=='quest') questExit(true);
   if(h[0]==='quest') return openQuest();
+  if(h[0]==='guide') return renderGuide();
   if(h[0]==='login') return renderLogin();
   if(S.user && S.user.role==='teacher' && (h[0]===''||h[0]==='teacher')) return renderTeacher();
   if(h[0]==='skill') return isStudent()? openSkill(h[1]) : go('login');
@@ -1231,8 +1250,8 @@ function renderHome(){
   }).join('');
   $('#app').innerHTML = topbar()+'<div class="page">'+top+newsGames(H.news)+
     '<div class="sec-title">'+ic('route')+'<h3>ขั้นตอนการเรียนรู้ FLIP-EDP</h3></div>'+flipCards()+
-    (st?'<div class="units">'+courseCard()+'</div>':'<div class="sec-title" id="units">'+ic('widgets')+'<h3>หน่วยการเรียนรู้</h3></div>'+
-    '<div class="units">'+(units||'')+courseCard()+'</div>')+'</div>'+footer();
+    (st?'<div class="units">'+courseCard()+guideCard()+'</div>':'<div class="sec-title" id="units">'+ic('widgets')+'<h3>หน่วยการเรียนรู้</h3></div>'+
+    '<div class="units">'+(units||'')+courseCard()+guideCard()+'</div>')+'</div>'+footer();
   if(st) xpCardLoad();
 }
 function skillCard(sk){
@@ -1493,9 +1512,9 @@ function renderTeacher(){
   p.then(function(D){
     var groups=[
       ['หน้าหลัก',[['overview','dashboard','ภาพรวม']]],
-      ['เนื้อหาและการสอน',[['content','edit_note','จัดการเนื้อหา'],['sched','calendar_month','ตารางสอน & กำหนดการ'],['news','campaign','กระดานข่าว'],['help','help','วิธีเพิ่มเนื้อหา']]],
+      ['เนื้อหาและการสอน',[['content','edit_note','จัดการเนื้อหา'],['sched','calendar_month','ตารางสอน & กำหนดการ'],['news','campaign','กระดานข่าว'],['help','help','วิธีเพิ่มเนื้อหา'],['guide','help_center','วิธีใช้งานบทเรียน']]],
       ['ติดตามผู้เรียน',[['track','table_view','ติดตามรายห้อง'],['issues','support_agent','เรื่องที่นักเรียนแจ้ง'],['gradebook','military_tech','คะแนนเก็บ & ดาว']]],
-      ['วัดและประเมินผล',[['grade','rate_review','ประเมินรูบริก',D.pending||0],['assess','fact_check','ประเมินรายชั่วโมง'],['exam','quiz','ข้อสอบ & การสอบ'],['edit','border_color','แก้ไขคะแนน'],['final','summarize','คะแนนรวม & ส่งออก']]],
+      ['วัดและประเมินผล',[['grade','rate_review','ประเมินรูบริก',D.pending||0],['assess','fact_check','ประเมินรายชั่วโมง'],['exam','quiz','ข้อสอบ & การสอบ'],['edit','border_color','แก้ไขคะแนน'],['final','summarize','คะแนนรวม & ส่งออก'],['learnrep','assignment','รายงานผลการเรียน']]],
       ['วิจัยและรายงาน',[['skill','psychology_alt','ทักษะการแก้ปัญหา'],['prepost','bar_chart','ความรู้ก่อน-หลังเรียน'],['report','workspace_premium','รายงานผลงานเชี่ยวชาญ']]],
       ['นวัตกรรม',[['showcase','rocket_launch','Innovation Showcase'],['xp','leaderboard','นักนวัตกร & ตารางผู้นำ']]]
     ];
@@ -1507,7 +1526,7 @@ function renderTeacher(){
       '</aside><div class="ts-ov" onclick="S.sideOpen=false;document.getElementById(\'tside\').classList.remove(\'open\');this.classList.remove(\'on\')"></div>';
     $('#app').innerHTML = topbar()+'<div class="tlayout">'+side+'<main class="tmain"><div class="tm-h"><button class="ts-tg" onclick="var a=document.getElementById(\'tside\');a.classList.add(\'open\');document.querySelector(\'.ts-ov\').classList.add(\'on\')">'+ic('menu')+'</button>'+
       '<div class="tm-t">'+ic(cur[1])+'<h2 class="kanit">'+cur[2]+'</h2></div><button class="btn btn-ghost btn-sm" onclick="api(\'clearCache\',S.token).catch(function(){});S.dash=null;S._exA=null;renderTeacher()" title="โหลดข้อมูลใหม่">'+ic('refresh')+' โหลดใหม่</button></div><div id="tbody"></div></main></div>'+footer();
-    ({content:tContent,showcase:tShowcase,xp:tRank,overview:tOverview,gradebook:tGradebook,track:tTrack,grade:tGrade,issues:tIssues,sched:tSched,assess:tAssess,news:tNews,skill:tSkill,prepost:tPrePost,report:tReport,exam:tExam,edit:tEdit,final:tFinal,help:tHelp})[S.tTab](D);
+    ({content:tContent,showcase:tShowcase,xp:tRank,overview:tOverview,gradebook:tGradebook,track:tTrack,grade:tGrade,issues:tIssues,sched:tSched,assess:tAssess,news:tNews,skill:tSkill,prepost:tPrePost,report:tReport,exam:tExam,edit:tEdit,final:tFinal,help:tHelp,guide:tGuide,learnrep:tLearnRep})[S.tTab](D);
   }).catch(function(){});
 }
 function stat(i,c,v,l){ return '<div class="card stat"><div class="ic" style="'+grad(c)+'">'+ic(i)+'</div><div><b>'+esc(v)+'</b><span>'+esc(l)+'</span></div></div>'; }
@@ -3065,6 +3084,187 @@ function currAnalysis(){
     '<tr><td colspan="2"><b class="kanit">รวม</b></td><td class="kanit"><b>'+tH+'</b></td><td class="kanit"><b>'+unitK+'</b></td><td class="kanit"><b>'+unitP+'</b></td><td class="kanit"><b>100</b></td></tr></tbody></table></div>'+
     '<div class="small muted" style="margin-top:8px">ด้านเจตคติ (A) ประเมินเป็นระดับคุณภาพจากแบบประเมินคุณลักษณะอันพึงประสงค์ อ่าน คิดวิเคราะห์ และเขียน และสมรรถนะสำคัญรายชั่วโมง แยกจากคะแนน 100 คะแนน</div></div>';
 }
+
+
+/* ===================== วิธีใช้งานบทเรียน (นักเรียน / ครู) ===================== */
+var GUIDE={
+  student:[
+    ['login','เข้าสู่ระบบ','กดปุ่ม "เข้าสู่ระบบ" มุมขวาบน เลือกแท็บนักเรียน ใส่เลขประจำตัวนักเรียนและรหัสผ่านที่ครูให้ ถ้าเข้าไม่ได้ให้แจ้งครูผู้สอน'],
+    ['widgets','เลือกหน่วยและบทเรียน','ที่หน้าแรกกดการ์ดหน่วยการเรียนรู้ แล้วเลือกบทเรียน (L1.1, L1.2 …) เรียนตามลำดับวันที่ครูกำหนด ป้ายสีจะบอกว่าบทไหนทำครบแล้ว'],
+    ['verified','ดูตัวชี้วัดและจุดประสงค์','ใต้ชื่อบทเรียนมีป้ายสาระ มาตรฐาน ตัวชี้วัด ชั่วโมงที่เรียน และคะแนนเก็บ กด "ดูสาระ มาตรฐาน ตัวชี้วัด และจุดประสงค์การเรียนรู้" เพื่อรู้ว่าบทนี้ต้องทำอะไรได้'],
+    ['quiz','ทำแบบทดสอบก่อนเรียน','ขั้นแรกของทุกบท ตอบตามความรู้เดิม ไม่ต้องกังวลเรื่องคะแนน ใช้ดูพัฒนาการของตัวเอง'],
+    ['search','F ค้นหาปัญหา (ที่บ้าน)','อ่านสถานการณ์ ดูคลิป แล้วเขียนว่าปัญหาคืออะไร ใครได้รับผลกระทบ'],
+    ['smart_display','L เรียนรู้และสืบค้น (ที่บ้าน)','ดูคลิปความรู้ สสวท. อ่านใบความรู้ สืบค้นข้อมูล แล้วบันทึกสิ่งที่ได้เรียนรู้ก่อนมาเรียนในห้อง'],
+    ['draw','I ออกแบบและสร้าง (ในห้องเรียน)','ทำงานกับทีม ร่างภาพ วางแผน และสร้างชิ้นงาน ถ่ายรูปหรือแนบไฟล์ผลงานในขั้นนี้'],
+    ['campaign','P ทดสอบและนำเสนอ','ทดสอบชิ้นงาน ปรับปรุง นำเสนอผลงาน แล้วทำแบบทดสอบหลังเรียน (ผ่านร้อยละ 70) และเขียนสะท้อนคิด'],
+    ['upload_file','ส่งงาน','กดแนบไฟล์ (รูปถ่าย PDF Word PowerPoint ไม่เกิน 20 MB) หรือวางลิงก์ แล้วกดส่ง จะขึ้นคำว่า "ส่งแล้ว" พร้อมเวลา'],
+    ['military_tech','ดูคะแนน ดาว และระดับนักนวัตกร','ดูความก้าวหน้า คะแนนเก็บ ดาวและสติกเกอร์จากครู และอันดับในตารางผู้นำได้ที่หน้าแรกหลังเข้าสู่ระบบ'],
+    ['sports_esports','เล่นเกมทบทวน','มุมเกมการศึกษามี FLIP Candy Quest 3D และเกมเล็กตามหน่วย เล่นช่วงพักเพื่อทบทวนความรู้ ปุ่ม 🎵 เปิด/ปิดเพลงได้'],
+    ['record_voice_over','อ่านให้ฟัง และแจ้งปัญหา','ปุ่ม "อ่านให้ฟัง" มุมซ้ายล่างช่วยอ่านข้อความเป็นเสียง ถ้าเว็บใช้งานไม่ได้หรือมีปัญหา ใช้ปุ่มแจ้งเรื่องถึงครูได้เลย']
+  ],
+  teacher:[
+    ['login','เข้าสู่ระบบครู','กด "เข้าสู่ระบบ" เลือกแท็บครู ใส่รหัสผ่านครู จะเข้าสู่เมนูครูผู้สอนด้านซ้าย'],
+    ['edit_note','จัดการเนื้อหา','แก้หน่วย บทเรียน คลิป ใบงาน และคำถามได้ในเมนู "จัดการเนื้อหา" หรือแก้ในชีตแล้วกดโหลดใหม่ (ดู "วิธีเพิ่มเนื้อหา")'],
+    ['calendar_month','ตารางสอนและกำหนดการ','กำหนดวันเรียนแต่ละบท ชดเชยวันหยุด นักเรียนจะเห็นวันที่บนการ์ดบทเรียน'],
+    ['campaign','กระดานข่าว','เพิ่ม/ปักหมุดประกาศ แสดงบนหน้าแรกทันที'],
+    ['table_view','ติดตามรายห้อง','ดูว่านักเรียนแต่ละคนทำถึงขั้นไหน ใครยังไม่ส่งงาน แล้วส่งสติกเกอร์ให้กำลังใจ'],
+    ['rate_review','ประเมินรูบริก','ตรวจใบงาน/ชิ้นงานตามรูบริก EDP ตัวเลขสีแดงบอกจำนวนงานที่รอตรวจ'],
+    ['fact_check','ประเมินรายชั่วโมง','บันทึกคุณลักษณะอันพึงประสงค์ อ่าน คิดวิเคราะห์ เขียน สมรรถนะสำคัญ และงานกลุ่ม ทุกชั่วโมงตามแผน'],
+    ['quiz','ข้อสอบและการสอบ','สร้างข้อสอบก่อนเรียน กลางภาค ปลายภาค กำหนดเวลาเปิดสอบ และดูผลวิเคราะห์ข้อสอบ'],
+    ['summarize','คะแนนรวมและรายงานผลการเรียน','ดูคะแนนเก็บ กลางภาค ปลายภาค เกรด แล้วส่งออกแบบรายงานผลการเรียนเป็น Word Excel หรือ PDF ในเมนู "รายงานผลการเรียน"'],
+    ['workspace_premium','วิจัยและผลงานเชี่ยวชาญ','ดูทักษะการแก้ปัญหา ผลก่อน–หลังเรียน และสร้างรายงานผลงานเชี่ยวชาญจากข้อมูลจริงในระบบ'],
+    ['menu_book','คำอธิบายรายวิชา','ดูมาตรฐาน ตัวชี้วัด แผนรายชั่วโมง 20 ชั่วโมง และการแบ่งคะแนน พิมพ์แนบแผนการสอนได้']
+  ]
+};
+function guideHtml(who){
+  var L=GUIDE[who];
+  return '<div class="gd-tabs no-print">'+[['student','school','สำหรับนักเรียน'],['teacher','co_present','สำหรับครู']].map(function(t){
+      return '<button class="gd-tab'+(who===t[0]?' on':'')+'" onclick="S.gdWho=\''+t[0]+'\';guideRefresh()">'+ic(t[1])+t[2]+'</button>'; }).join('')+'</div>'+
+    '<div class="gd-steps">'+L.map(function(x,i){ return '<div class="gd-s" style="--c:'+UNIT_COLORS[i%6][0]+'"><div class="gd-n">'+(i+1)+'</div><div class="gd-i">'+ic(x[0])+'</div><div><b class="kanit">'+esc(x[1])+'</b><div class="small">'+esc(x[2])+'</div></div></div>'; }).join('')+'</div>';
+}
+function guideRefresh(){ if($('#gdBody')) $('#gdBody').innerHTML=guideHtml(S.gdWho||'student'); }
+function guideCard(){
+  return '<div class="unit-c course-c" style="'+grad(['#ff4f9a','#ff9fc4'])+'" onclick="go(\'guide\')"><div class="uc-art">'+kawaii('robot',90,'bob')+'</div><div class="no">?</div>'+
+    '<div class="uic">'+ic('help')+'</div><div class="lbl">คู่มือ</div><h4>วิธีใช้งานบทเรียน</h4><p>ขั้นตอนการใช้งานสำหรับนักเรียนและครู ตั้งแต่เข้าสู่ระบบ เรียนตาม FLIP-EDP ส่งงาน จนถึงรายงานผล</p>'+
+    '<div class="foot"><span></span><span>เปิดดู '+ic('arrow_forward','font-size:16px')+'</span></div></div>';
+}
+function renderGuide(){
+  S.gdWho=S.gdWho||(S.user&&S.user.role==='teacher'?'teacher':'student');
+  $('#app').innerHTML=topbar()+'<div class="page"><div class="crumb"><a onclick="go(\'\')">'+ic('home','font-size:18px')+' หน้าแรก</a>'+ic('chevron_right','font-size:18px')+'<span>วิธีใช้งานบทเรียน</span></div>'+
+    '<div class="unit-banner" style="'+grad(['#ff4f9a','#b18cff'])+'"><div class="ub-art">'+kawaii('robot',120,'bob')+'</div><div class="uic">'+ic('help')+'</div><div><div class="lbl">คู่มือการใช้งาน</div><h2>วิธีใช้งานบทเรียน FLIP-EDP</h2><div>ทำตามทีละขั้น ใช้ได้ทั้งคอมพิวเตอร์ แท็บเล็ต และมือถือ</div></div></div>'+
+    '<div class="card panel" id="gdBody">'+guideHtml(S.gdWho)+'</div></div>'+footer();
+}
+function tGuide(D){ S.gdWho=S.gdWho||'teacher'; $('#tbody').innerHTML='<div class="card panel" id="gdBody">'+guideHtml(S.gdWho)+'</div>'; }
+
+/* ===================== รายงานผลการเรียน (ครู): Word / Excel / PDF ===================== */
+var LR_GRADES=['4','3.5','3','2.5','2','1.5','1','0'];
+function lrYear(){ var d=new Date(), y=d.getFullYear()+543; return d.getMonth()<4?y-1:y; }
+function lrStats(st){ var c={}, n=st.length, sum=0, gs=0, gn=0; LR_GRADES.forEach(function(g){ c[g]=0; }); c.other=0;
+  st.forEach(function(x){ var g=String(x.grade); if(c[g]!=null) c[g]++; else c.other++; sum+=Number(x.total)||0; var v=parseFloat(g); if(!isNaN(v)){ gs+=v; gn++; } });
+  var good=LR_GRADES.slice(0,3).reduce(function(a,g){ return a+c[g]; },0);
+  return {n:n,c:c,mean:n?sum/n:0,gpa:gn?gs/gn:0,good:good,pct:n?good*100/n:0}; }
+function lrDoc(G,o){
+  var C=(S.home&&S.home.course)||{}, st=G.students, rooms=[];
+  st.forEach(function(x){ if(rooms.indexOf(x.room)<0) rooms.push(x.room); });
+  var all=lrStats(st), cfg=G.cfg||{}, f=function(v,d){ return (Math.round(v*Math.pow(10,d||2))/Math.pow(10,d||2)).toFixed(d||2); };
+  var th='style="border:1px solid #000;padding:3px 4px;background:#f2f2f2;text-align:center;font-weight:bold"', td='style="border:1px solid #000;padding:3px 5px;text-align:center;white-space:nowrap"', tl='style="border:1px solid #000;padding:3px 5px;text-align:left;white-space:nowrap"';
+  var T='<table border="1" cellspacing="0" cellpadding="3" style="border-collapse:collapse;font-size:13pt;table-layout:fixed">';
+  var h='<div style="text-align:center">'+(o.logo?'<div class="lr-logo">'+logoHtml()+'</div>':'')+
+    '<div style="font-size:20pt;font-weight:bold">แบบรายงานผลการเรียน</div>'+
+    '<div style="font-size:16pt;font-weight:bold">'+esc(S.info.school)+'</div></div>'+
+    '<p style="font-size:15pt;margin:8pt 0 4pt">รายวิชา <b>'+esc(C['ชื่อรายวิชา']||'การออกแบบและเทคโนโลยี 1')+'</b> รหัสวิชา <b>'+esc(C['รหัสวิชา']||'ว21104')+'</b> '+(C['ประเภท']?esc(C['ประเภท'])+' ':'')+'กลุ่มสาระการเรียนรู้'+esc(C['กลุ่มสาระการเรียนรู้']||'วิทยาศาสตร์และเทคโนโลยี')+'<br>'+
+    'ชั้น'+esc(C['ระดับชั้น']||'มัธยมศึกษาปีที่ 1')+' ภาคเรียนที่ '+esc(C['ภาคเรียน']||'2')+' ปีการศึกษา '+esc(o.year)+' เวลาเรียน '+esc(C['เวลาเรียน']||'20 ชั่วโมง')+' จำนวน '+esc(C['หน่วยกิต']||'0.5')+' หน่วยกิต<br>'+
+    'ครูผู้สอน '+esc(S.info.teacher)+(o.room!=='ทั้งหมด'?' · ห้อง '+esc(o.room):' · ทุกห้อง ('+rooms.length+' ห้อง)')+'</p>'+
+    '<p style="font-size:15pt;margin:4pt 0">สัดส่วนคะแนน คะแนนเก็บระหว่างภาค '+esc(cfg.collect)+' : สอบกลางภาค '+esc(cfg.mid)+' : สอบปลายภาค '+esc(cfg.fin)+' รวม 100 คะแนน</p>';
+  // ตอนที่ 1 สรุปรายห้อง
+  h+='<p style="font-size:16pt;font-weight:bold;margin:10pt 0 4pt">ตอนที่ 1 สรุประดับผลการเรียน</p>'+T+'<colgroup><col width="62"><col width="44">'+LR_GRADES.map(function(){ return '<col width="34">'; }).join('')+(all.c.other?'<col width="44">':'')+'<col width="54"><col width="54"><col width="58"></colgroup><tr><th width="62" '+th+' rowspan="2">ห้อง</th><th width="44" '+th+' rowspan="2">จำนวน<br>(คน)</th><th '+th+' colspan="'+LR_GRADES.length+'">จำนวนนักเรียนที่ได้ระดับผลการเรียน</th>'+(all.c.other?'<th '+th+' rowspan="2">อื่น ๆ<br>(ร/มส)</th>':'')+'<th '+th+' rowspan="2">คะแนน<br>เฉลี่ย</th><th '+th+' rowspan="2">ระดับผล<br>การเรียนเฉลี่ย</th><th '+th+' rowspan="2">ร้อยละ<br>ระดับ 3 ขึ้นไป</th></tr><tr>'+
+    LR_GRADES.map(function(g){ return '<th '+th+'>'+g+'</th>'; }).join('')+'</tr>';
+  var row=function(name,s,b){ var w=b?'font-weight:bold;':''; return '<tr><td width="62" '+td.replace('"','"'+w)+'>'+esc(name)+'</td><td width="44" '+td.replace('"','"'+w)+'>'+s.n+'</td>'+LR_GRADES.map(function(g){ return '<td '+td.replace('"','"'+w)+'>'+(s.c[g]||'-')+'</td>'; }).join('')+(all.c.other?'<td '+td.replace('"','"'+w)+'>'+(s.c.other||'-')+'</td>':'')+
+    '<td '+td.replace('"','"'+w)+'>'+f(s.mean)+'</td><td '+td.replace('"','"'+w)+'>'+f(s.gpa)+'</td><td '+td.replace('"','"'+w)+'>'+f(s.pct)+'</td></tr>'; };
+  h+=rooms.map(function(r){ return row(r,lrStats(st.filter(function(x){ return x.room===r; }))); }).join('')+(rooms.length>1?row('รวม',all,true):'')+
+    '<tr><td '+td.replace('"','"font-weight:bold;')+'>ร้อยละ</td><td '+td+'>100</td>'+LR_GRADES.map(function(g){ return '<td '+td+'>'+(all.n?f(all.c[g]*100/all.n):'-')+'</td>'; }).join('')+(all.c.other?'<td '+td+'>'+(all.n?f(all.c.other*100/all.n):'-')+'</td>':'')+'<td '+td+' colspan="3"></td></tr></table>';
+  h+='<p style="font-size:15pt;margin:6pt 0">สรุป: นักเรียนทั้งหมด '+all.n+' คน ได้ระดับผลการเรียน 3 ขึ้นไป '+all.good+' คน คิดเป็นร้อยละ '+f(all.pct)+' ได้ระดับ 0 จำนวน '+all.c['0']+' คน คะแนนเฉลี่ย '+f(all.mean)+' ระดับผลการเรียนเฉลี่ย '+f(all.gpa)+'</p>';
+  // ตอนที่ 2 รายคน
+  if(o.detail){
+    rooms.forEach(function(r,ri){ var L=st.filter(function(x){ return x.room===r; });
+      h+='<p style="font-size:16pt;font-weight:bold;margin:12pt 0 4pt'+';page-break-before:always'+'">ตอนที่ 2 ผลการเรียนรายบุคคล ห้อง '+esc(r)+'</p>'+T+'<colgroup><col width="26"><col width="32"><col width="'+(o.units?170:230)+'">'+(o.units?G.units.map(function(){ return '<col width="38">'; }).join(''):'')+'<col width="42"><col width="46"><col width="46"><col width="42"><col width="46"></colgroup><tr><th '+th+'>ที่</th><th '+th+'>เลขที่</th><th '+th+'>ชื่อ - สกุล</th>'+
+        (o.units?G.units.map(function(u){ return '<th '+th+'>หน่วย '+u.no+'<br>('+u.max+')</th>'; }).join(''):'')+'<th '+th+'>เก็บ<br>('+esc(cfg.collect)+')</th><th '+th+'>กลางภาค<br>('+esc(cfg.mid)+')</th><th '+th+'>ปลายภาค<br>('+esc(cfg.fin)+')</th><th '+th+'>รวม<br>(100)</th><th '+th+'>ระดับผล<br>การเรียน</th></tr>'+
+        L.map(function(x,i){ return '<tr><td '+td+'>'+(i+1)+'</td><td '+td+'>'+esc(x.no)+'</td><td '+tl+'>'+esc(x.name)+'</td>'+(o.units?G.units.map(function(u){ var v=x.units[u.unitId]; return '<td '+td+'>'+(v==null?'-':v)+'</td>'; }).join(''):'')+
+          '<td '+td+'>'+x.collect+'</td><td '+td+'>'+(x.mid==null?'-':x.mid)+'</td><td '+td+'>'+(x.fin==null?'-':x.fin)+'</td><td '+td+'><b>'+x.total+'</b></td><td '+td+'><b>'+esc(x.grade)+'</b></td></tr>'; }).join('')+'</table>'; });
+  }
+  var sig=function(t,n){ return '<td style="width:50%;text-align:center;padding:22pt 6pt 0;font-size:15pt;vertical-align:top">ลงชื่อ ......................................<br>( '+(n||'......................................')+' )<br>'+t+'</td>'; };
+  h+='<p style="font-size:15pt;margin:16pt 0 0'+(o.detail?';page-break-before:always':'')+'"><b>การรับรองผลการเรียน</b></p><table style="width:100%;border-collapse:collapse"><tr>'+sig('ครูผู้สอน',esc(S.info.teacher))+sig('หัวหน้ากลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี')+'</tr><tr>'+
+    sig('หัวหน้างานวัดผลและประเมินผล')+sig('รองผู้อำนวยการฝ่ายวิชาการ')+'</tr></table>'+
+    '<p style="font-size:15pt;margin:16pt 0 0;text-align:center">[ &nbsp; ] อนุมัติ &nbsp;&nbsp;&nbsp; [ &nbsp; ] ไม่อนุมัติ</p><table style="width:100%"><tr><td style="width:25%"></td>'+sig('ผู้อำนวยการ'+esc(S.info.school))+'<td style="width:25%"></td></tr></table>';
+  return h;
+}
+function tLearnRep(D){
+  S.lrRoom=S.lrRoom||'ทั้งหมด'; S.lrYear=S.lrYear||lrYear(); if(S.lrDetail==null) S.lrDetail=true; if(S.lrUnits==null) S.lrUnits=true;
+  $('#tbody').innerHTML='<div class="card panel no-print"><div class="filters"><select id="lrR">'+roomOptions(D,S.lrRoom,true)+'</select>'+
+    '<label class="lr-f">ปีการศึกษา <input id="lrY" type="number" value="'+esc(S.lrYear)+'" style="width:90px"></label>'+
+    '<label class="lr-f"><input type="checkbox" id="lrD"'+(S.lrDetail?' checked':'')+'> รายชื่อรายคน</label><label class="lr-f"><input type="checkbox" id="lrU"'+(S.lrUnits?' checked':'')+'> คะแนนรายหน่วย</label></div>'+
+    '<div class="lr-btns"><button class="btn btn-sm lr-w" onclick="lrWord()">'+ic('description')+' ดาวน์โหลด Word</button><button class="btn btn-sm lr-x" onclick="lrExcel()">'+ic('grid_on')+' ดาวน์โหลด Excel</button><button class="btn btn-sm lr-p" onclick="lrPdf()">'+ic('picture_as_pdf')+' บันทึก PDF / พิมพ์</button></div>'+
+    '<div class="small muted">Word ใช้ฟอนต์ TH SarabunPSK แก้ไขต่อได้ · Excel มี 3 แผ่น (สรุปคะแนน คะแนนรายบท ผลการสอบ) · PDF: เลือกเครื่องพิมพ์ "บันทึกเป็น PDF"</div></div>'+
+    '<div class="lr-paper" id="lrOut"><div class="empty">กำลังโหลดคะแนน...</div></div>';
+  var re=function(){ tLearnRep(D); };
+  $('#lrR').onchange=function(){ S.lrRoom=this.value; re(); };
+  $('#lrY').onchange=function(){ S.lrYear=this.value; lrRender(); };
+  $('#lrD').onchange=function(){ S.lrDetail=this.checked; lrRender(); };
+  $('#lrU').onchange=function(){ S.lrUnits=this.checked; lrRender(); };
+  loadHome().then(function(){ return call('getFinalGrades',S.token,S.lrRoom); }).then(function(G){ S._lr=G; lrRender(); }).catch(function(){});
+}
+function lrOpts(logo){ return {room:S.lrRoom,year:S.lrYear,detail:S.lrDetail,units:S.lrUnits,logo:logo}; }
+function lrRender(){ var el=$('#lrOut'); if(!el||!S._lr) return; el.innerHTML=S._lr.students.length?lrDoc(S._lr,lrOpts(true)):'<div class="empty">ไม่มีนักเรียนในห้องนี้</div>'; }
+function lrName(ext){ var C=(S.home&&S.home.course)||{}; return 'รายงานผลการเรียน_'+(C['รหัสวิชา']||'ว21104')+'_'+String(S.lrRoom).replace(/[\/\\]/g,'-')+'_'+S.lrYear+'.'+ext; }
+/* ---------- สร้างไฟล์ Word (.docx) จริงในเบราว์เซอร์ ไม่ต้องใช้ไลบรารี ---------- */
+var CRC_T=(function(){ var t=[],c; for(var n=0;n<256;n++){ c=n; for(var k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; t[n]=c>>>0; } return t; })();
+function zipStore(files){ var enc=new TextEncoder(), parts=[], cen=[], off=0;
+  var u16=function(v){ return [v&255,(v>>8)&255]; }, u32=function(v){ return [v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255]; };
+  files.forEach(function(f){ var name=enc.encode(f[0]), data=enc.encode(f[1]), crc=0xFFFFFFFF;
+    for(var i=0;i<data.length;i++) crc=CRC_T[(crc^data[i])&255]^(crc>>>8); crc=(crc^0xFFFFFFFF)>>>0;
+    var lh=[].concat([0x50,0x4b,3,4],u16(20),u16(0x800),u16(0),u16(0),u16(0x21),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0));
+    parts.push(new Uint8Array(lh),name,data);
+    cen.push(new Uint8Array([].concat([0x50,0x4b,1,2],u16(20),u16(20),u16(0x800),u16(0),u16(0),u16(0x21),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off))),name);
+    off+=lh.length+name.length+data.length; });
+  var cs=cen.reduce(function(a,b){ return a+b.length; },0);
+  return new Blob(parts.concat(cen,[new Uint8Array([].concat([0x50,0x4b,5,6],u16(0),u16(0),u16(files.length),u16(files.length),u32(cs),u32(off),u16(0)))]),{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}); }
+var XMLH='<'+'?xml version="1.0" encoding="UTF-8" standalone="yes"?'+'>';
+function dxE(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function dxR(t,o){ o=o||{}; var sz=Math.round((o.size||15)*2);
+  return '<w:r><w:rPr>'+(o.b?'<w:b/><w:bCs/>':'')+'<w:sz w:val="'+sz+'"/><w:szCs w:val="'+sz+'"/></w:rPr><w:t xml:space="preserve">'+dxE(t)+'</w:t></w:r>'; }
+function dxP(runs,o){ o=o||{}; runs=String(runs); if(runs.indexOf('<w:r>')!==0) runs=dxR(runs,o);
+  return '<w:p><w:pPr>'+(o.br?'<w:pageBreakBefore/>':'')+'<w:spacing w:before="'+(o.before||0)+'" w:after="'+(o.after==null?40:o.after)+'" w:line="240" w:lineRule="auto"/>'+(o.align?'<w:jc w:val="'+o.align+'"/>':'')+'</w:pPr>'+runs+'</w:p>'; }
+function dxTbl(widths,rows,o){ o=o||{}; var bd='<w:tblBorders>'+['top','left','bottom','right','insideH','insideV'].map(function(k){ return '<w:'+k+' w:val="'+(o.nob?'nil':'single')+'" w:sz="4" w:space="0" w:color="000000"/>'; }).join('')+'</w:tblBorders>';
+  var x='<w:tbl><w:tblPr><w:tblW w:w="'+widths.reduce(function(a,b){return a+b;},0)+'" w:type="dxa"/><w:jc w:val="center"/><w:tblLayout w:type="fixed"/>'+bd+'<w:tblCellMar><w:left w:w="50" w:type="dxa"/><w:right w:w="50" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+widths.map(function(w){ return '<w:gridCol w:w="'+w+'"/>'; }).join('')+'</w:tblGrid>';
+  rows.forEach(function(r,ri){ var ci=0; x+='<w:tr>'+(r.head?'<w:trPr><w:tblHeader/></w:trPr>':'');
+    r.cells.forEach(function(c){ if(typeof c!=='object') c={t:c}; var span=c.span||1, w=0; for(var k=0;k<span;k++) w+=widths[ci+k]||0; ci+=span;
+      x+='<w:tc><w:tcPr><w:tcW w:w="'+w+'" w:type="dxa"/>'+(span>1?'<w:gridSpan w:val="'+span+'"/>':'')+(c.vm?'<w:vMerge'+(c.vm==='s'?' w:val="restart"':'')+'/>':'')+(r.head?'<w:shd w:val="clear" w:color="auto" w:fill="F2F2F2"/>':'')+'<w:vAlign w:val="center"/></w:tcPr>'+
+        String(c.t==null?'':c.t).split('\n').map(function(line){ return dxP(dxR(line,{b:r.head||c.b||r.b,size:o.size||13}),{align:c.l?'left':'center',after:0}); }).join('')+'</w:tc>'; });
+    x+='</w:tr>'; });
+  return x+'</w:tbl>'; }
+function lrDocx(G,o){
+  var C=(S.home&&S.home.course)||{}, st=G.students, rooms=[], cfg=G.cfg||{}, f=function(v){ return (Math.round(v*100)/100).toFixed(2); };
+  st.forEach(function(x){ if(rooms.indexOf(x.room)<0) rooms.push(x.room); }); var all=lrStats(st), B=[];
+  B.push(dxP('แบบรายงานผลการเรียน',{b:1,size:20,align:'center',after:0}), dxP(S.info.school,{b:1,size:16,align:'center',after:120}));
+  B.push(dxP(dxR('รายวิชา ')+dxR(C['ชื่อรายวิชา']||'การออกแบบและเทคโนโลยี 1',{b:1})+dxR(' รหัสวิชา ')+dxR(C['รหัสวิชา']||'ว21104',{b:1})+dxR(' '+(C['ประเภท']?C['ประเภท']+' ':'')+'กลุ่มสาระการเรียนรู้'+(C['กลุ่มสาระการเรียนรู้']||'วิทยาศาสตร์และเทคโนโลยี'))));
+  B.push(dxP('ชั้น'+(C['ระดับชั้น']||'มัธยมศึกษาปีที่ 1')+' ภาคเรียนที่ '+(C['ภาคเรียน']||'2')+' ปีการศึกษา '+o.year+' เวลาเรียน '+(C['เวลาเรียน']||'20 ชั่วโมง')+' จำนวน '+(C['หน่วยกิต']||'0.5')+' หน่วยกิต'));
+  B.push(dxP('ครูผู้สอน '+S.info.teacher+(o.room!=='ทั้งหมด'?' · ห้อง '+o.room:' · ทุกห้อง ('+rooms.length+' ห้อง)')));
+  B.push(dxP('สัดส่วนคะแนน คะแนนเก็บระหว่างภาค '+cfg.collect+' : สอบกลางภาค '+cfg.mid+' : สอบปลายภาค '+cfg.fin+' รวม 100 คะแนน',{after:120}));
+  B.push(dxP('ตอนที่ 1 สรุประดับผลการเรียน',{b:1,size:16,before:80}));
+  var oth=all.c.other>0, W=[1000,700].concat(LR_GRADES.map(function(){ return 600; })).concat(oth?[680]:[]).concat([860,860,900]);
+  var hr1={head:1,cells:[{t:'ห้อง',vm:'s'},{t:'จำนวน\n(คน)',vm:'s'},{t:'จำนวนนักเรียนที่ได้ระดับผลการเรียน',span:LR_GRADES.length}].concat(oth?[{t:'อื่น ๆ\n(ร/มส)',vm:'s'}]:[]).concat([{t:'คะแนน\nเฉลี่ย',vm:'s'},{t:'ระดับผล\nการเรียน\nเฉลี่ย',vm:'s'},{t:'ร้อยละ\nระดับ 3\nขึ้นไป',vm:'s'}])};
+  var hr2={head:1,cells:[{t:'',vm:'c'},{t:'',vm:'c'}].concat(LR_GRADES).concat(oth?[{t:'',vm:'c'}]:[]).concat([{t:'',vm:'c'},{t:'',vm:'c'},{t:'',vm:'c'}])};
+  var rw=function(n,s,b){ return {b:b,cells:[n,s.n].concat(LR_GRADES.map(function(g){ return s.c[g]||'-'; })).concat(oth?[s.c.other||'-']:[]).concat([f(s.mean),f(s.gpa),f(s.pct)])}; };
+  var rows=[hr1,hr2].concat(rooms.map(function(r){ return rw(r,lrStats(st.filter(function(x){ return x.room===r; }))); }));
+  if(rooms.length>1) rows.push(rw('รวม',all,1));
+  rows.push({cells:[{t:'ร้อยละ',b:1},'100'].concat(LR_GRADES.map(function(g){ return all.n?f(all.c[g]*100/all.n):'-'; })).concat(oth?[all.n?f(all.c.other*100/all.n):'-']:[]).concat([{t:'',span:3}])});
+  B.push(dxTbl(W,rows));
+  B.push(dxP('สรุป: นักเรียนทั้งหมด '+all.n+' คน ได้ระดับผลการเรียน 3 ขึ้นไป '+all.good+' คน คิดเป็นร้อยละ '+f(all.pct)+' ได้ระดับ 0 จำนวน '+all.c['0']+' คน คะแนนเฉลี่ย '+f(all.mean)+' ระดับผลการเรียนเฉลี่ย '+f(all.gpa),{before:80}));
+  if(o.detail) rooms.forEach(function(r){ var L=st.filter(function(x){ return x.room===r; });
+    B.push(dxP('ตอนที่ 2 ผลการเรียนรายบุคคล ห้อง '+r,{b:1,size:16,br:1}));
+    var nu=o.units?G.units.length:0, W2=[420,520,9700-(940+nu*480+3280)].concat(G.units.slice(0,nu).map(function(){ return 480; })).concat([620,680,680,600,700]);
+    var h={head:1,cells:['ที่','เลขที่','ชื่อ - สกุล'].concat(o.units?G.units.map(function(u){ return 'หน่วย '+u.no+'\n('+u.max+')'; }):[]).concat(['เก็บ\n('+cfg.collect+')','กลางภาค\n('+cfg.mid+')','ปลายภาค\n('+cfg.fin+')','รวม\n(100)','ระดับ\nผลการเรียน'])};
+    B.push(dxTbl(W2,[h].concat(L.map(function(x,i){ return {cells:[i+1,x.no,{t:x.name,l:1}].concat(o.units?G.units.map(function(u){ var v=x.units[u.unitId]; return v==null?'-':v; }):[]).concat([x.collect,x.mid==null?'-':x.mid,x.fin==null?'-':x.fin,{t:x.total,b:1},{t:x.grade,b:1}])}; })),{size:13})); });
+  var sg=function(t,n){ return {t:'ลงชื่อ ......................................\n( '+(n||'......................................')+' )\n'+t}; };
+  B.push(dxP('การรับรองผลการเรียน',{b:1,size:16,br:o.detail?1:0,before:200,after:200}));
+  B.push(dxTbl([4600,4600],[{cells:[sg('ครูผู้สอน',S.info.teacher),sg('หัวหน้ากลุ่มสาระการเรียนรู้\nวิทยาศาสตร์และเทคโนโลยี')]},{cells:[{t:''},{t:''}]},{cells:[sg('หัวหน้างานวัดผลและประเมินผล'),sg('รองผู้อำนวยการฝ่ายวิชาการ')]}],{nob:1,size:15}));
+  B.push(dxP('[   ] อนุมัติ          [   ] ไม่อนุมัติ',{align:'center',before:360,after:240}));
+  B.push(dxTbl([9200],[{cells:[sg('ผู้อำนวยการ'+S.info.school)]}],{nob:1,size:15}));
+  var doc=XMLH+'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+B.join('')+
+    '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1080" w:right="850" w:bottom="1000" w:left="1250" w:header="560" w:footer="560" w:gutter="0"/></w:sectPr></w:body></w:document>';
+  var styles=XMLH+'<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="TH SarabunPSK" w:hAnsi="TH SarabunPSK" w:eastAsia="TH SarabunPSK" w:cs="TH SarabunPSK"/><w:sz w:val="30"/><w:szCs w:val="30"/><w:lang w:val="en-US" w:bidi="th-TH"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="40" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults></w:styles>';
+  return zipStore([
+    ['[Content_Types].xml',XMLH+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>'],
+    ['_rels/.rels',XMLH+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'],
+    ['word/_rels/document.xml.rels',XMLH+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'],
+    ['word/document.xml',doc],['word/styles.xml',styles]]);
+}
+function lrWord(){ if(!S._lr) return; try{ var blob=lrDocx(S._lr,lrOpts(false)); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=lrName('docx'); document.body.appendChild(a); a.click(); a.remove(); toast('ดาวน์โหลดไฟล์ Word แล้ว'); }catch(e){ toast('สร้างไฟล์ Word ไม่สำเร็จ: '+e,true); } }
+
+function lrExcel(){ S.fgRoom=S.lrRoom; fgExport('xlsx'); }
+function lrPdf(){ if(!S._lr) return; var p=document.getElementById('lrPrint'); if(!p){ p=document.createElement('div'); p.id='lrPrint'; document.body.appendChild(p); }
+  p.innerHTML=lrDoc(S._lr,lrOpts(true)); document.body.classList.add('lr-printing'); var t=document.title; document.title=lrName('pdf').replace(/\.pdf$/,'');
+  var done=function(){ document.body.classList.remove('lr-printing'); document.title=t; window.removeEventListener('afterprint',done); }; window.addEventListener('afterprint',done); setTimeout(function(){ window.print(); },60); }
 
 /* ===================== การสอบ (นักเรียน) ===================== */
 function thDate(s){ if(!s) return ''; var p=s.split('-'); var d=new Date(+p[0],+p[1]-1,+p[2]); return d.toLocaleDateString('th-TH',{weekday:'short',day:'numeric',month:'short',year:'2-digit'}); }
