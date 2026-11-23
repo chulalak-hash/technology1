@@ -8,7 +8,7 @@
 <script>
 /* ========== ตั้งค่า: วางลิงก์ Web app ของ Apps Script (ม.1) ระหว่างเครื่องหมาย ' ' ==========
    ต้องเป็นรูปแบบ https://script.google.com/macros/s/xxxxxxxx/exec  */
-var FLIP_API = 'https://script.google.com/a/macros/nongtong.ac.th/s/AKfycbwvOIqPQ4r0zzA5ZRIhKYOxxKIowFif_m7yUf7eSgatEfXlnxHJKoG_3W0lPhXKQjiN/exec';
+var FLIP_API = 'https://script.google.com/a/macros/nongtong.ac.th/s/AKfycbxmgWq1j9iT52SxHsCIQMB_6VkKWmpAZzS09IZpZKj2dSj2NdRQoMywoYZxsmPIaCk/exec';
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -884,6 +884,100 @@ body.q-on .fab,body.q-on #ttsBar{display:none!important}
 .lr-logo img,#lrPrint .lr-logo img{width:64px;height:64px;object-fit:contain}
 #lrPrint{display:none}
 @media print{ body.lr-printing>*:not(#lrPrint){display:none!important} body.lr-printing #lrPrint{display:block;font-family:'Sarabun','TH SarabunPSK',sans-serif;color:#000} body.lr-printing{background:#fff!important} @page{size:A4;margin:14mm 12mm 12mm 16mm} }
+.tn-card .tn-e{font-size:64px;line-height:1.1}
+.tn-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tn-btns .mg-o{font-size:17px;padding:18px 8px}
+.tn-btns .mg-o span{font-size:34px}
+.tl-track{display:flex;align-items:stretch;gap:6px;margin:0 0 14px}
+.tl-slot{flex:1;min-height:86px;border:2px dashed #e2c6ff;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;background:#fbf7ff;font-size:13px;color:var(--ink2)}
+.tl-slot.on{border-style:solid;border-color:#b18cff;background:#f3ecff;color:var(--ink)}
+.tl-slot b{font-size:30px}
+.tl-arrow{align-self:center;color:#b18cff;font-weight:700}
+.fc-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.ec-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fc-opts .mg-o,.ec-opts .mg-o{font-size:14px;line-height:1.35}
+@media(max-width:760px){.fc-opts{grid-template-columns:1fr 1fr}.ec-opts{grid-template-columns:1fr 1fr}.tl-track{flex-wrap:wrap}.tl-slot{flex:1 1 40%}.tl-arrow{display:none}}
+.gm-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.gm-list{display:grid;gap:10px}
+.gm-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:18px;background:#f7f5f9;border:1px solid #eee;opacity:.75;transition:.2s}
+.gm-row.on{background:#fff;border-color:#fbd3e6;opacity:1;box-shadow:var(--shadow)}
+.gm-row .gi{width:54px;height:54px;flex:none}
+.gm-t{flex:1;min-width:0}
+.gm-sw{display:flex;align-items:center;gap:8px;cursor:pointer;flex:none}
+.gm-sw input{display:none}
+.gm-sw span{width:50px;height:28px;border-radius:99px;background:#d6d3dc;position:relative;transition:.2s}
+.gm-sw span:after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:.2s}
+.gm-sw input:checked+span{background:linear-gradient(135deg,#ff4f9a,#b18cff)}
+.gm-sw input:checked+span:after{left:25px}
+.gm-sw em{font-style:normal;font-family:'Kanit';width:28px;font-size:14px}
+@media(max-width:640px){.gm-row{flex-wrap:wrap}.gm-row .btn{order:3}}
+.games-empty{padding:18px;text-align:center;color:var(--ink2)}
+.rn-lobby{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:10px}
+@media(max-width:820px){.rn-lobby{grid-template-columns:1fr}}
+.rn-col{display:grid;gap:12px;align-content:start}
+.rn-sec{background:#fff;border:1px solid #fbdbe9;border-radius:18px;padding:12px 14px;display:grid;gap:8px}
+.rn-chars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rn-ch{border:2px solid #f3dbe8;background:#fffafd;border-radius:16px;padding:4px 4px 8px;cursor:pointer;font:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:'Kanit';font-size:14px}
+.rn-ch canvas{width:88px;height:96px}
+.rn-ch.on{border-color:#ff4f9a;background:#ffe3ef;box-shadow:0 6px 14px rgba(255,79,154,.25)}
+.rn-pills{display:flex;flex-wrap:wrap;gap:8px}
+.rn-pill{border:2px solid #f3dbe8;background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-family:'Kanit';font-size:15px;cursor:pointer;min-height:44px}
+.rn-pill small{font-family:'Sarabun';font-size:12px;color:var(--ink2)}
+.rn-pill.on{border-color:var(--pc,#ff4f9a);background:var(--pc,#ff4f9a);color:#fff}
+.rn-pill.on small{color:#fff}
+.rn-go{font-size:20px;padding:14px;justify-content:center}
+.rn-help{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.rn-a,.rn-b,.rn-c{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;color:#fff;font-size:13px}
+.rn-a{background:#ff4f9a}.rn-b{background:#8b5cf6}.rn-c{background:#1f9ad6}
+.rn-best{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rn-best div{border-radius:14px;padding:8px;text-align:center;background:color-mix(in srgb,var(--pc) 14%,#fff)}
+.rn-best span{display:block;font-size:13px}.rn-best b{font-family:'Kanit';font-size:22px;color:var(--pc)}
+body.rn-on{overflow:hidden}
+.rn-wrap{position:fixed;inset:0;z-index:9000;background:#ffe1f0;user-select:none;-webkit-user-select:none;touch-action:none;font-family:'Sarabun',sans-serif}
+.rn-wrap canvas{position:absolute;inset:0;width:100%;height:100%}
+.rn-hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;gap:8px;pointer-events:none}
+.rn-hud>div{display:flex;align-items:center;gap:6px;pointer-events:auto}
+.rn-hl #rnLives{font-size:20px;letter-spacing:1px}
+.rn-chip{background:rgba(255,255,255,.85);border-radius:999px;padding:4px 10px;font-family:'Kanit';font-size:14px;color:#3b2a4f}
+.rn-hm{flex-direction:column;background:rgba(255,255,255,.85);border-radius:16px;padding:2px 16px;line-height:1.1}
+.rn-hm b{font-family:'Kanit';font-size:26px;color:#ff4f9a}.rn-hm small{font-size:12px;color:#6b5a78}
+.rn-hr button{width:40px;height:40px;border-radius:12px;border:0;background:rgba(255,255,255,.88);font-size:18px;cursor:pointer}
+.rn-q{position:absolute;top:70px;left:50%;transform:translate(-50%,-10px);width:min(920px,94vw);background:rgba(255,255,255,.94);border-radius:20px;padding:10px 14px;box-shadow:0 10px 30px rgba(80,30,90,.18);opacity:0;transition:.25s;pointer-events:none}
+.rn-q.on{opacity:1;transform:translate(-50%,0)}
+.rn-qt{font-family:'Kanit';font-size:18px;color:#2d1b3d;margin-bottom:8px;line-height:1.4}
+.rn-ans{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rn-an{display:flex;gap:8px;align-items:flex-start;border-radius:14px;padding:8px 10px;color:#fff;font-size:15px;line-height:1.35;transition:.2s}
+.rn-an b{flex:none;width:28px;height:28px;border-radius:9px;background:rgba(255,255,255,.3);display:grid;place-items:center;font-family:'Kanit'}
+.rn-an.a0{background:#ff4f9a}.rn-an.a1{background:#8b5cf6}.rn-an.a2{background:#1f9ad6}
+.rn-an.ok{background:#18b383;transform:scale(1.04)}.rn-an.no{background:#e5484d}.rn-an.dim{opacity:.45}
+.rn-pop{position:absolute;left:50%;top:42%;transform:translateX(-50%);pointer-events:none;text-align:center}
+.rn-pop>div{font-family:'Kanit';font-size:28px;padding:8px 18px;border-radius:16px;background:rgba(255,255,255,.9);opacity:0}
+.rn-pop>div.ok{color:#11946b}.rn-pop>div.no{color:#d6304a}.rn-pop>div.big{font-size:20px;max-width:80vw}
+.rn-pop.go>div{animation:rnPop 1.4s ease-out forwards}
+@keyframes rnPop{0%{opacity:0;transform:translateY(20px) scale(.8)}15%{opacity:1;transform:translateY(0) scale(1.05)}75%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
+.rn-ctl{position:absolute;bottom:16px;left:0;right:0;display:none;justify-content:center;gap:16px}
+.rn-ctl button{width:64px;height:58px;border-radius:20px;border:0;background:rgba(255,255,255,.7);font-size:26px;color:#8b5cf6;box-shadow:0 6px 16px rgba(0,0,0,.12)}
+@media(pointer:coarse){.rn-ctl{display:flex}}
+.rn-ov{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(40,20,60,.35)}
+.rn-ov.on{display:flex}.rn-ov.cd{background:transparent}
+.rn-cd{font-family:'Kanit';font-size:96px;color:#fff;text-shadow:0 6px 20px rgba(139,92,246,.6);animation:rnPop .65s}
+.rn-box{background:#fff;border-radius:26px;padding:24px 28px;text-align:center;width:min(480px,92vw);display:grid;gap:10px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.rn-box h2{margin:0}
+.rn-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.rn-stars{font-size:46px;letter-spacing:6px;color:#e5e0ea}.rn-stars .on{color:#ffc93c;text-shadow:0 3px 8px rgba(255,180,0,.5)}
+.rn-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rn-sum div{background:#fff3f9;border-radius:14px;padding:8px 4px;display:flex;flex-direction:column}
+.rn-sum b{font-family:'Kanit';font-size:20px;color:#ff4f9a}.rn-sum span{font-size:12px;color:#6b5a78}
+.rn-wrap.night .rn-chip,.rn-wrap.night .rn-hm,.rn-wrap.night .rn-hr button{background:rgba(30,22,60,.75);color:#fff}
+.rn-wrap.night .rn-hm small{color:#d6c8ff}
+.rn-wrap.night .rn-q{background:rgba(30,22,60,.9)}
+@media(max-width:600px){.rn-hud{padding:8px;flex-wrap:wrap}.rn-hl{flex-direction:column;align-items:flex-start!important;gap:2px!important}.rn-hl .rn-chip{display:none}.rn-hl #rnLives{font-size:14px;letter-spacing:0}.rn-hm b{font-size:20px}.rn-hm{padding:2px 10px}.rn-hr{gap:4px!important}.rn-hr .rn-chip{font-size:12px;padding:3px 7px}.rn-hr button{width:32px;height:32px;font-size:15px;border-radius:10px}.rn-q{top:58px;padding:8px}.rn-qt{font-size:15px;margin-bottom:6px}.rn-an{font-size:13px;padding:6px;gap:5px;flex-direction:column;align-items:center;text-align:center}.rn-an b{width:22px;height:22px}.rn-sum{grid-template-columns:repeat(2,1fr)}.rn-chars{grid-template-columns:repeat(2,1fr)}.rn-pop>div{font-size:20px}}.rn-wrap.night .rn-qt{color:#fff}
+
+.gf-run{background:linear-gradient(135deg,#ff8a3d,#ff4f9a 55%,#ffb347)}
+.gf-run .go{background:#fff;color:#ff4f9a}
+.rn-hero{background:linear-gradient(135deg,#ff8a3d,#ff4f9a 50%,#b18cff);position:relative;overflow:hidden}
+.rn-hero:before{content:'';position:absolute;left:-10%;right:-10%;bottom:-38px;height:70px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 40px,transparent 40px 80px);transform:skewX(-30deg);opacity:.5}
+.rn-hero .q-hero-a canvas{width:120px;height:136px}
 </style>
 </head>
 <body>
@@ -1512,7 +1606,7 @@ function renderTeacher(){
   p.then(function(D){
     var groups=[
       ['หน้าหลัก',[['overview','dashboard','ภาพรวม']]],
-      ['เนื้อหาและการสอน',[['content','edit_note','จัดการเนื้อหา'],['sched','calendar_month','ตารางสอน & กำหนดการ'],['news','campaign','กระดานข่าว'],['help','help','วิธีเพิ่มเนื้อหา'],['guide','help_center','วิธีใช้งานบทเรียน']]],
+      ['เนื้อหาและการสอน',[['content','edit_note','จัดการเนื้อหา'],['sched','calendar_month','ตารางสอน & กำหนดการ'],['news','campaign','กระดานข่าว'],['games','sports_esports','เปิด/ปิดเกม'],['help','help','วิธีเพิ่มเนื้อหา'],['guide','help_center','วิธีใช้งานบทเรียน']]],
       ['ติดตามผู้เรียน',[['track','table_view','ติดตามรายห้อง'],['issues','support_agent','เรื่องที่นักเรียนแจ้ง'],['gradebook','military_tech','คะแนนเก็บ & ดาว']]],
       ['วัดและประเมินผล',[['grade','rate_review','ประเมินรูบริก',D.pending||0],['assess','fact_check','ประเมินรายชั่วโมง'],['exam','quiz','ข้อสอบ & การสอบ'],['edit','border_color','แก้ไขคะแนน'],['final','summarize','คะแนนรวม & ส่งออก'],['learnrep','assignment','รายงานผลการเรียน']]],
       ['วิจัยและรายงาน',[['skill','psychology_alt','ทักษะการแก้ปัญหา'],['prepost','bar_chart','ความรู้ก่อน-หลังเรียน'],['report','workspace_premium','รายงานผลงานเชี่ยวชาญ']]],
@@ -1526,7 +1620,7 @@ function renderTeacher(){
       '</aside><div class="ts-ov" onclick="S.sideOpen=false;document.getElementById(\'tside\').classList.remove(\'open\');this.classList.remove(\'on\')"></div>';
     $('#app').innerHTML = topbar()+'<div class="tlayout">'+side+'<main class="tmain"><div class="tm-h"><button class="ts-tg" onclick="var a=document.getElementById(\'tside\');a.classList.add(\'open\');document.querySelector(\'.ts-ov\').classList.add(\'on\')">'+ic('menu')+'</button>'+
       '<div class="tm-t">'+ic(cur[1])+'<h2 class="kanit">'+cur[2]+'</h2></div><button class="btn btn-ghost btn-sm" onclick="api(\'clearCache\',S.token).catch(function(){});S.dash=null;S._exA=null;renderTeacher()" title="โหลดข้อมูลใหม่">'+ic('refresh')+' โหลดใหม่</button></div><div id="tbody"></div></main></div>'+footer();
-    ({content:tContent,showcase:tShowcase,xp:tRank,overview:tOverview,gradebook:tGradebook,track:tTrack,grade:tGrade,issues:tIssues,sched:tSched,assess:tAssess,news:tNews,skill:tSkill,prepost:tPrePost,report:tReport,exam:tExam,edit:tEdit,final:tFinal,help:tHelp,guide:tGuide,learnrep:tLearnRep})[S.tTab](D);
+    ({content:tContent,showcase:tShowcase,xp:tRank,overview:tOverview,gradebook:tGradebook,track:tTrack,grade:tGrade,issues:tIssues,sched:tSched,assess:tAssess,news:tNews,skill:tSkill,prepost:tPrePost,report:tReport,exam:tExam,edit:tEdit,final:tFinal,help:tHelp,guide:tGuide,learnrep:tLearnRep,games:tGames})[S.tTab](D);
   }).catch(function(){});
 }
 function stat(i,c,v,l){ return '<div class="card stat"><div class="ic" style="'+grad(c)+'">'+ic(i)+'</div><div><b>'+esc(v)+'</b><span>'+esc(l)+'</span></div></div>'; }
@@ -2520,20 +2614,23 @@ var GAMES=[
   {id:'edp',art:'robot',icon:'reorder',t:'เรียงขั้นตอน EDP',d:'แข่งกันเรียง 6 ขั้นกระบวนการออกแบบเชิงวิศวกรรมให้เร็วที่สุด (หน่วยที่ 6)',c:['#8b5cf6','#b69bff']}
 ];
 function gamesBox(){
+  var GV=GAMES.filter(function(g){ return g.id!=='runner'&&gameOn(g.id); }), q=gameOn('quest'), rn=gameOn('runner'); S._gvN=GV.length;
   return '<div><div class="sec-title">'+ic('sports_esports')+'<h3>มุมเกมการศึกษา</h3></div>'+
-    '<div class="game-feat" onclick="go(\'quest\')"><div class="gf-i">☁️</div><div><b>FLIP Candy Quest 3D</b><small>ผจญภัยในเมืองนักประดิษฐ์ลอยฟ้า 7 ย่าน ข้ามสะพานสายรุ้ง ตอบคำถามที่ฐาน เก็บแต้ม หลบบั๊กจอมซน</small></div><span class="go">เล่นเลย ▶</span></div>'+
-    '<div class="games'+(S.gamesAll?' all':'')+'" id="gamesGrid">'+GAMES.map(function(g,i){
+    (q?'<div class="game-feat" onclick="go(\'quest\')"><div class="gf-i">☁️</div><div><b>FLIP Candy Quest 3D</b><small>ผจญภัยในเมืองนักประดิษฐ์ลอยฟ้า 7 ย่าน ข้ามสะพานสายรุ้ง ตอบคำถามที่ฐาน เก็บแต้ม หลบบั๊กจอมซน</small></div><span class="go">เล่นเลย ▶</span></div>':'')+
+    (rn?'<div class="game-feat gf-run" onclick="go(\'game/runner\')"><div class="gf-i">🏃‍♀️</div><div><b>FLIP Candy Runner 3D</b><small>วิ่งเท้าหรือขับรถคันจิ๋วในเมืองการ์ตูน วิ่งผ่านป้ายคำตอบที่ถูก เก็บเหรียญ หลบสไลม์ 3 ด่าน ง่าย·กลาง·ยาก</small></div><span class="go">วิ่งเลย ▶</span></div>':'')+
+    (!q&&!rn&&!GV.length?'<div class="card games-empty">'+kawaii('robot',70,'bob')+'<div class="kanit">ครูยังไม่เปิดเกม รอสักครู่นะ 🎮</div></div>':'')+
+    '<div class="games'+(S.gamesAll?' all':'')+'" id="gamesGrid">'+GV.map(function(g,i){
     return '<div class="game-c'+(i>=GAMES_SHOW?' g-more':'')+'" onclick="go(\'game/'+g.id+'\')"><div class="gi kwbox" style="'+grad(g.c)+'">'+kawaii(g.art,52,'bob')+'</div><div><b>'+g.t+'</b><div class="small muted">'+g.d+'</div></div>'+ic('play_circle','color:'+g.c[0]+';font-size:32px')+'</div>';
-  }).join('')+'</div>'+(GAMES.length>GAMES_SHOW?'<button class="btn btn-ghost btn-sm games-more" onclick="gamesToggle(this)">'+ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+(GAMES.length-GAMES_SHOW)+' เกม)')+'</button>':'')+'</div>';
+  }).join('')+'</div>'+(GV.length>GAMES_SHOW?'<button class="btn btn-ghost btn-sm games-more" onclick="gamesToggle(this)">'+ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+(GV.length-GAMES_SHOW)+' เกม)')+'</button>':'')+'</div>';
 }
 var GAMES_SHOW=4; // จำนวนเกมที่แสดงก่อนกด "ดูเกมเพิ่มเติม" (4 เกม = 2 แถว)
 function gamesToggle(b){ S.gamesAll=!S.gamesAll; var g=$('#gamesGrid'); if(g) g.classList.toggle('all',S.gamesAll);
-  b.innerHTML=ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+(GAMES.length-GAMES_SHOW)+' เกม)');
+  b.innerHTML=ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+((S._gvN||GAMES.length)-GAMES_SHOW)+' เกม)');
   gamesBtn(); if(!S.gamesAll){ var t=document.querySelector('.game-feat'); if(t) t.scrollIntoView({behavior:'smooth',block:'center'}); } }
 /* มุมเกมแสดง 2 แถวเสมอ และกระดานข่าวสูงเท่ากับมุมเกม ถ้าข่าวมากกว่านั้นเลื่อนดูในกล่องข่าวได้ */
 function gamesBtn(){ var g=$('#gamesGrid'), b=document.querySelector('.games-more'); if(!g||!b) return;
   var hid=g.querySelectorAll('.g-more').length; b.style.display=(hid||S.gamesAll)?'':'none';
-  b.innerHTML=ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+(GAMES.length-GAMES_SHOW)+' เกม)'); }
+  b.innerHTML=ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+((S._gvN||GAMES.length)-GAMES_SHOW)+' เกม)'); }
 function gamesFit(){ var wrap=document.querySelector('.news-games'); if(!wrap) return;
   var col=wrap.children[0], gc=wrap.children[1], list=col.querySelector('.news'); if(!list) return;
   list.style.maxHeight=''; list.style.minHeight=''; list.classList.remove('news-scroll','news-fill');
@@ -3107,6 +3204,7 @@ var GUIDE={
     ['edit_note','จัดการเนื้อหา','แก้หน่วย บทเรียน คลิป ใบงาน และคำถามได้ในเมนู "จัดการเนื้อหา" หรือแก้ในชีตแล้วกดโหลดใหม่ (ดู "วิธีเพิ่มเนื้อหา")'],
     ['calendar_month','ตารางสอนและกำหนดการ','กำหนดวันเรียนแต่ละบท ชดเชยวันหยุด นักเรียนจะเห็นวันที่บนการ์ดบทเรียน'],
     ['campaign','กระดานข่าว','เพิ่ม/ปักหมุดประกาศ แสดงบนหน้าแรกทันที'],
+    ['sports_esports','เปิด/ปิดเกม','เลือกได้ว่าเกมไหนให้นักเรียนเห็นในมุมเกม เช่น เปิดเกมตามหน่วยที่กำลังเรียน กดทดลองเล่นก่อนเปิดได้'],
     ['table_view','ติดตามรายห้อง','ดูว่านักเรียนแต่ละคนทำถึงขั้นไหน ใครยังไม่ส่งงาน แล้วส่งสติกเกอร์ให้กำลังใจ'],
     ['rate_review','ประเมินรูบริก','ตรวจใบงาน/ชิ้นงานตามรูบริก EDP ตัวเลขสีแดงบอกจำนวนงานที่รอตรวจ'],
     ['fact_check','ประเมินรายชั่วโมง','บันทึกคุณลักษณะอันพึงประสงค์ อ่าน คิดวิเคราะห์ เขียน สมรรถนะสำคัญ และงานกลุ่ม ทุกชั่วโมงตามแผน'],
@@ -3999,6 +4097,606 @@ function ttsUI(){
 }
 window.addEventListener('hashchange',function(){ ttsStop(); setTimeout(ttsUI,50); });
 setTimeout(ttsUI,300);
+
+
+/* ===================== เกมเพิ่มเติมชุดที่ 2 (หน่วยที่ 1, 2, 7) ===================== */
+GAMES.push(
+  {id:'technot',art:'phone',icon:'devices',t:'ใช่เทคโนโลยีไหมนะ?',d:'ดูภาพแล้วตอบให้ไวว่าเป็นเทคโนโลยีหรือไม่ มีหัวใจ 3 ดวง ตอบถูกติดกันได้คอมโบ (หน่วยที่ 1)',c:['#e14fb8','#f59ad8']},
+  {id:'timeline',art:'clock',icon:'history',t:'ไทม์แมชชีนเรียงยุค',d:'แตะเรียงเทคโนโลยีจากอดีตถึงปัจจุบัน ซักผ้า สื่อสาร แสงสว่าง เดินทาง (หน่วยที่ 2)',c:['#8b5cf6','#c3a6ff']},
+  {id:'factor',art:'magnifier',icon:'psychology_alt',t:'นักสืบปัจจัย',d:'อ่านเหตุการณ์แล้วบอกว่าเทคโนโลยีเปลี่ยนเพราะปัจจัยใด (หน่วยที่ 2)',c:['#1f9ad6','#8fd3ff']},
+  {id:'edpcase',art:'pencil',icon:'engineering',t:'นักแก้ปัญหา EDP',d:'อ่านสิ่งที่ทีมทำ แล้วบอกว่าเป็นขั้นไหนของกระบวนการออกแบบเชิงวิศวกรรม (หน่วยที่ 6–7)',c:['#f07a2a','#ffc08f']}
+);
+var _openGame1=openGame;
+openGame=function(id){ var f={technot:gTechNot,timeline:gTimeline,factor:gFactor,edpcase:gEdpCase}[id]; if(f) return f(); _openGame1(id); };
+
+/* ---------- 7) ใช่เทคโนโลยีไหมนะ? ---------- */
+var TN_Q=[
+  ['☂️','ร่ม',1],['🚲','จักรยาน',1],['🥢','ตะเกียบ',1],['👓','แว่นตา',1],['📱','โทรศัพท์มือถือ',1],['🍚','หม้อหุงข้าวไฟฟ้า',1],['🧹','ไม้กวาด',1],['🧊','ตู้เย็น',1],
+  ['🧺','ไม้หนีบผ้าที่ใช้ตากผ้า',1],['🐟','วิธีถนอมอาหารด้วยการตากแห้ง',1],['🌱','วิธีทำปุ๋ยหมักจากเศษใบไม้',1],['🚜','รถไถนา',1],['🪣','ถังน้ำพลาสติก',1],['✏️','ดินสอ',1],
+  ['🪨','ก้อนหินริมลำธาร',0],['🌳','ต้นมะม่วงในป่า',0],['☁️','ก้อนเมฆบนฟ้า',0],['🌧️','ฝนที่ตกลงมา',0],['☀️','ดวงอาทิตย์',0],['⛰️','ภูเขา',0],['🌈','รุ้งกินน้ำ',0],['🏖️','ทรายบนชายหาด',0],['🐝','รังผึ้งในธรรมชาติ',0]
+];
+var TN={};
+function gTechNot(){
+  TN={q:shuffle(TN_Q).slice(0,12),i:0,hp:3,score:0,combo:0,t0:0};
+  $('#app').innerHTML=gamePage('ใช่เทคโนโลยีไหมนะ?','devices',
+    botSays('<b>สิ่งไหนเป็นเทคโนโลยี?</b> จำไว้ว่า เทคโนโลยีคือสิ่งที่<b>มนุษย์สร้างหรือพัฒนาขึ้น</b> ทั้งชิ้นงานและวิธีการ เพื่อแก้ปัญหาหรือสนองความต้องการ 📱','phone')+
+    '<div class="edp-top"><div class="kanit" id="tnH"></div><div class="kanit">ข้อที่ <span id="tnN">1</span>/12</div><div class="kanit">⭐ <span id="tnS">0</span> <span id="tnC" class="small"></span></div></div><div id="tnG"></div>');
+  tnRound();
+}
+function tnRound(){
+  $('#tnH').textContent='❤️'.repeat(TN.hp)+'🤍'.repeat(3-TN.hp);
+  var q=TN.q[TN.i];
+  if(!q||TN.hp<=0){ var win=TN.hp>0, best=sKey('technot')||0; if(TN.score>best) sKey('technot',TN.score); if(win) confetti();
+    $('#tnG').innerHTML='<div class="g-end">'+kawaii(win?'trophy':'phone',110,'bob')+'<h3 class="kanit">'+(win?'ตาไวมาก! แยกเทคโนโลยีได้ครบ 12 ข้อ 🎉':'หัวใจหมดแล้ว ลองใหม่นะ 💪')+'</h3><div>ได้ <b>'+TN.score+'</b> คะแนน'+(TN.score>best?' · 🏆 สถิติใหม่!':' · สถิติดีที่สุด '+best)+'</div><div style="margin-top:12px"><button class="btn btn-pink" onclick="gTechNot()">'+ic('replay')+' เล่นอีกครั้ง</button></div></div>'; return; }
+  $('#tnN').textContent=TN.i+1; TN.t0=Date.now();
+  $('#tnG').innerHTML='<div class="mg-case tn-card"><div class="tn-e">'+q[0]+'</div><h3 class="kanit">'+esc(q[1])+'</h3><div class="small muted">เป็นเทคโนโลยีหรือไม่?</div></div>'+
+    '<div class="tn-btns"><button class="mg-o tn-y" data-v="1"><span>✅</span>เป็นเทคโนโลยี</button><button class="mg-o tn-n" data-v="0"><span>🍃</span>ไม่ใช่ (เกิดเองตามธรรมชาติ)</button></div><div id="tnF"></div>';
+  document.querySelectorAll('.tn-btns .mg-o').forEach(function(b){ b.onclick=function(){
+    document.querySelectorAll('.tn-btns .mg-o').forEach(function(x){ x.disabled=true; if(+x.dataset.v===q[2]) x.classList.add('ok'); });
+    var ok=+b.dataset.v===q[2], fast=Date.now()-TN.t0<4000;
+    if(ok){ TN.combo++; TN.score+=10+(fast?5:0)+(TN.combo>1?(TN.combo-1)*2:0); beep(880,100,'sine'); }
+    else { TN.combo=0; TN.hp--; b.classList.add('bad','shake'); beep(150,180,'sawtooth'); }
+    $('#tnS').textContent=TN.score; $('#tnC').textContent=TN.combo>1?'คอมโบ x'+TN.combo+' 🔥':'';
+    $('#tnF').innerHTML='<div class="mg-f '+(ok?'ok':'no')+'">'+(ok?'✅ ถูกต้อง'+(fast?' ไวมาก +5':'')+'! ':'❌ ยังไม่ใช่ ')+(q[2]?esc(q[1])+' เป็นสิ่งที่มนุษย์สร้างหรือคิดค้นขึ้นเพื่อแก้ปัญหาหรือสนองความต้องการ จึงเป็นเทคโนโลยี':esc(q[1])+' เกิดขึ้นเองตามธรรมชาติ มนุษย์ไม่ได้สร้างขึ้น จึงไม่ใช่เทคโนโลยี')+'</div><div class="row-end"><button class="btn btn-pink btn-sm" id="tnNext">'+ic('arrow_forward')+' ข้อต่อไป</button></div>';
+    $('#tnNext').onclick=function(){ TN.i++; tnRound(); };
+  }; });
+}
+
+/* ---------- 8) ไทม์แมชชีนเรียงยุค ---------- */
+var TL_SETS=[
+  ['การซักผ้า',[['🪨','ทุบผ้ากับก้อนหินริมน้ำ'],['🪵','ขยี้ผ้าบนกระดานซักผ้า'],['🔄','เครื่องซักผ้าแบบมือหมุน'],['🧺','เครื่องซักผ้าอัตโนมัติ']]],
+  ['การสื่อสาร',[['✉️','เขียนจดหมาย'],['☎️','โทรศัพท์บ้านแบบมีสาย'],['📟','โทรศัพท์มือถือปุ่มกด'],['📱','สมาร์ตโฟนวิดีโอคอล']]],
+  ['แสงสว่าง',[['🔥','คบเพลิงและกองไฟ'],['🕯️','เทียนไขและตะเกียงน้ำมัน'],['💡','หลอดไส้'],['🔆','หลอด LED ประหยัดไฟ']]],
+  ['การหุงข้าว',[['🪵','หม้อดินบนเตาฟืน'],['🍲','หม้อบนเตาแก๊ส'],['🍚','หม้อหุงข้าวไฟฟ้า'],['📲','หม้อหุงข้าวอัจฉริยะสั่งผ่านแอป']]],
+  ['การเดินทาง',[['🐃','เกวียนเทียมวัวควาย'],['🚲','จักรยาน'],['🚗','รถยนต์ใช้น้ำมัน'],['🔌','รถยนต์ไฟฟ้า']]],
+  ['การฟังเพลง',[['🎶','แผ่นเสียง'],['📼','เทปคาสเซ็ต'],['💿','แผ่นซีดี'],['🎧','ฟังเพลงออนไลน์ผ่านมือถือ']]],
+  ['การจดบันทึก',[['🪨','สลักบนหินและใบลาน'],['📜','เขียนด้วยหมึกบนกระดาษ'],['⌨️','พิมพ์ดีด'],['💻','พิมพ์ในคอมพิวเตอร์และเก็บบนคลาวด์']]]
+];
+var TL={};
+function gTimeline(){
+  TL={sets:shuffle(TL_SETS).slice(0,5),i:0,hp:3,score:0,next:0,t0:0};
+  $('#app').innerHTML=gamePage('ไทม์แมชชีนเรียงยุค','history',
+    botSays('<b>ไทม์แมชชีนพังแล้ว!</b> ช่วยแตะเรียงเทคโนโลยีจาก <b>อดีต → ปัจจุบัน</b> ให้ถูก เครื่องจะได้กลับบ้าน ⏰','clock')+
+    '<div class="edp-top"><div class="kanit" id="tlH"></div><div class="kanit">ยุคที่ <span id="tlN">1</span>/5</div><div class="kanit">⭐ <span id="tlS">0</span></div></div><div id="tlG"></div>');
+  tlRound();
+}
+function tlRound(){
+  $('#tlH').textContent='❤️'.repeat(TL.hp)+'🤍'.repeat(3-TL.hp);
+  var set=TL.sets[TL.i];
+  if(!set||TL.hp<=0){ var win=TL.hp>0, best=sKey('timeline')||0; if(TL.score>best) sKey('timeline',TL.score); if(win) confetti();
+    $('#tlG').innerHTML='<div class="g-end">'+kawaii(win?'trophy':'clock',110,'bob')+'<h3 class="kanit">'+(win?'ซ่อมไทม์แมชชีนสำเร็จ! 🚀':'หัวใจหมดแล้ว ลองใหม่นะ 💪')+'</h3><div>ได้ <b>'+TL.score+'</b> คะแนน'+(TL.score>best?' · 🏆 สถิติใหม่!':' · สถิติดีที่สุด '+best)+'</div><div style="margin-top:12px"><button class="btn btn-pink" onclick="gTimeline()">'+ic('replay')+' เล่นอีกครั้ง</button></div></div>'; return; }
+  $('#tlN').textContent=TL.i+1; TL.next=0; TL.t0=Date.now();
+  var items=shuffle(set[1].map(function(x,k){ return {e:x[0],t:x[1],k:k}; }));
+  $('#tlG').innerHTML='<div class="mg-case"><span class="chip c-pink">ยุคที่ '+(TL.i+1)+'</span><h3 class="kanit">เทคโนโลยี'+esc(set[0])+'</h3><div class="small muted">แตะจากเก่าที่สุดไปใหม่ที่สุด</div></div>'+
+    '<div class="tl-track">'+[0,1,2,3].map(function(k){ return '<div class="tl-slot" id="tlSlot'+k+'"><span>'+(k===0?'อดีต':k===3?'ปัจจุบัน':'')+'</span></div>'; }).join('<div class="tl-arrow">→</div>')+'</div>'+
+    '<div class="mg-opts">'+items.map(function(x){ return '<button class="mg-o tl-o" data-k="'+x.k+'"><span>'+x.e+'</span>'+esc(x.t)+'</button>'; }).join('')+'</div><div id="tlF"></div>';
+  document.querySelectorAll('.tl-o').forEach(function(b){ b.onclick=function(){
+    var k=+b.dataset.k;
+    if(k===TL.next){ b.disabled=true; b.classList.add('ok'); $('#tlSlot'+k).innerHTML='<b>'+set[1][k][0]+'</b><small>'+esc(set[1][k][1])+'</small>'; $('#tlSlot'+k).classList.add('on'); TL.next++; TL.score+=5; beep(660+k*120,90,'sine');
+      if(TL.next===4){ var bonus=Date.now()-TL.t0<15000?10:0; TL.score+=10+bonus; $('#tlS').textContent=TL.score; confetti();
+        $('#tlF').innerHTML='<div class="mg-f ok">✅ เรียงยุคถูกต้อง! +'+(10+bonus)+(bonus?' (เร็วมาก!)':'')+' · เทคโนโลยี'+esc(set[0])+'พัฒนาขึ้นเพื่อแก้ปัญหาและสนองความต้องการได้ดีขึ้นเรื่อย ๆ</div><div class="row-end"><button class="btn btn-pink btn-sm" id="tlNext">'+ic('arrow_forward')+' ยุคต่อไป</button></div>';
+        $('#tlNext').onclick=function(){ TL.i++; tlRound(); }; }
+    } else { TL.hp--; b.classList.add('shake'); setTimeout(function(){ b.classList.remove('shake'); },400); beep(150,180,'sawtooth');
+      $('#tlH').textContent='❤️'.repeat(Math.max(0,TL.hp))+'🤍'.repeat(3-Math.max(0,TL.hp));
+      if(TL.hp<=0) setTimeout(tlRound,500); }
+    $('#tlS').textContent=TL.score;
+  }; });
+}
+
+/* ---------- 9) นักสืบปัจจัย ---------- */
+var FC_OPT=[['need','🙋','ปัญหาและความต้องการของมนุษย์'],['know','🔬','ความรู้และความก้าวหน้าของวิทยาศาสตร์'],['eco','💰','เศรษฐกิจ'],['soc','👨‍👩‍👧','สังคมและวัฒนธรรม'],['env','🌏','สิ่งแวดล้อม']];
+var FC_Q=[
+  ['น้ำมันมีราคาแพงขึ้นมาก หลายครอบครัวจึงเปลี่ยนไปใช้รถยนต์ไฟฟ้าที่ค่าใช้จ่ายต่อกิโลเมตรถูกกว่า','eco','ราคาน้ำมันและค่าใช้จ่ายเป็นเรื่องเศรษฐกิจ'],
+  ['ค่าไฟฟ้าสูงขึ้นทุกเดือน บ้านหลายหลังจึงติดแผงโซลาร์เซลล์เพื่อประหยัดเงิน','eco','ต้องการลดค่าใช้จ่ายจึงเป็นปัจจัยด้านเศรษฐกิจ'],
+  ['ขยะพลาสติกล้นทะเลจนสัตว์ทะเลตาย บริษัทจึงเปลี่ยนมาใช้บรรจุภัณฑ์ที่ย่อยสลายได้','env','เปลี่ยนเพื่อลดผลกระทบต่อสิ่งแวดล้อม'],
+  ['ฝุ่น PM2.5 ปกคลุมเมือง จึงมีการพัฒนาเครื่องฟอกอากาศและหน้ากากกรองฝุ่น','env','มลพิษทางอากาศเป็นปัจจัยด้านสิ่งแวดล้อม'],
+  ['นักวิทยาศาสตร์คิดค้นทรานซิสเตอร์และชิปขนาดเล็ก คอมพิวเตอร์จึงเล็กลงจนพกพาได้','know','ความรู้ใหม่ทางวิทยาศาสตร์ทำให้เทคโนโลยีพัฒนา'],
+  ['ความรู้เรื่องหลอด LED ทำให้เปลี่ยนจากหลอดไส้มาเป็นหลอดที่สว่างกว่าและประหยัดไฟกว่า','know','เกิดจากความก้าวหน้าของศาสตร์ด้านวัสดุและไฟฟ้า'],
+  ['ผู้คนเหนื่อยกับการซักผ้าด้วยมือทีละชิ้น จึงมีการประดิษฐ์เครื่องซักผ้า','need','ต้องการลดความเหนื่อยและประหยัดเวลา'],
+  ['เกษตรกรขาดแรงงานพ่นปุ๋ยในนาผืนใหญ่ จึงเริ่มใช้โดรนพ่นปุ๋ยแทน','need','เกิดจากปัญหาขาดแรงงานที่ต้องแก้'],
+  ['สังคมไทยมีผู้สูงอายุมากขึ้น จึงมีนาฬิกาแจ้งเตือนเมื่อผู้สูงอายุหกล้ม','soc','โครงสร้างประชากรเปลี่ยนเป็นสังคมสูงวัย'],
+  ['คนรุ่นใหม่นิยมซื้อของออนไลน์และสั่งอาหารผ่านแอป จึงมีบริการส่งของถึงบ้านมากขึ้น','soc','พฤติกรรมและวิถีชีวิตของคนในสังคมเปลี่ยนไป'],
+  ['ถนนรถติดมาก คนเสียเวลาเดินทางหลายชั่วโมง จึงมีการสร้างรถไฟฟ้า','need','แก้ปัญหาการเดินทางที่ล่าช้า'],
+  ['ป่าไม้ถูกตัดเพื่อทำกระดาษจำนวนมาก โรงเรียนจึงหันมาใช้เอกสารออนไลน์แทนการพิมพ์','env','ลดการใช้ทรัพยากรธรรมชาติเพื่อรักษาสิ่งแวดล้อม']
+];
+var FC={};
+function gFactor(){
+  FC={q:shuffle(FC_Q).slice(0,8),i:0,hp:3,score:0,combo:0};
+  $('#app').innerHTML=gamePage('นักสืบปัจจัย','psychology_alt',
+    botSays('<b>ทำไมเทคโนโลยีถึงเปลี่ยน?</b> อ่านเหตุการณ์ แล้วเลือกปัจจัยหลักที่ทำให้เกิดการเปลี่ยนแปลง 🔍','magnifier')+
+    '<div class="edp-top"><div class="kanit" id="fcH"></div><div class="kanit">เหตุการณ์ที่ <span id="fcN">1</span>/8</div><div class="kanit">⭐ <span id="fcS">0</span> <span id="fcC" class="small"></span></div></div><div id="fcG"></div>');
+  fcRound();
+}
+function fcRound(){
+  $('#fcH').textContent='❤️'.repeat(FC.hp)+'🤍'.repeat(3-FC.hp);
+  var q=FC.q[FC.i];
+  if(!q||FC.hp<=0){ var win=FC.hp>0, best=sKey('factor')||0; if(FC.score>best) sKey('factor',FC.score); if(win) confetti();
+    $('#fcG').innerHTML='<div class="g-end">'+kawaii(win?'trophy':'magnifier',110,'bob')+'<h3 class="kanit">'+(win?'สืบครบทุกเหตุการณ์! นักสืบตัวจริง 🕵️':'หัวใจหมดแล้ว ลองใหม่นะ 💪')+'</h3><div>ได้ <b>'+FC.score+'</b> คะแนน'+(FC.score>best?' · 🏆 สถิติใหม่!':' · สถิติดีที่สุด '+best)+'</div><div style="margin-top:12px"><button class="btn btn-pink" onclick="gFactor()">'+ic('replay')+' เล่นอีกครั้ง</button></div></div>'; return; }
+  $('#fcN').textContent=FC.i+1;
+  $('#fcG').innerHTML='<div class="mg-case"><span class="chip c-pink">เหตุการณ์ที่ '+(FC.i+1)+'</span><h3 class="kanit" style="line-height:1.5">'+esc(q[0])+'</h3><div class="small muted">เกิดจากปัจจัยใดเป็นหลัก?</div></div>'+
+    '<div class="fc-opts">'+FC_OPT.map(function(o){ return '<button class="mg-o" data-k="'+o[0]+'"><span>'+o[1]+'</span>'+o[2]+'</button>'; }).join('')+'</div><div id="fcF"></div>';
+  document.querySelectorAll('.fc-opts .mg-o').forEach(function(b){ b.onclick=function(){
+    document.querySelectorAll('.fc-opts .mg-o').forEach(function(x){ x.disabled=true; if(x.dataset.k===q[1]) x.classList.add('ok'); });
+    var ok=b.dataset.k===q[1];
+    if(ok){ FC.combo++; FC.score+=10+(FC.combo>1?(FC.combo-1)*2:0); beep(880,100,'sine'); } else { FC.combo=0; FC.hp--; b.classList.add('bad','shake'); beep(150,180,'sawtooth'); }
+    $('#fcS').textContent=FC.score; $('#fcC').textContent=FC.combo>1?'คอมโบ x'+FC.combo+' 🔥':'';
+    $('#fcF').innerHTML='<div class="mg-f '+(ok?'ok':'no')+'">'+(ok?'✅ ถูกต้อง! ':'❌ ยังไม่ใช่ ')+esc(q[2])+'</div><div class="row-end"><button class="btn btn-pink btn-sm" id="fcNext">'+ic('arrow_forward')+' เหตุการณ์ต่อไป</button></div>';
+    $('#fcNext').onclick=function(){ FC.i++; fcRound(); };
+  }; });
+}
+
+/* ---------- 10) นักแก้ปัญหา EDP ---------- */
+var EC_STEP=[['🔎','ระบุปัญหา'],['📚','รวบรวมข้อมูลและแนวคิด'],['✏️','ออกแบบวิธีการแก้ปัญหา'],['🛠️','วางแผนและดำเนินการ'],['🧪','ทดสอบ ประเมินผล ปรับปรุง'],['📢','นำเสนอผล']];
+var EC_Q=[
+  ['ทีมสังเกตว่าแก้วน้ำในโรงอาหารล้มบ่อยจนน้ำหกเปียกโต๊ะ จึงเขียนว่าต้องการที่วางแก้วที่กันล้มได้',0],
+  ['ทีมเดินสำรวจถังขยะหน้าอาคาร พบว่าขยะล้นทุกเย็นและไม่มีการแยกประเภท',0],
+  ['สัมภาษณ์แม่ครัวว่าแต่ละวันใช้แก้วกี่ใบ และวางแก้วไว้ตรงไหน',1],
+  ['ค้นหาข้อมูลในอินเทอร์เน็ตว่าที่วางแก้วแบบต่าง ๆ ทำจากวัสดุอะไรบ้าง',1],
+  ['ศึกษาว่ารอกช่วยผ่อนแรงได้อย่างไร ก่อนคิดวิธียกถังน้ำรดผัก',1],
+  ['สมาชิกแต่ละคนร่างภาพแนวคิด แล้วใช้ตารางเปรียบเทียบเลือกแบบที่ดีที่สุด',2],
+  ['วาดภาพร่าง 3 มิติของถังแยกขยะพร้อมบอกขนาดและวัสดุ',2],
+  ['แบ่งหน้าที่ในทีม เตรียมไม้อัด กาว และเลื่อย แล้วตัดชิ้นงานตามแบบ',3],
+  ['เขียนลำดับขั้นการสร้างและกำหนดว่าจะใช้เวลากี่คาบ แล้วลงมือประกอบ',3],
+  ['ลองวางแก้ว 20 ใบ พบว่าช่องแคบเกินไป จึงขยายช่องให้กว้างขึ้นแล้วลองใหม่',4],
+  ['ให้เพื่อนต่างห้องลองทิ้งขยะ แล้วจดว่าทิ้งถูกถังกี่ครั้ง',4],
+  ['วงจรไฟฉุกเฉินไม่ติด ทีมจึงตรวจหาจุดต่อที่หลวมแล้วแก้ไข',4],
+  ['ทำโปสเตอร์และคลิปสั้นเล่าปัญหา วิธีแก้ และผลการทดสอบให้เพื่อนทั้งชั้นฟัง',5],
+  ['นำชิ้นงานไปจัดแสดงในวันวิทยาศาสตร์และอธิบายให้ผู้ชมเข้าใจ',5]
+];
+var EC={};
+function gEdpCase(){
+  EC={q:shuffle(EC_Q).slice(0,10),i:0,hp:3,score:0,combo:0};
+  $('#app').innerHTML=gamePage('นักแก้ปัญหา EDP','engineering',
+    botSays('<b>ทีมนักประดิษฐ์กำลังทำงาน!</b> อ่านว่าทีมทำอะไร แล้วบอกว่าอยู่ขั้นไหนของกระบวนการออกแบบเชิงวิศวกรรม ✏️','pencil')+
+    '<div class="edp-top"><div class="kanit" id="ecH"></div><div class="kanit">ภารกิจที่ <span id="ecN">1</span>/10</div><div class="kanit">⭐ <span id="ecS">0</span> <span id="ecC" class="small"></span></div></div><div id="ecG"></div>');
+  ecRound();
+}
+function ecRound(){
+  $('#ecH').textContent='❤️'.repeat(EC.hp)+'🤍'.repeat(3-EC.hp);
+  var q=EC.q[EC.i];
+  if(!q||EC.hp<=0){ var win=EC.hp>0, best=sKey('edpcase')||0; if(EC.score>best) sKey('edpcase',EC.score); if(win) confetti();
+    $('#ecG').innerHTML='<div class="g-end">'+kawaii(win?'trophy':'pencil',110,'bob')+'<h3 class="kanit">'+(win?'เก่งมาก! รู้จักทุกขั้นของ EDP แล้ว 🛠️':'หัวใจหมดแล้ว ลองใหม่นะ 💪')+'</h3><div>ได้ <b>'+EC.score+'</b> คะแนน'+(EC.score>best?' · 🏆 สถิติใหม่!':' · สถิติดีที่สุด '+best)+'</div><div style="margin-top:12px"><button class="btn btn-pink" onclick="gEdpCase()">'+ic('replay')+' เล่นอีกครั้ง</button></div></div>'; return; }
+  $('#ecN').textContent=EC.i+1;
+  $('#ecG').innerHTML='<div class="mg-case"><span class="chip c-pink">ภารกิจที่ '+(EC.i+1)+'</span><h3 class="kanit" style="line-height:1.5">'+esc(q[0])+'</h3><div class="small muted">ตรงกับขั้นใด?</div></div>'+
+    '<div class="ec-opts">'+EC_STEP.map(function(o,k){ return '<button class="mg-o" data-k="'+k+'"><span>'+o[0]+'</span>ขั้นที่ '+(k+1)+'<br>'+o[1]+'</button>'; }).join('')+'</div><div id="ecF"></div>';
+  document.querySelectorAll('.ec-opts .mg-o').forEach(function(b){ b.onclick=function(){
+    document.querySelectorAll('.ec-opts .mg-o').forEach(function(x){ x.disabled=true; if(+x.dataset.k===q[1]) x.classList.add('ok'); });
+    var ok=+b.dataset.k===q[1];
+    if(ok){ EC.combo++; EC.score+=10+(EC.combo>1?(EC.combo-1)*2:0); beep(880,100,'sine'); } else { EC.combo=0; EC.hp--; b.classList.add('bad','shake'); beep(150,180,'sawtooth'); }
+    $('#ecS').textContent=EC.score; $('#ecC').textContent=EC.combo>1?'คอมโบ x'+EC.combo+' 🔥':'';
+    $('#ecF').innerHTML='<div class="mg-f '+(ok?'ok':'no')+'">'+(ok?'✅ ถูกต้อง! ':'❌ ยังไม่ใช่ ')+'ข้อนี้คือขั้นที่ '+(q[1]+1)+' '+EC_STEP[q[1]][1]+'</div><div class="row-end"><button class="btn btn-pink btn-sm" id="ecNext">'+ic('arrow_forward')+' ภารกิจต่อไป</button></div>';
+    $('#ecNext').onclick=function(){ EC.i++; ecRound(); };
+  }; });
+}
+
+/* ===================== ครูเปิด/ปิดเกม ===================== */
+var GAME_KEY='เกมที่เปิด';
+function gameAll(){ return [{id:'quest',art:'cloud',t:'FLIP Candy Quest 3D',d:'เกมผจญภัย 3 มิติในเมืองนักประดิษฐ์ลอยฟ้า 7 ย่าน',c:['#ff4f9a','#b18cff']}].concat(GAMES); }
+function gameOnList(){ var C=(S.home&&S.home.course)||{}, v=C[GAME_KEY];
+  if(v==null||String(v).trim()==='') return gameAll().map(function(g){ return g.id; });
+  if(String(v).trim()==='-') return [];
+  return String(v).split(',').map(function(x){ return x.trim(); }).filter(String); }
+function gameOn(id){ return gameOnList().indexOf(id)>-1; }
+function isTeacherU(){ return S.user&&S.user.role==='teacher'; }
+var _openGame2=openGame;
+function gameGuard(id,fn){ if(isTeacherU()) return fn(); var chk=function(){ if(!gameOn(id)){ toast('เกมนี้ครูยังไม่เปิดให้เล่นนะ 🔒'); return go(''); } fn(); }; if(S.home&&S.home.course) return chk(); loadHome().then(chk,chk); }
+openGame=function(id){ gameGuard(id,function(){ _openGame2(id); }); };
+var _openQuest0=openQuest;
+openQuest=function(){ gameGuard('quest',_openQuest0); };
+
+var GM={};
+function tGames(D){
+  $('#tbody').innerHTML='<div class="card panel"><h3>'+ic('sports_esports')+'เลือกเกมที่เปิดให้นักเรียนเห็น</h3><div class="small muted">เปิด = นักเรียนเห็นในมุมเกมการศึกษาบนหน้าแรกและเข้าเล่นได้ · ปิด = ซ่อนจากนักเรียน (ครูยังกดทดลองเล่นได้) · กดบันทึกแล้วนักเรียนเห็นผลเมื่อรีเฟรชหน้าเว็บ</div>'+
+    '<div class="gm-bar"><button class="btn btn-ghost btn-sm" onclick="gmAll(true)">'+ic('visibility')+' เปิดทั้งหมด</button><button class="btn btn-ghost btn-sm" onclick="gmAll(false)">'+ic('visibility_off')+' ปิดทั้งหมด</button><span class="grow"></span><button class="btn btn-pink" id="gmSave">'+ic('save')+' บันทึก</button></div>'+
+    '<div id="gmList"><div class="empty">กำลังโหลด...</div></div></div>';
+  GM.on=null;
+  Promise.all([loadHome(), call('getEditData',S.token,'course')]).then(function(r){ GM.R=r[1]; S.home=r[0]; GM.on=gameOnList(); gmRender(); }).catch(function(){ GM.on=gameOnList(); gmRender(); });
+  $('#gmSave').onclick=gmSave;
+}
+function gmRender(){
+  $('#gmList').innerHTML='<div class="gm-list">'+gameAll().map(function(g){ var on=GM.on.indexOf(g.id)>-1;
+    return '<div class="gm-row'+(on?' on':'')+'"><div class="gi kwbox" style="'+grad(g.c)+'">'+kawaii(g.art,44,'')+'</div><div class="gm-t"><b class="kanit">'+esc(g.t)+'</b><div class="small muted">'+esc(g.d)+'</div></div>'+
+      '<button class="btn btn-ghost btn-sm" onclick="go(\''+(g.id==='quest'?'quest':'game/'+g.id)+'\')">'+ic('play_arrow')+' ทดลองเล่น</button>'+
+      '<label class="gm-sw" title="เปิด/ปิดให้นักเรียนเห็น"><input type="checkbox" data-g="'+g.id+'"'+(on?' checked':'')+'><span></span><em>'+(on?'เปิด':'ปิด')+'</em></label></div>'; }).join('')+'</div>';
+  document.querySelectorAll('.gm-sw input').forEach(function(c){ c.onchange=function(){ var id=c.dataset.g, i=GM.on.indexOf(id);
+    if(c.checked&&i<0) GM.on.push(id); if(!c.checked&&i>-1) GM.on.splice(i,1);
+    var row=c.closest('.gm-row'); row.classList.toggle('on',c.checked); row.querySelector('em').textContent=c.checked?'เปิด':'ปิด'; }; });
+}
+function gmAll(v){ GM.on=v?gameAll().map(function(g){ return g.id; }):[]; gmRender(); }
+function gmSave(){
+  var R=GM.R, val=GM.on.length?gameAll().map(function(g){ return g.id; }).filter(function(id){ return GM.on.indexOf(id)>-1; }).join(','):'-';
+  var fail=function(){ modal('<h3 class="kanit">'+ic('info')+' บันทึกอัตโนมัติไม่สำเร็จ</h3><div style="margin:10px 0">เปิดชีต <b>"คำอธิบายรายวิชา"</b> แล้วเพิ่มแถวใหม่ 1 แถว<br>ช่องแรกพิมพ์ <b>'+GAME_KEY+'</b> ช่องที่สองวาง:</div><div class="box" style="word-break:break-all;font-family:monospace">'+esc(val)+'</div><div class="small muted" style="margin-top:8px">ทำครั้งเดียว ครั้งต่อไปกดบันทึกจากหน้านี้ได้เลย</div>'); };
+  if(!R||!R.keys||R.keys.length<2) return fail();
+  var k0=R.keys[0], k1=R.keys[1], hit=(R.rows||[]).filter(function(r){ return String(r[k0]).trim()===GAME_KEY; })[0], o={};
+  R.keys.forEach(function(k){ o[k]=hit?hit[k]:''; }); o[k0]=GAME_KEY; o[k1]=val;
+  call('saveEditRow',S.token,'course',hit?hit._row:null,o).then(function(){ toast('บันทึกการเปิด/ปิดเกมแล้ว'); S.home=null; tGames(S.dash); }).catch(fail);
+}
+
+
+/* ===================== FLIP Runner: เกมวิ่งเก็บความรู้ ===================== */
+GAMES.unshift({id:'runner',art:'star',icon:'directions_run',t:'FLIP Candy Runner 3D',d:'วิ่งหรือขับรถในเมืองการ์ตูน ผ่านป้ายคำตอบที่ถูก เก็บเหรียญ หลบสไลม์ 3 ด่าน ง่าย ปานกลาง ยาก',c:['#ff4f9a','#ffb347']});
+var _openGame3=openGame;
+openGame=function(id){ if(id==='runner') return gameGuard('runner',gRunner); _openGame3(id); };
+
+var RN_CHARS=[['bow','น้องโบว์','#ff6fae'],['cap','น้องแคป','#4aa3ff'],['robo','หุ่นยนต์บีบี','#9aa7c7'],['cat','น้องเหมียว','#ffb347']];
+var RN_LEVEL={easy:{t:'ง่าย',sp:8,lives:5,mult:1,gap:46,readT:9,obs:.35,n:8,c:'#3fd7a7'},mid:{t:'ปานกลาง',sp:11,lives:3,mult:1.5,gap:40,readT:7.5,obs:.5,n:10,c:'#ffad5c'},hard:{t:'ยาก',sp:14,lives:3,mult:2,gap:36,readT:6.5,obs:.7,n:12,c:'#ff4f6e'}};
+var RN_SPEED={slow:['ช้า',.8,1],norm:['ปกติ',1,1.2],fast:['เร็ว',1.25,1.5]};
+var RN={opt:null}, RG=null;
+function rnOpt(){ if(!RN.opt){ var o=null; try{ o=JSON.parse(store('run_opt')||'null'); }catch(e){} RN.opt=o||{ch:'bow',lv:'easy',sp:'norm',scene:'day',les:'ALL'}; if(!RN.opt.veh) RN.opt.veh='run'; } return RN.opt; }
+function rnSaveOpt(){ store('run_opt',JSON.stringify(RN.opt)); }
+function rnLessonTitle(id){ var L=(S.home&&S.home.lessons)||[]; for(var i=0;i<L.length;i++) if(String(L[i].lessonId)===id) return L[i].title; return (typeof CURRIC!=='undefined'&&CURRIC.lessons[id])?CURRIC.lessons[id].t:id; }
+function gRunner(){
+  rnExit(true);
+  var o=rnOpt();
+  loadHome().catch(function(){}).then(function(){
+    var ids=Object.keys(QBANK1), units={}; ids.forEach(function(id){ var u=id.split('.')[0].replace('L',''); (units[u]=units[u]||[]).push(id); });
+    var lesOpt='<option value="ALL">ทุกบทเรียน (สุ่มคละ)</option>'+Object.keys(units).map(function(u){ return '<optgroup label="หน่วยที่ '+u+'"><option value="U'+u+'">หน่วยที่ '+u+' ทั้งหน่วย</option>'+units[u].map(function(id){ return '<option value="'+id+'">'+id+' '+esc(rnLessonTitle(id))+'</option>'; }).join('')+'</optgroup>'; }).join('');
+    var pill=function(name,key,list){ return '<div class="rn-pills" data-k="'+key+'">'+list.map(function(x){ return '<button class="rn-pill'+(o[key]===x[0]?' on':'')+'" data-v="'+x[0]+'"'+(x[2]?' style="--pc:'+x[2]+'"':'')+'>'+x[1]+'</button>'; }).join('')+'</div>'; };
+    var best=function(lv){ return sKey('run_'+lv)||0; };
+    var nQ=ids.reduce(function(a,id){ return a+QBANK1[id].length; },0);
+    $('#app').innerHTML=topbar()+'<div class="page"><div class="crumb"><a onclick="go(\'\')">'+ic('home','font-size:18px')+' หน้าแรก</a>'+ic('chevron_right','font-size:18px')+'<span>FLIP Candy Runner 3D</span></div>'+
+      '<div class="q-hero rn-hero"><div class="q-hero-t"><div class="lbl">เกมวิ่ง 3 มิติสุดน่ารัก · เล่นช่วงพักผ่อนคลาย</div><h2>FLIP Candy Runner 3D</h2>'+
+      '<p>วิ่งเท้าหรือ<b>ขับรถคันจิ๋ว</b>ไปตามถนนใน<b>เมืองการ์ตูน</b> อ่านคำถามด้านบน แล้วเลี้ยวเข้า<b>ป้ายคำตอบที่ถูก</b> เก็บเหรียญ กระโดดหลบกรวยและสไลม์ ผ่านครบทุกคำถามคือผ่านด่าน ยิ่งด่านยากยิ่งได้แต้มคูณเยอะ!</p>'+
+      '<div class="q-chips"><span>'+ic('flag')+'3 ด่าน</span><span>'+ic('quiz')+nQ+' คำถาม</span><span>'+ic('face')+'4 ตัวละคร</span><span>'+ic('directions_car')+'วิ่ง / ขับรถ</span><span>'+ic('dark_mode')+'กลางวัน / กลางคืน</span></div></div>'+
+      '<div class="q-hero-a"><canvas id="rnHeroCv" width="150" height="170"></canvas><b class="kanit">'+esc(qName())+'</b></div></div>'+
+      '<div class="card panel">'+
+      '<div class="rn-lobby"><div class="rn-col">'+
+        '<div class="rn-sec"><b class="kanit">1. เลือกตัวละคร</b><div class="rn-chars">'+RN_CHARS.map(function(c){ return '<button class="rn-ch'+(o.ch===c[0]?' on':'')+'" data-v="'+c[0]+'"><canvas width="110" height="120" data-ch="'+c[0]+'"></canvas><span>'+c[1]+'</span></button>'; }).join('')+'</div></div>'+
+        '<div class="rn-sec"><b class="kanit">เดินทางแบบไหนดี?</b>'+pill('พาหนะ','veh',[['run','🏃 วิ่งเท้า'],['car','🚗 ขับรถคันจิ๋ว']])+'</div>'+
+        '<div class="rn-sec"><b class="kanit">2. เลือกด่าน</b>'+pill('ด่าน','lv',Object.keys(RN_LEVEL).map(function(k){ var L=RN_LEVEL[k]; return [k,L.t+' <small>×'+L.mult+' · '+L.lives+' ชีวิต · '+L.n+' คำถาม</small>',L.c]; }))+'</div>'+
+        '<div class="rn-sec"><b class="kanit">3. เลือกความเร็วในการวิ่ง</b>'+pill('ความเร็ว','sp',Object.keys(RN_SPEED).map(function(k){ return [k,RN_SPEED[k][0]+' <small>คะแนน ×'+RN_SPEED[k][2]+'</small>']; }))+'</div>'+
+        '<div class="rn-sec"><b class="kanit">4. เลือกฉาก</b>'+pill('ฉาก','scene',[['day','☀️ กลางวันสดใส'],['night','🌙 กลางคืนแสงไฟ']])+'</div>'+
+        '<div class="rn-sec"><b class="kanit">5. เลือกเนื้อหาที่จะเก็บคะแนน</b><select class="input" id="rnLes">'+lesOpt+'</select></div>'+
+        '<button class="btn btn-pink rn-go" id="rnGo">'+ic('sports_esports')+' เริ่มวิ่ง!</button>'+
+      '</div><div class="rn-col"><div class="rn-sec"><b class="kanit">วิธีเล่น</b><ul class="rn-help">'+
+        '<li><b>เลี้ยวซ้าย-ขวา</b> ปุ่มลูกศร ← → หรือ A D · มือถือปัดนิ้วซ้าย-ขวา หรือกดปุ่มบนจอ</li>'+
+        '<li><b>กระโดด</b> ปุ่ม ↑ W หรือ Spacebar · มือถือปัดนิ้วขึ้น</li>'+
+        '<li>คำถามขึ้นด้านบน มี 3 คำตอบ <b class="rn-a">A</b> ซ้าย <b class="rn-b">B</b> กลาง <b class="rn-c">C</b> ขวา วิ่งผ่านประตูช่องที่ถูก</li>'+
+        '<li>ตอบถูก +100 แต้ม (ตอบถูกติดกันได้โบนัส) · ตอบผิดหรือชนสิ่งกีดขวาง เสีย 1 ชีวิต</li>'+
+        '<li>🪙 เหรียญ +10 แต้ม · 💖 หัวใจ +1 ชีวิต · แต้มคูณตามด่านและความเร็ว</li>'+
+        '<li>ปุ่ม 🎵 เปิด/ปิดเพลง · ⏸ หยุดพัก</li></ul></div>'+
+        '<div class="rn-sec"><b class="kanit">สถิติดีที่สุดของฉัน</b><div class="rn-best">'+Object.keys(RN_LEVEL).map(function(k){ return '<div style="--pc:'+RN_LEVEL[k].c+'"><span>'+RN_LEVEL[k].t+'</span><b>'+best(k)+'</b></div>'; }).join('')+'</div></div></div></div></div></div>'+footer();
+    (function(){ var cv=$('#rnHeroCv'); if(!cv) return; var c=cv.getContext('2d'), t0=performance.now(); (function lp(){ if(!document.body.contains(cv)) return; c.clearRect(0,0,150,170); rnDrawChar(c,75,160,1.35,rnOpt().ch,(performance.now()-t0)/1000,true); requestAnimationFrame(lp); })(); })();
+    window.scrollTo(0,0); $('#rnLes').value=o.les; if(!$('#rnLes').value) $('#rnLes').value='ALL';
+    $('#rnLes').onchange=function(){ o.les=this.value; rnSaveOpt(); };
+    document.querySelectorAll('.rn-pills').forEach(function(g){ g.querySelectorAll('.rn-pill').forEach(function(b){ b.onclick=function(){ o[g.dataset.k]=b.dataset.v; rnSaveOpt(); g.querySelectorAll('.rn-pill').forEach(function(x){ x.classList.toggle('on',x===b); }); }; }); });
+    document.querySelectorAll('.rn-ch').forEach(function(b){ b.onclick=function(){ o.ch=b.dataset.v; rnSaveOpt(); document.querySelectorAll('.rn-ch').forEach(function(x){ x.classList.toggle('on',x===b); }); }; });
+    document.querySelectorAll('.rn-ch canvas').forEach(function(cv){ var c=cv.getContext('2d'); var t0=performance.now(); (function lp(){ if(!document.body.contains(cv)) return; c.clearRect(0,0,110,120); rnDrawChar(c,55,112,1,cv.dataset.ch,(performance.now()-t0)/1000,true); requestAnimationFrame(lp); })(); });
+    $('#rnGo').onclick=function(){ o.les=$('#rnLes').value; rnSaveOpt(); rnStart(); };
+  });
+}
+
+/* ---------- ตัวละคร ---------- */
+function rnDrawChar(c,x,y,s,kind,t,run){
+  var col=(RN_CHARS.filter(function(k){ return k[0]===kind; })[0]||RN_CHARS[0])[2], sw=run?Math.sin(t*14):0, h=s*100;
+  c.save(); c.translate(x,y); c.scale(s,s);
+  c.fillStyle='rgba(0,0,0,.15)'; c.beginPath(); c.ellipse(0,0,26,7,0,0,7); c.fill();
+  var leg=function(dx,a){ c.save(); c.translate(dx,-26); c.rotate(a); c.fillStyle=kind==='robo'?'#7c86a6':'#5b5f97'; c.beginPath(); c.roundRect(-6,0,12,24,5); c.fill(); c.fillStyle='#fff'; c.beginPath(); c.roundRect(-7,18,14,8,4); c.fill(); c.restore(); };
+  leg(-9,sw*.6); leg(9,-sw*.6);
+  var arm=function(dx,a){ c.save(); c.translate(dx,-50); c.rotate(a); c.fillStyle=kind==='robo'?'#c3cbe3':'#f8d5b8'; c.beginPath(); c.roundRect(-5,0,10,22,5); c.fill(); c.restore(); };
+  arm(-22,-sw*.7+.15); arm(22,sw*.7-.15);
+  c.fillStyle=col; c.beginPath(); c.roundRect(-20,-56,40,34,12); c.fill();
+  c.fillStyle='rgba(255,255,255,.35)'; c.beginPath(); c.roundRect(-12,-50,24,8,4); c.fill();
+  var hy=-82;
+  if(kind==='robo'){ c.fillStyle='#dfe5f5'; c.beginPath(); c.roundRect(-28,hy-26,56,50,14); c.fill(); c.fillStyle='#3b4a6b'; c.beginPath(); c.roundRect(-21,hy-16,42,28,10); c.fill();
+    c.fillStyle='#7ff0ff'; c.beginPath(); c.arc(-9,hy-2,5,0,7); c.arc(9,hy-2,5,0,7); c.fill(); c.strokeStyle='#7ff0ff'; c.lineWidth=2.5; c.beginPath(); c.arc(0,hy+4,6,.2,Math.PI-.2); c.stroke();
+    c.strokeStyle='#9aa7c7'; c.lineWidth=3; c.beginPath(); c.moveTo(0,hy-26); c.lineTo(0,hy-38); c.stroke(); c.fillStyle='#ff6fae'; c.beginPath(); c.arc(0,hy-40,5,0,7); c.fill(); c.restore(); return; }
+  c.fillStyle=kind==='cat'?'#ffcf8a':'#f8d5b8'; c.beginPath(); c.arc(0,hy,28,0,7); c.fill();
+  c.fillStyle=kind==='cat'?'#f0a050':'#3b2a20';
+  if(kind==='cat'){ c.beginPath(); c.moveTo(-26,hy-12); c.lineTo(-20,hy-38); c.lineTo(-6,hy-24); c.fill(); c.beginPath(); c.moveTo(26,hy-12); c.lineTo(20,hy-38); c.lineTo(6,hy-24); c.fill(); c.fillStyle='#ff9fc4'; c.beginPath(); c.moveTo(-20,hy-18); c.lineTo(-18,hy-30); c.lineTo(-11,hy-23); c.fill(); c.beginPath(); c.moveTo(20,hy-18); c.lineTo(18,hy-30); c.lineTo(11,hy-23); c.fill(); }
+  else { c.beginPath(); c.arc(0,hy-4,29,Math.PI*1.02,Math.PI*1.98); c.fill(); c.beginPath(); c.ellipse(0,hy-18,29,12,0,0,7); c.fill(); }
+  if(kind==='bow'){ c.fillStyle='#3b2a20'; c.beginPath(); c.ellipse(-27,hy+2,7,16,.2,0,7); c.ellipse(27,hy+2,7,16,-.2,0,7); c.fill(); c.fillStyle='#ff5fa2'; c.beginPath(); c.moveTo(0,hy-30); c.lineTo(-16,hy-40); c.lineTo(-16,hy-20); c.fill(); c.beginPath(); c.moveTo(0,hy-30); c.lineTo(16,hy-40); c.lineTo(16,hy-20); c.fill(); c.fillStyle='#ff2d8a'; c.beginPath(); c.arc(0,hy-30,5,0,7); c.fill(); }
+  if(kind==='cap'){ c.fillStyle='#4aa3ff'; c.beginPath(); c.arc(0,hy-10,29,Math.PI,0); c.fill(); c.beginPath(); c.roundRect(-4,hy-14,40,8,4); c.fill(); c.fillStyle='#fff'; c.beginPath(); c.arc(0,hy-38,4,0,7); c.fill(); }
+  c.fillStyle='#2b1b2e'; c.beginPath(); c.ellipse(-10,hy+2,4.5,6,0,0,7); c.ellipse(10,hy+2,4.5,6,0,0,7); c.fill();
+  c.fillStyle='#fff'; c.beginPath(); c.arc(-8.5,hy,1.8,0,7); c.arc(11.5,hy,1.8,0,7); c.fill();
+  c.fillStyle='rgba(255,130,170,.55)'; c.beginPath(); c.ellipse(-17,hy+11,6,3.5,0,0,7); c.ellipse(17,hy+11,6,3.5,0,0,7); c.fill();
+  c.strokeStyle='#c2335f'; c.lineWidth=2.2; c.lineCap='round'; c.beginPath(); c.arc(0,hy+11,4,.3,Math.PI-.3); c.stroke();
+  if(kind==='cat'){ c.strokeStyle='rgba(90,60,40,.6)'; c.lineWidth=1.3; [[-1,1],[1,1]].forEach(function(d){ for(var i=-1;i<=1;i++){ c.beginPath(); c.moveTo(d[0]*20,hy+10+i*3); c.lineTo(d[0]*33,hy+8+i*5); c.stroke(); } }); }
+  c.restore();
+}
+
+/* ---------- เสียง ---------- */
+function rnAC(){ try{ RG.ac=RG.ac||new (window.AudioContext||window.webkitAudioContext)(); if(RG.ac.state==='suspended') RG.ac.resume(); return RG.ac; }catch(e){ return null; } }
+function rnSfx(k){ var A=rnAC(); if(!A) return; var t=A.currentTime, seq={coin:[[988,.05],[1319,.09]],ok:[[660,.08],[880,.08],[1175,.14]],bad:[[220,.12],[160,.2]],hit:[[140,.18]],jump:[[440,.06],[660,.07]],heart:[[784,.08],[988,.08],[1319,.12]],win:[[523,.1],[659,.1],[784,.1],[1047,.25]]}[k]||[];
+  seq.forEach(function(n){ var o=A.createOscillator(), g=A.createGain(); o.type=k==='bad'||k==='hit'?'sawtooth':'triangle'; o.frequency.value=n[0]; g.gain.setValueAtTime(.0001,t); g.gain.linearRampToValueAtTime(k==='hit'?.07:.05,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+n[1]); o.connect(g); g.connect(A.destination); o.start(t); o.stop(t+n[1]+.02); t+=n[1]*.9; }); }
+var RN_MEL=[72,76,79,76,81,79,76,74, 72,74,76,79,77,76,74,0, 69,72,76,72,77,76,72,71, 72,76,79,84,83,79,76,0];
+var RN_CH=[[48,55],[45,52],[41,48],[43,50]];
+function rnMusic(on){ if(!RG) return; if(!on){ if(RG.musT) clearInterval(RG.musT); RG.musT=null; if(RG.mg){ try{ RG.mg.disconnect(); }catch(e){} RG.mg=null; } return; }
+  if(RG.mg||store('run_music')==='off') return; var A=rnAC(); if(!A) return;
+  var g=A.createGain(); g.gain.setValueAtTime(0,A.currentTime); g.gain.linearRampToValueAtTime(.05,A.currentTime+2); g.connect(A.destination); RG.mg=g; RG.mStep=0; RG.mNext=A.currentTime+.1;
+  var spb=60/120/2, note=function(m,t,d,type,v){ var o=A.createOscillator(), gg=A.createGain(); o.type=type; o.frequency.value=440*Math.pow(2,(m-69)/12); gg.gain.setValueAtTime(0,t); gg.gain.linearRampToValueAtTime(v,t+.02); gg.gain.exponentialRampToValueAtTime(.001,t+d); o.connect(gg); gg.connect(RG.mg); o.start(t); o.stop(t+d+.05); };
+  RG.musT=setInterval(function(){ if(!RG||!RG.mg) return; while(RG.mNext<A.currentTime+.35){ var s=RG.mStep%32, bar=Math.floor(s/8);
+      if(RN_MEL[s]) note(RN_MEL[s],RG.mNext,spb*1.6,'square',.12); if(s%4===0) note(RN_CH[bar][0],RG.mNext,spb*1.8,'triangle',.45); if(s%4===2) note(RN_CH[bar][1],RG.mNext,spb*1.2,'triangle',.3);
+      RG.mNext+=spb; RG.mStep++; } },100); }
+function rnMusicToggle(){ var off=store('run_music')!=='off'; store('run_music',off?'off':'on'); rnMusic(!off); var b=$('#rnMus'); if(b) b.textContent=off?'🔇':'🎵'; }
+
+/* ---------- คำถาม ---------- */
+function rnPool(sel){ var ids=Object.keys(QBANK1).filter(function(id){ return sel==='ALL'||id===sel||(sel[0]==='U'&&id.indexOf('L'+sel.slice(1)+'.')===0); }), P=[];
+  ids.forEach(function(id){ QBANK1[id].forEach(function(q){ P.push({id:id,q:q.q,ok:q.c[0],wr:q.c.slice(1)}); }); }); return shuffle(P); }
+function rnMakeQ(){ if(!RG.pool.length) RG.pool=rnPool(RG.opt.les); var q=RG.pool.shift(), ch=shuffle([q.ok].concat(shuffle(q.wr).slice(0,2)));
+  return {id:q.id,q:q.q,ch:ch,ans:ch.indexOf(q.ok)}; }
+
+/* ---------- เริ่มเกม ---------- */
+function rnStart(){
+  rnExit(true);
+  var o=rnOpt(), L=RN_LEVEL[o.lv], SP=RN_SPEED[o.sp];
+  RG={opt:JSON.parse(JSON.stringify(o)),L:L,speed:L.sp*SP[1],mult:L.mult*SP[2],lives:L.lives,maxLives:L.lives+2,score:0,coins:0,correct:0,asked:0,streak:0,dist:0,lane:0,lx:0,jy:0,jv:0,objs:[],nextSpawn:12,nextGate:30,gate:null,q:null,inv:0,t:0,run:true,paused:false,pops:[],flash:0,stars:[],pool:rnPool(o.les),scene:o.scene,deco:[]};
+  for(var i=0;i<60;i++) RG.stars.push([Math.random(),Math.random()*.45,Math.random()*1.5+.5]);
+  for(var d=0;d<80;d+=8) rnDeco(d+Math.random()*4);
+  var w=document.createElement('div'); w.id='rnWrap'; w.className='rn-wrap'+(o.scene==='night'?' night':'');
+  w.innerHTML='<canvas id="rnSky"></canvas><canvas id="rnGl"></canvas><canvas id="rnCv"></canvas><div class="rn-hud"><div class="rn-hl"><span id="rnLives"></span><span class="rn-chip">'+L.t+' · '+SP[0]+'</span></div><div class="rn-hm"><b id="rnScore">0</b><small>แต้ม</small></div><div class="rn-hr"><span class="rn-chip">🪙 <b id="rnCoins">0</b></span><span class="rn-chip">❓ <b id="rnProg">0/'+L.n+'</b></span><button id="rnMus" onclick="rnMusicToggle()">'+(store('run_music')==='off'?'🔇':'🎵')+'</button><button onclick="rnPause()">⏸</button><button onclick="rnExit()">✕</button></div></div>'+
+    '<div class="rn-q" id="rnQ"></div><div class="rn-pop" id="rnPop"></div>'+
+    '<div class="rn-ctl"><button data-a="l">◀</button><button data-a="j">▲</button><button data-a="r">▶</button></div><div class="rn-ov" id="rnOv"></div>';
+  document.body.appendChild(w); document.body.classList.add('rn-on');
+  w.querySelectorAll('.rn-ctl button').forEach(function(b){ b.addEventListener('pointerdown',function(e){ e.preventDefault(); rnAct(b.dataset.a); }); });
+  var sx=0,sy=0; w.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+  w.addEventListener('touchend',function(e){ var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>30&&Math.abs(dx)>Math.abs(dy)) rnAct(dx<0?'l':'r'); else if(dy<-30) rnAct('j'); },{passive:true});
+  RG.key=function(e){ if(!RG||!RG.run) return; var k=e.key; if(k==='ArrowLeft'||k==='a'||k==='A'){ rnAct('l'); e.preventDefault(); } else if(k==='ArrowRight'||k==='d'||k==='D'){ rnAct('r'); e.preventDefault(); } else if(k==='ArrowUp'||k===' '||k==='w'||k==='W'){ rnAct('j'); e.preventDefault(); } else if(k==='Escape'||k==='p'||k==='P') rnPause(); };
+  window.addEventListener('keydown',RG.key);
+  RG.touch=window.matchMedia&&matchMedia('(pointer:coarse)').matches; RG.cv=$('#rnCv'); RG.c=RG.cv.getContext('2d'); RG.resize=function(){ var d=Math.min(2,window.devicePixelRatio||1); RG.W=RG.cv.clientWidth; RG.H=RG.cv.clientHeight; RG.cv.width=RG.W*d; RG.cv.height=RG.H*d; RG.c.setTransform(d,0,0,d,0,0); }; rn3Init(); RG.resize(); window.addEventListener('resize',RG.resize);
+  rnHud(); rnAC(); rnMusic(true);
+  rnCount(3);
+}
+function rnCount(n){ if(!RG) return; RG.paused=true; var ov=$('#rnOv'); ov.className='rn-ov on cd'; ov.innerHTML='<div class="rn-cd">'+(n||'วิ่ง!')+'</div>'; if(n>0){ rnSfx('jump'); setTimeout(function(){ rnCount(n-1); },650); } else { setTimeout(function(){ if(!RG) return; ov.className='rn-ov'; ov.innerHTML=''; RG.paused=false; RG.last=performance.now(); requestAnimationFrame(rnLoop); },400); } }
+function rnAct(a){ if(!RG||RG.paused||!RG.run) return; if(a==='l'&&RG.lane>-1) RG.lane--; else if(a==='r'&&RG.lane<1) RG.lane++; else if(a==='j'&&RG.jy<=0.01){ RG.jv=7.2; rnSfx('jump'); } }
+function rnPause(){ if(!RG||!RG.run) return; if(RG.paused){ $('#rnOv').className='rn-ov'; RG.paused=false; RG.last=performance.now(); requestAnimationFrame(rnLoop); return; }
+  RG.paused=true; var ov=$('#rnOv'); ov.className='rn-ov on'; ov.innerHTML='<div class="rn-box"><h2 class="kanit">⏸ หยุดพัก</h2><div class="rn-btns"><button class="btn btn-pink" onclick="rnPause()">▶ วิ่งต่อ</button><button class="btn btn-ghost" onclick="rnExit()">ออกจากเกม</button></div></div>'; }
+function rnExit(silent){ if(!RG) return; RG.run=false; rnMusic(false); window.removeEventListener('keydown',RG.key); window.removeEventListener('resize',RG.resize); try{ RG.ac&&RG.ac.close(); }catch(e){} var w=$('#rnWrap'); if(w) w.remove(); document.body.classList.remove('rn-on'); RG=null; if(!silent) gRunner(); }
+function rnHud(){ $('#rnLives').textContent='❤️'.repeat(Math.max(0,RG.lives))+(RG.lives<RG.L.lives?'🤍'.repeat(RG.L.lives-RG.lives):''); $('#rnScore').textContent=Math.round(RG.score); $('#rnCoins').textContent=RG.coins; $('#rnProg').textContent=RG.asked+'/'+RG.L.n; }
+function rnPop(t,cls){ var p=$('#rnPop'); if(!p) return; p.innerHTML='<div class="'+(cls||'')+'">'+t+'</div>'; p.classList.remove('go'); void p.offsetWidth; p.classList.add('go'); }
+function rnDeco(pos){ var kinds=RG.scene==='night'?['lamp','house','tree','lamp']:['tree','house','tree','flower']; [-1,1].forEach(function(side){ RG.deco.push({pos:pos+Math.random()*3,side:side,k:kinds[Math.floor(Math.random()*kinds.length)],c:['#ff9cc8','#c9b2ff','#8fd3ff','#ffc48f','#8be3c3'][Math.floor(Math.random()*5)],off:1.35+Math.random()*.5}); }); }
+
+/* ---------- สร้างสิ่งของบนถนน ---------- */
+function rnSpawn(){
+  var R=RG, far=R.dist+75;
+  while(R.nextSpawn<far){
+    var p=R.nextSpawn;
+    if(R.gate&&Math.abs(p-R.gate.pos)<7){ R.nextSpawn=R.gate.pos+8; continue; }
+    if(!R.gate&&R.asked+(R.q?1:0)<R.L.n&&p>=R.nextGate){ R.q=rnMakeQ(); var gp=R.dist+Math.max(30,R.speed*R.L.readT); R.gate={pos:gp,done:false}; R.objs.push({t:'gate',pos:gp}); rnShowQ(); R.nextSpawn=Math.max(p,gp+8); continue; }
+    var r=Math.random();
+    if(r<R.L.obs*.55){ var lanes=shuffle([-1,0,1]).slice(0,R.opt.lv==='hard'&&Math.random()<.35?2:1); lanes.forEach(function(l){ R.objs.push({t:'obs',k:['cone','box','bug'][Math.floor(Math.random()*3)],lane:l,pos:p}); }); R.nextSpawn=p+9+Math.random()*5; }
+    else if(r<.93){ var l=Math.floor(Math.random()*3)-1; for(var i=0;i<5;i++) R.objs.push({t:'coin',lane:l,pos:p+i*1.8}); R.nextSpawn=p+12+Math.random()*4; }
+    else { R.objs.push({t:'heart',lane:Math.floor(Math.random()*3)-1,pos:p}); R.nextSpawn=p+8; }
+  }
+  while(R.deco.length&&R.deco[0].pos<R.dist-3) R.deco.shift();
+  var lastD=R.deco.length?R.deco[R.deco.length-1].pos:R.dist; while(lastD<far){ lastD+=7+Math.random()*4; rnDeco(lastD); }
+}
+function rnShowQ(){ var q=RG.q, el=$('#rnQ'); if(!el) return; el.className='rn-q on';
+  el.innerHTML='<div class="rn-qt"><span class="rn-chip">'+esc(q.id)+'</span> '+esc(q.q)+'</div><div class="rn-ans">'+q.ch.map(function(c,i){ return '<div class="rn-an a'+i+'"><b>'+'ABC'[i]+'</b><span>'+esc(c)+'</span></div>'; }).join('')+'</div>'; }
+
+/* ---------- วนรอบเกม ---------- */
+function rnLoop(now){
+  if(!RG||!RG.run||RG.paused) return;
+  var R=RG, dt=Math.min(.05,(now-(R.last||now))/1000); R.last=now; R.t+=dt;
+  var sp=R.speed*(1+R.correct*.02); R.dist+=sp*dt; R.score+=sp*dt*.5*R.mult*.2;
+  R.lx+=(R.lane-R.lx)*Math.min(1,dt*14);
+  if(R.jy>0||R.jv>0){ R.jv-=22*dt; R.jy=Math.max(0,R.jy+R.jv*dt); if(R.jy===0) R.jv=0; }
+  if(R.inv>0) R.inv-=dt; if(R.flash>0) R.flash-=dt;
+  rnSpawn();
+  var lanePl=Math.round(R.lx);
+  R.objs.forEach(function(o){ if(o.done) return; var z=o.pos-R.dist;
+    if(o.t==='gate'){ if(z<=0){ o.done=true; rnGate(R.lane); } return; }
+    if(z<.7&&z>-.7&&o.lane===lanePl){
+      if(o.t==='coin'){ o.done=true; R.coins++; R.score+=10*R.mult; rnSfx('coin'); }
+      else if(o.t==='heart'){ o.done=true; if(R.lives<R.maxLives) R.lives++; R.score+=20*R.mult; rnSfx('heart'); rnPop('💖 +1 ชีวิต','ok'); }
+      else if(o.t==='obs'&&R.jy<.9&&R.inv<=0){ o.done=true; R.lives--; R.inv=1.2; R.flash=.35; R.streak=0; rnSfx('hit'); rnPop('💥 ชน! −1 ชีวิต','no'); }
+    } });
+  R.objs=R.objs.filter(function(o){ return o.pos-R.dist>-3; });
+  rnHud(); rnDraw();
+  if(R.lives<=0) return rnEnd(false);
+  if(R.asked>=R.L.n&&!R.gate) return rnEnd(true);
+  requestAnimationFrame(rnLoop);
+}
+function rnGate(lane){
+  var R=RG, q=R.q, pick=lane+1, ok=pick===q.ans; R.asked++; R.gate=null; R.nextGate=R.dist+R.L.gap*.5;
+  var el=$('#rnQ'); if(el){ el.querySelectorAll('.rn-an').forEach(function(a,i){ a.classList.add(i===q.ans?'ok':i===pick?'no':'dim'); }); setTimeout(function(){ if(RG&&!RG.gate&&el) el.className='rn-q'; },1400); }
+  if(ok){ R.correct++; R.streak++; var pts=Math.round((100+(R.streak>1?(R.streak-1)*20:0))*R.mult); R.score+=pts; rnSfx('ok'); rnPop('✅ ถูกต้อง! +'+pts+(R.streak>1?' 🔥x'+R.streak:''),'ok'); }
+  else { R.streak=0; R.lives--; R.flash=.35; rnSfx('bad'); rnPop('❌ คำตอบคือ '+'ABC'[q.ans]+': '+esc(q.ch[q.ans]),'no big'); }
+  R.q=null;
+}
+function rnEnd(win){
+  var R=RG; R.run=false; rnMusic(false); var qb=$('#rnQ'); if(qb) qb.className='rn-q'; var lv=R.opt.lv, best=sKey('run_'+lv)||0, sc=Math.round(R.score), pct=R.asked?R.correct/R.asked:0, st=win?(pct>=.9?3:pct>=.6?2:1):0;
+  if(sc>best) sKey('run_'+lv,sc); if(win){ rnSfx('win'); confetti(); }
+  var ov=$('#rnOv'); ov.className='rn-ov on'; ov.innerHTML='<div class="rn-box"><div class="rn-stars">'+[0,1,2].map(function(i){ return '<span class="'+(i<st?'on':'')+'">★</span>'; }).join('')+'</div>'+
+    '<h2 class="kanit">'+(win?'ผ่านด่าน'+R.L.t+'แล้ว! 🎉':'ชีวิตหมดแล้ว ลองใหม่นะ 💪')+'</h2>'+
+    '<div class="rn-sum"><div><b>'+sc+'</b><span>แต้ม'+(sc>best?' · 🏆 สถิติใหม่!':'')+'</span></div><div><b>'+R.correct+'/'+R.asked+'</b><span>ตอบถูก</span></div><div><b>'+R.coins+'</b><span>เหรียญ</span></div><div><b>'+Math.round(R.dist)+' ม.</b><span>ระยะทาง</span></div></div>'+
+    '<div class="small" style="opacity:.8">สถิติดีที่สุดด่าน'+R.L.t+': '+Math.max(best,sc)+' แต้ม</div>'+
+    '<div class="rn-btns"><button class="btn btn-pink" onclick="rnStart()">🔁 เล่นอีกครั้ง</button><button class="btn btn-ghost" onclick="rnExit()">⚙️ เปลี่ยนตัวละคร/ด่าน</button><button class="btn btn-ghost" onclick="rnExit(true);go(\'\')">🏠 หน้าแรก</button></div></div>';
+}
+
+/* ---------- วาดฉาก ---------- */
+function rnDraw(){ if(RG.gl) return rn3Draw();
+  var R=RG, c=R.c, W=R.W, H=R.H, night=R.scene==='night', hz=H*.34, by=H*(R.touch?.83:.97), cx=W/2, rw=Math.min(W*.44,520), cs=Math.min(1.05,rw/330);
+  var P=function(z){ var s=4/(Math.max(z,-1.5)+4); return {s:s,y:hz+(by-hz)*s}; }, X=function(l,s){ return cx+l*rw*.66*s; };
+  var g=c.createLinearGradient(0,0,0,hz); if(night){ g.addColorStop(0,'#1b1440'); g.addColorStop(1,'#4a2f7a'); } else { g.addColorStop(0,'#9fd8ff'); g.addColorStop(1,'#ffe1f0'); }
+  c.fillStyle=g; c.fillRect(0,0,W,hz+2);
+  if(night){ R.stars.forEach(function(s){ c.globalAlpha=.4+.6*Math.abs(Math.sin(R.t*s[2]+s[0]*9)); c.fillStyle='#fff'; c.fillRect(s[0]*W,s[1]*H,2,2); }); c.globalAlpha=1; c.fillStyle='#fff6c9'; c.beginPath(); c.arc(W*.8,hz*.35,26,0,7); c.fill(); c.fillStyle='#2b1f5a'; c.beginPath(); c.arc(W*.8+10,hz*.35-6,24,0,7); c.fill(); }
+  else { c.fillStyle='#fff7a8'; c.beginPath(); c.arc(W*.82,hz*.4,30,0,7); c.fill(); c.fillStyle='rgba(255,255,255,.9)'; [[.15,.3],[.45,.18],[.65,.42]].forEach(function(k,i){ var x=((k[0]*W+R.t*8*(i+1))%(W+160))-80, y=k[1]*hz; c.beginPath(); c.arc(x,y,18,0,7); c.arc(x+20,y-8,22,0,7); c.arc(x+42,y,18,0,7); c.fill(); }); }
+  c.fillStyle=night?'#2a3d55':'#c9f2c4'; c.fillRect(0,hz,W,H-hz);
+  for(var hl=0;hl<3;hl++){ c.fillStyle=night?['#22324a','#1d2b40','#18243a'][hl]:['#b5ecb3','#a7e3a8','#97d99c'][hl]; c.beginPath(); c.ellipse(W*(.2+hl*.33),hz+6,W*.28,30-hl*6,0,Math.PI,0); c.fill(); }
+  c.fillStyle=night?'#3c3f5c':'#f1e6f7'; c.beginPath(); c.moveTo(cx-rw*1.05,by); c.lineTo(cx-6,hz); c.lineTo(cx+6,hz); c.lineTo(cx+rw*1.05,by); c.fill();
+  c.fillStyle=night?'#ff9cc8':'#ffb3d1'; c.beginPath(); c.moveTo(cx-rw*1.05,by); c.lineTo(cx-rw*.97,by); c.lineTo(cx-4,hz); c.lineTo(cx-6,hz); c.fill(); c.beginPath(); c.moveTo(cx+rw*1.05,by); c.lineTo(cx+rw*.97,by); c.lineTo(cx+4,hz); c.lineTo(cx+6,hz); c.fill();
+  for(var z0=-(R.dist%4);z0<70;z0+=4){ var a=P(z0), b=P(z0+2); [-.5,.5].forEach(function(l){ c.strokeStyle=night?'rgba(255,240,170,.8)':'rgba(255,255,255,.95)'; c.lineWidth=Math.max(1,5*a.s); c.beginPath(); c.moveTo(cx+l*rw*1.32*a.s*.5*2/1.0*.5,a.y); c.lineTo(cx+l*rw*1.32*b.s*.5*2/1.0*.5,b.y); c.stroke(); }); }
+  var items=[];
+  R.deco.forEach(function(d){ var z=d.pos-R.dist; if(z>-1&&z<72) items.push({z:z,d:d,t:'deco'}); });
+  R.objs.forEach(function(o){ if(o.done&&o.t!=='gate') return; var z=o.pos-R.dist; if(z>-1.5&&z<72) items.push({z:z,o:o,t:o.t}); });
+  items.push({z:0.0001,t:'player'});
+  items.sort(function(a,b){ return b.z-a.z; });
+  items.forEach(function(it){ var p=P(it.z), s=p.s, fog=night?0:Math.min(.55,Math.max(0,(it.z-30)/70));
+    if(it.t==='deco'){ var d=it.d, x=cx+d.side*rw*d.off*s; c.globalAlpha=1-fog; rnDecoDraw(c,d,x,p.y,s,night); c.globalAlpha=1; return; }
+    if(it.t==='player'){ if(R.inv>0&&Math.floor(R.t*16)%2) return; var pp=P(0); rnDrawChar(c,X(R.lx,pp.s),pp.y-8-R.jy*28*pp.s,pp.s*cs,R.opt.ch,R.t,true); return; }
+    var o=it.o, x=X(o.lane||0,s), y=p.y; c.globalAlpha=1-fog;
+    if(o.t==='coin'){ var sw=Math.abs(Math.cos(R.t*6+o.pos)); c.fillStyle='#ffc93c'; c.strokeStyle='#e09b00'; c.lineWidth=3*s; c.beginPath(); c.ellipse(x,y-40*s,16*s*Math.max(.2,sw),16*s,0,0,7); c.fill(); c.stroke(); c.fillStyle='rgba(255,255,255,.7)'; c.beginPath(); c.ellipse(x-4*s*sw,y-44*s,3*s*sw,6*s,0,0,7); c.fill(); }
+    else if(o.t==='heart'){ c.font=(40*s)+'px sans-serif'; c.textAlign='center'; c.fillText('💖',x,y-24*s+Math.sin(R.t*5)*4*s); }
+    else if(o.t==='obs') rnObsDraw(c,o.k,x,y,s,R.t);
+    else if(o.t==='gate'&&!o.done&&R.q){ var cols=['#ff4f9a','#8b5cf6','#1f9ad6']; [-1,0,1].forEach(function(l,i){ var gx=X(l,s), w=rw*.6*s, h=150*s;
+        c.fillStyle=cols[i]; c.globalAlpha=(1-fog)*.85; c.fillRect(gx-w/2,y-h,w*.12,h); c.fillRect(gx+w/2-w*.12,y-h,w*.12,h); c.beginPath(); c.roundRect(gx-w/2,y-h-24*s,w,34*s,12*s); c.fill();
+        c.globalAlpha=(1-fog)*.18; c.fillRect(gx-w/2,y-h,w,h); c.globalAlpha=1-fog; c.fillStyle='#fff'; c.font='bold '+Math.round(30*s)+'px Kanit,sans-serif'; c.textAlign='center'; c.fillText('ABC'[i],gx,y-h+2*s); }); }
+    c.globalAlpha=1; });
+  if(R.flash>0){ c.fillStyle='rgba(255,60,90,'+(R.flash*.8)+')'; c.fillRect(0,0,W,H); }
+}
+function rnObsDraw(c,k,x,y,s,t){
+  if(k==='cone'){ c.fillStyle='#ff8a3d'; c.beginPath(); c.moveTo(x,y-62*s); c.lineTo(x-24*s,y-6*s); c.lineTo(x+24*s,y-6*s); c.fill(); c.fillStyle='#fff'; c.fillRect(x-14*s,y-36*s,28*s,8*s); c.fillStyle='#e0702a'; c.fillRect(x-30*s,y-8*s,60*s,8*s); }
+  else if(k==='box'){ c.fillStyle='#e9b98a'; c.fillRect(x-28*s,y-52*s,56*s,52*s); c.fillStyle='#c58c50'; c.fillRect(x-28*s,y-30*s,56*s,6*s); c.fillRect(x-3*s,y-52*s,6*s,52*s); c.strokeStyle='#a66d36'; c.lineWidth=2*s; c.strokeRect(x-28*s,y-52*s,56*s,52*s); }
+  else { var hop=Math.abs(Math.sin(t*6+x))*8*s; c.fillStyle='#c084fc'; c.beginPath(); c.roundRect(x-28*s,y-50*s-hop,56*s,46*s,20*s); c.fill(); c.fillStyle='#fff'; c.beginPath(); c.arc(x-11*s,y-32*s-hop,8*s,0,7); c.arc(x+11*s,y-32*s-hop,8*s,0,7); c.fill(); c.fillStyle='#3b2a4f'; c.beginPath(); c.arc(x-10*s,y-31*s-hop,4*s,0,7); c.arc(x+12*s,y-31*s-hop,4*s,0,7); c.fill(); c.strokeStyle='#a67ef0'; c.lineWidth=3*s; c.beginPath(); c.moveTo(x,y-50*s-hop); c.lineTo(x,y-62*s-hop); c.stroke(); c.fillStyle='#ff6fae'; c.beginPath(); c.arc(x,y-64*s-hop,5*s,0,7); c.fill(); }
+}
+function rnDecoDraw(c,d,x,y,s,night){
+  if(d.k==='tree'){ c.fillStyle='#c58c50'; c.fillRect(x-6*s,y-60*s,12*s,60*s); c.fillStyle=night?'#3c6b5f':d.c; c.beginPath(); c.arc(x,y-78*s,34*s,0,7); c.fill(); c.beginPath(); c.arc(x-18*s,y-64*s,22*s,0,7); c.arc(x+18*s,y-64*s,22*s,0,7); c.fill(); }
+  else if(d.k==='house'){ c.fillStyle=night?'#4b4f7a':'#fff7fb'; c.fillRect(x-40*s,y-70*s,80*s,70*s); c.fillStyle=d.c; c.beginPath(); c.moveTo(x-48*s,y-70*s); c.lineTo(x,y-110*s); c.lineTo(x+48*s,y-70*s); c.fill(); c.fillStyle=night?'#ffe27a':'#a8e4ff'; c.fillRect(x-28*s,y-52*s,18*s,18*s); c.fillRect(x+10*s,y-52*s,18*s,18*s); c.fillStyle='#c58c50'; c.fillRect(x-8*s,y-30*s,16*s,30*s); }
+  else if(d.k==='lamp'){ c.fillStyle='#8a8fb8'; c.fillRect(x-3*s,y-120*s,6*s,120*s); c.fillStyle='#fff3a8'; c.beginPath(); c.arc(x,y-124*s,10*s,0,7); c.fill(); c.fillStyle='rgba(255,240,150,.18)'; c.beginPath(); c.arc(x,y-124*s,40*s,0,7); c.fill(); }
+  else { c.fillStyle='#7fc8ac'; c.fillRect(x-2*s,y-26*s,4*s,26*s); c.fillStyle=d.c; for(var i=0;i<5;i++){ c.beginPath(); c.arc(x+Math.cos(i*1.26)*9*s,y-30*s+Math.sin(i*1.26)*9*s,7*s,0,7); c.fill(); } c.fillStyle='#ffe27a'; c.beginPath(); c.arc(x,y-30*s,6*s,0,7); c.fill(); }
+}
+
+
+/* ===================== FLIP Runner 3D: ถนนเมืองสามมิติ ===================== */
+var RN3_LW=2.3, RN3_CH=60;
+function rn3Init(){
+  var R=RG, cv=$('#rnGl'); if(!cv) return;
+  var gl=null; try{ gl=cv.getContext('webgl',{antialias:true,alpha:true,premultipliedAlpha:false})||cv.getContext('experimental-webgl',{alpha:true}); }catch(e){}
+  if(!gl){ cv.remove(); return; }
+  var vs='attribute vec3 p;attribute vec3 n;attribute vec3 c;uniform mat4 uVP;uniform mat4 uM;uniform vec3 uTint;uniform float uUse;uniform float uEm;uniform float uAmb;uniform vec3 uEye;uniform vec2 uFogR;varying vec3 vC;varying float vF;'+
+    'void main(){vec4 w=uM*vec4(p,1.);gl_Position=uVP*w;vec3 N=normalize((uM*vec4(n,0.)).xyz);float l=.55+.45*max(dot(N,normalize(vec3(.4,.85,.35))),0.)+.12*max(dot(N,vec3(-.5,.3,-.6)),0.);'+
+    'vec3 col=mix(c,uTint,uUse);vC=col*min(l*uAmb+uEm,1.7);float d=length(w.xyz-uEye);vF=clamp((d-uFogR.x)/uFogR.y,0.,1.);}';
+  var fs='precision mediump float;uniform vec3 uFog;varying vec3 vC;varying float vF;void main(){gl_FragColor=vec4(mix(vC,uFog,vF),1.);}';
+  try{
+    var sh=function(t,s){ var o=gl.createShader(t); gl.shaderSource(o,s); gl.compileShader(o); if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(o)); return o; };
+    var pr=gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs)); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs)); gl.linkProgram(pr); gl.useProgram(pr);
+  }catch(e){ cv.remove(); return; }
+  var L={}; ['p','n','c'].forEach(function(k){ L[k]=gl.getAttribLocation(pr,k); }); ['uVP','uM','uTint','uUse','uEm','uAmb','uEye','uFogR','uFog'].forEach(function(k){ L[k]=gl.getUniformLocation(pr,k); });
+  gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE); gl.cullFace(gl.BACK);
+  var buf=function(arr){ var b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(arr),gl.STATIC_DRAW); return {b:b,n:arr.length/9}; };
+  var cube=new QMesh(); cube.box(0,-.5,0,1,1,1,[1,1,1]);
+  var cyl=new QMesh(); cyl.prism(0,0,1,-.5,.5,'#ffffff','#ffffff',22);
+  var sp=new QMesh(); rnSph(sp,0,0,0,1,1,1,[1,1,1],12); var cy2=new QMesh(); rnCyl(cy2,0,-.5,0,1,1,1,[1,1,1],18); var co=new QMesh(); rnCyl(co,0,-.5,0,1,0,1,[1,1,1],18);
+  R.gl=gl; R.GL=L; R.cube=buf(cube.d); R.cyl=buf(cy2.d); R.sph=buf(sp.d); R.cone=buf(co.d); R.chunk=buf(rn3World(R.scene==='night').d);
+  gl.disable(gl.CULL_FACE);
+  R.sky=$('#rnSky').getContext('2d');
+  var r0=R.resize; R.resize=function(){ r0(); var d=Math.min(1.5,window.devicePixelRatio||1), w=cv.clientWidth, h=cv.clientHeight; cv.width=w*d; cv.height=h*d; var sk=$('#rnSky'); sk.width=w; sk.height=h; };
+}
+/* ฉากถนน 1 ช่วง ยาว 60 หน่วย (วาดซ้ำต่อกันไปเรื่อยๆ) */
+function rnSph(m,cx,cy,cz,rx,ry,rz,col,seg){ var c=typeof col==='string'?qHex(col):col, n=seg||10, d=m.d, V=function(i,j){ var th=i/n*Math.PI, ph=j/(2*n)*Math.PI*2, x=Math.sin(th)*Math.cos(ph), y=Math.cos(th), z=Math.sin(th)*Math.sin(ph), N=qN([x/rx,y/ry,z/rz]); d.push(cx+x*rx,cy+y*ry,cz+z*rz,N[0],N[1],N[2],c[0],c[1],c[2]); };
+  for(var i=0;i<n;i++) for(var j=0;j<2*n;j++){ V(i,j); V(i+1,j+1); V(i+1,j); V(i,j); V(i,j+1); V(i+1,j+1); } }
+function rnCyl(m,cx,y0,cz,r0,r1,h,col,seg){ var c=typeof col==='string'?qHex(col):col, n=seg||14, d=m.d, sl=(r0-r1)/h;
+  var P=function(a,y,r){ var N=qN([Math.cos(a),sl,Math.sin(a)]); d.push(cx+Math.cos(a)*r,y,cz+Math.sin(a)*r,N[0],N[1],N[2],c[0],c[1],c[2]); }, T=function(x,y,z){ d.push(x,y,z,0,1,0,c[0],c[1],c[2]); };
+  for(var i=0;i<n;i++){ var a0=i/n*Math.PI*2, a1=(i+1)/n*Math.PI*2; P(a0,y0,r0); P(a1,y0+h,r1); P(a1,y0,r0); P(a0,y0,r0); P(a0,y0+h,r1); P(a1,y0+h,r1);
+    if(r1>0){ T(cx,y0+h,cz); T(cx+Math.cos(a1)*r1,y0+h,cz+Math.sin(a1)*r1); T(cx+Math.cos(a0)*r1,y0+h,cz+Math.sin(a0)*r1); } } }
+function rn3World(night){
+  var m=new QMesh(), rnd=qRng(night?11:7), CH=RN3_CH;
+  var dim=function(h,k){ var c=qHex(h); return night?[c[0]*k,c[1]*k,c[2]*k]:c; };
+  var winC=night?[1.7,1.45,.6]:qHex('#eaf6ff'), winC2=night?[1.4,1.0,1.5]:qHex('#fff7c2');
+  m.box(0,-.6,-CH/2,240,.5,CH+.2,dim('#9ee6a0',.45));
+  m.box(0,-.12,-CH/2,9.4,.12,CH+.05,night?[.22,.23,.33]:qHex('#6b7287'));
+  [-1,1].forEach(function(s){ m.box(s*5.95,-.12,-CH/2,2.6,.3,CH+.05,dim('#f4eff8',.5)); m.box(s*4.72,-.12,-CH/2,.25,.32,CH+.05,dim('#ff9cc8',.6)); });
+  for(var z=0;z>-CH;z-=4){ [-1,1].forEach(function(s){ m.box(s*RN3_LW/2,0,z-1,.13,.02,2.2,night?[1.2,1.1,.6]:[1,1,1]); }); }
+  [-1,1].forEach(function(s){ m.box(s*4.25,0,-CH/2,.13,.02,CH,night?[1.1,1,.5]:qHex('#ffd23f')); });
+  for(var x=-4;x<=4;x+=1) m.box(x,0,-8,.62,.022,3.2,night?[.9,.9,1]:[1,1,1]);
+  var PAL=['#ff8fb8','#ffb27a','#ffe27a','#7fdca0','#7cc8ff','#b79bff','#ff6f9e','#4fc3f7','#ffa94d','#63e6be'];
+  [-1,1].forEach(function(s){
+    var z=-1;
+    while(z>-CH){ var w=5+rnd()*3, d=6+rnd()*3, h=7+rnd()*15, cx=s*(10+d/2+rnd()*1.5), col=PAL[Math.floor(rnd()*PAL.length)], cz=z-w/2;
+      m.box(cx,-.1,cz,d,h,w,dim(col,.55)); m.box(cx,h-.1,cz,d+.4,.5,w+.4,dim('#ffffff',.6));
+      var rf=rnd(); if(rf<.3) rnSph(m,cx,h+.4,cz,Math.min(d,w)*.32,Math.min(d,w)*.3,Math.min(d,w)*.32,dim(PAL[Math.floor(rnd()*PAL.length)],.6),10); else if(rf<.55) rnCyl(m,cx,h+.4,cz,Math.min(d,w)*.42,0,2.4,dim(PAL[Math.floor(rnd()*PAL.length)],.6),4);
+      m.box(cx-s*(d/2+.02),-.1,cz,.1,2.2,1.4,dim('#ffffff',.7)); m.box(cx-s*(d/2+.4),2.2,cz,.9,.12,2.2,dim(PAL[Math.floor(rnd()*PAL.length)],.6));
+      var fx=cx-s*(d/2+.03);
+      for(var wy=1.4;wy<h-1.2;wy+=2.1) for(var wz=cz-w/2+1;wz<cz+w/2-.6;wz+=1.5){ var lit=!night||rnd()<.75; m.box(fx,wy,wz,.08,1.2,.9,lit?(rnd()<.5?winC:winC2):[.18,.16,.3]); }
+      if(rnd()<.6){ var by=2.6+Math.floor(rnd()*3)*2.1; m.box(cx-s*(d/2+.8),by,cz,1.6,.22,w*.7,dim(PAL[Math.floor(rnd()*PAL.length)],.6)); }
+      z-=w+.3+rnd()*1.2; }
+    for(var tz=-5;tz>-CH;tz-=10+rnd()*3){ var tx=s*(7.6+rnd()*.6), tc=rnd()<.65?['#3fbf5f','#5fd16f','#8be38a']:['#ff8fb8','#ffb3d1','#ffd0e3'];
+      rnCyl(m,tx,0,tz,.26,.2,2.2,dim('#a0693a',.6),10); rnSph(m,tx,2.9,tz,1.35,1.15,1.35,dim(tc[0],.5),10); rnSph(m,tx-.6,2.5,tz+.3,.85,.75,.85,dim(tc[1],.5),9); rnSph(m,tx+.55,3.4,tz-.2,.8,.7,.8,dim(tc[2],.5),9); }
+    for(var bz=-2;bz>-CH;bz-=5+rnd()*3){ var bx=s*(6.6+rnd()*.4); rnSph(m,bx,.25,bz,.75,.6,.75,dim(rnd()<.5?'#4cc96a':'#7be08a',.5),8); if(rnd()<.6) rnSph(m,bx+.2,.75,bz+.3,.14,.14,.14,dim(['#ff6f9e','#ffe27a','#ffffff'][Math.floor(rnd()*3)],.8),6); }
+    for(var lz=-12;lz>-CH;lz-=15){ var lx=s*5.2; rnCyl(m,lx,0,lz,.16,.1,4.4,night?[.5,.45,.75]:qHex('#8b7fd6'),10); rnSph(m,lx,0,lz,.3,.18,.3,night?[.5,.45,.75]:qHex('#8b7fd6'),8); rnSph(m,lx,4.6,lz,.42,.42,.42,night?[1.9,1.8,1.1]:qHex('#fff3a8'),10); rnCyl(m,lx,4.85,lz,.3,0,.3,night?[.5,.45,.75]:qHex('#8b7fd6'),10); }
+    for(var fz=-20;fz>-CH;fz-=26){ var fx=s*8.9; rnCyl(m,fx,0,fz,.08,.08,1.6,[.9,.9,.95],8); rnSph(m,fx,1.9,fz,.55,.55,.12,dim(['#ff6f9e','#7cc8ff','#ffe27a'][Math.floor(rnd()*3)],.7),10); }
+  });
+  return m;
+}
+function rn3Bind(o){ var R=RG, gl=R.gl, L=R.GL; if(R.bound===o) return; R.bound=o; gl.bindBuffer(gl.ARRAY_BUFFER,o.b);
+  gl.enableVertexAttribArray(L.p); gl.vertexAttribPointer(L.p,3,gl.FLOAT,false,36,0);
+  gl.enableVertexAttribArray(L.n); gl.vertexAttribPointer(L.n,3,gl.FLOAT,false,36,12);
+  gl.enableVertexAttribArray(L.c); gl.vertexAttribPointer(L.c,3,gl.FLOAT,false,36,24); }
+function rn3D(o,M,col,em){ rn3Bind(o); var gl=RG.gl,L=RG.GL; gl.uniformMatrix4fv(L.uM,false,new Float32Array(M)); gl.uniform3fv(L.uTint,col?(typeof col==='string'?qHex(col):col):[1,1,1]); gl.uniform1f(L.uUse,col?1:0); gl.uniform1f(L.uEm,em||0); gl.drawArrays(gl.TRIANGLES,0,o.n); }
+function rn3S(x,y,z,sx,sy,sz,col,em,M0){ rn3D(RG.sph,M4.chain(M0||M4.I(),M4.T(x,y,z),M4.S(sx,sy,sz)),col,em); }
+function rn3Box(x,y,z,sx,sy,sz,col,ry,em){ rn3D(RG.cube,M4.chain(M4.T(x,y,z),M4.Ry(ry||0),M4.S(sx,sy,sz)),col,em); }
+function rn3Proj(x,y,z){ var m=RG.VP, X=m[0]*x+m[4]*y+m[8]*z+m[12], Y=m[1]*x+m[5]*y+m[9]*z+m[13], Wd=m[3]*x+m[7]*y+m[11]*z+m[15];
+  if(Wd<=.1) return null; return [(X/Wd*.5+.5)*RG.W,(1-(Y/Wd*.5+.5))*RG.H,Wd]; }
+
+/* ตัวละครการ์ตูน 3 มิติ (กลมๆ หันหลังให้กล้อง) */
+function rn3Head(B0,kind,col,t,hy){ var S=function(x,y,z,a,b,c,co,em){ rn3S(x,y,z,a,b,c,co,em,B0); }, K=function(M,co,em){ rn3D(RG.cone,M4.chain(B0,M),co,em||0); };
+  var robo=kind==='robo', skin=kind==='cat'?'#ffcf8a':robo?'#e3e8f7':'#f8d5b8', hair=kind==='cat'?'#f39a3d':'#4a2f24';
+  S(0,hy,0,.52,.48,.5,skin);
+  if(robo){ S(0,hy,.08,.44,.32,.44,'#3b4a6b'); S(-.16,hy+.02,.47,.09,.09,.04,'#7ff0ff',.9); S(.16,hy+.02,.47,.09,.09,.04,'#7ff0ff',.9); rn3D(RG.cyl,M4.chain(B0,M4.T(0,hy+.62,0),M4.S(.04,.3,.04)),'#9aa7c7'); S(0,hy+.8,0,.12,.12,.12,'#ff6fae',.6); S(-.53,hy,0,.1,.18,.18,'#ff9cc8'); S(.53,hy,0,.1,.18,.18,'#ff9cc8'); return; }
+  S(0,hy+.08,-.06,.56,.5,.54,hair);
+  if(kind==='bow'){ S(-.5,hy-.15,-.05,.17,.3,.17,hair); S(.5,hy-.15,-.05,.17,.3,.17,hair); S(-.2,hy+.5,-.15,.22,.16,.1,'#ff5fa2',.15); S(.2,hy+.5,-.15,.22,.16,.1,'#ff5fa2',.15); S(0,hy+.5,-.17,.09,.09,.09,'#ff2d8a',.2); }
+  if(kind==='cap'){ S(0,hy+.2,0,.57,.36,.56,'#4aa3ff'); rn3D(RG.cyl,M4.chain(B0,M4.T(0,hy+.12,.42),M4.S(.42,.04,.3)),'#3388e6'); S(0,hy+.56,0,.08,.06,.08,'#ffffff'); }
+  if(kind==='cat'){ K(M4.chain(M4.T(-.3,hy+.48,0),M4.Rz(.35),M4.S(.17,.34,.14)),hair); K(M4.chain(M4.T(.3,hy+.48,0),M4.Rz(-.35),M4.S(.17,.34,.14)),hair); K(M4.chain(M4.T(-.3,hy+.46,.03),M4.Rz(.35),M4.S(.09,.2,.08)),'#ffb3cf'); K(M4.chain(M4.T(.3,hy+.46,.03),M4.Rz(-.35),M4.S(.09,.2,.08)),'#ffb3cf'); }
+}
+function rn3Char(x,y,z,kind,t,air){
+  var col=(RN_CHARS.filter(function(k){ return k[0]===kind; })[0]||RN_CHARS[0])[2], B0=M4.chain(M4.T(x,y,z),M4.Ry(Math.PI),M4.S(.72,.72,.72));
+  if(RG.opt.veh==='car') return rn3Car(B0,kind,col,t);
+  var sw=Math.sin(t*14)*.8, robo=kind==='robo', skin=kind==='cat'?'#ffcf8a':robo?'#c3cbe3':'#f8d5b8', pants=robo?'#8f9bbd':'#5b5f97', bob=air?0:Math.abs(Math.sin(t*14))*.06;
+  var S=function(x,y,z,a,b,c,co,em){ rn3S(x,y,z+0,a,b,c,co,em,B0); };
+  var limb=function(px,py,a,r,h,co,end,endR){ var M=M4.chain(B0,M4.T(px,py+bob,0),M4.Rx(a)); rn3D(RG.cyl,M4.chain(M,M4.T(0,-h/2,0),M4.S(r,h,r)),co); rn3S(0,-h,0,endR[0],endR[1],endR[2],end,0,M); };
+  limb(-.17,.72,air?.7:sw,.12,.5,pants,robo?'#7c86a6':'#ffffff',[.16,.11,.22]); limb(.17,.72,air?-.4:-sw,.12,.5,pants,robo?'#7c86a6':'#ffffff',[.16,.11,.22]);
+  S(0,1.02+bob,0,.38,.42,.32,col); S(0,.78+bob,0,.34,.14,.3,pants);
+  limb(-.4,1.25,-sw*.9-(air?1:0),.09,.42,skin,skin,[.11,.11,.11]); limb(.4,1.25,sw*.9-(air?1:0),.09,.42,skin,skin,[.11,.11,.11]);
+  if(!robo){ S(0,1.1+bob,-.32,.28,.3,.14,kind==='cat'?'#8b5cf6':'#ffd23f'); S(0,1.18+bob,-.42,.12,.08,.04,'#ffffff',.2); }
+  else S(0,1.1+bob,-.3,.26,.26,.1,'#9aa7c7');
+  if(kind==='cat'){ for(var i=0;i<5;i++){ var a2=i*.35+Math.sin(t*6)*.2; S(Math.sin(a2)*.15,.85+bob+i*.09,-.35-i*.08,.07,.07,.07,'#f39a3d'); } }
+  rn3Head(M4.chain(B0,M4.T(0,bob,0)),kind,col,t,1.72);
+}
+function rn3Car(B0,kind,col,t){ var S=function(x,y,z,a,b,c,co,em){ rn3S(x,y,z,a,b,c,co,em,B0); }, sp=t*(RG.speed||10)*2;
+  [[-.72,.62],[.72,.62],[-.72,-.72],[.72,-.72]].forEach(function(w){ var M=M4.chain(B0,M4.T(w[0],.3,w[1]),M4.Rx(-sp)); rn3D(RG.cyl,M4.chain(M,M4.Rz(Math.PI/2),M4.S(.3,.22,.3)),'#3b3f55'); rn3D(RG.cyl,M4.chain(M,M4.Rz(Math.PI/2),M4.S(.15,.24,.15)),'#ffffff',.2); });
+  S(0,.55,0,.85,.36,1.25,col,.05); S(0,.7,.55,.62,.26,.5,col,.05); S(0,.5,-1.15,.55,.18,.12,'#ffffff');
+  S(-.5,.62,-1.18,.13,.09,.05,'#ff3b5c',.7); S(.5,.62,-1.18,.13,.09,.05,'#ff3b5c',.7); S(-.45,.58,1.2,.14,.12,.05,'#fff7b0',.9); S(.45,.58,1.2,.14,.12,.05,'#fff7b0',.9);
+  S(0,.86,-.1,.6,.18,.62,'#ffffff'); S(0,1.0,.42,.5,.22,.06,'#bfe8ff',.3);
+  rn3Head(B0,kind,col,t,1.32); S(0,.98,-.1,.3,.2,.25,col);
+  rn3D(RG.cyl,M4.chain(B0,M4.T(.45,1.0,-.8),M4.S(.025,.5,.025)),'#9aa7c7'); S(.45,1.28,-.8,.1,.1,.02,'#ffd23f',.4);
+}
+function rn3Obs(k,x,z,t){
+  if(k==='cone'){ rn3S(x,.05,z,.55,.06,.55,'#e0702a'); rn3D(RG.cone,M4.chain(M4.T(x,.62,z),M4.S(.42,1.1,.42)),'#ff8a3d',.1); rn3D(RG.cyl,M4.chain(M4.T(x,.62,z),M4.S(.24,.18,.24)),'#ffffff',.3); }
+  else if(k==='box'){ rn3Box(x,.55,z,1.3,1.1,1.0,'#f4c99a'); rn3Box(x,.55,z,1.32,.16,1.02,'#d9a066'); rn3S(x,1.12,z,.4,.12,.3,'#ff6f9e',.1); rn3S(x-.35,1.25,z,.18,.14,.12,'#ff6f9e',.1); rn3S(x+.35,1.25,z,.18,.14,.12,'#ff6f9e',.1); }
+  else { var sq=1+Math.sin(t*7+x)*.12; rn3S(x,.02,z,.65,.02,.65,[.15,.15,.2]); rn3S(x,.55*sq,z,.7/Math.sqrt(sq),.55*sq,.6/Math.sqrt(sq),'#b98cff',.1); rn3S(x,1.0*sq,z,.35,.3,.3,'#c9a6ff',.1);
+    rn3S(x-.24,.7*sq,z+.5,.14,.16,.06,'#ffffff',.5); rn3S(x+.24,.7*sq,z+.5,.14,.16,.06,'#ffffff',.5); rn3S(x-.22,.68*sq,z+.55,.07,.09,.03,'#3b2a4f'); rn3S(x+.26,.68*sq,z+.55,.07,.09,.03,'#3b2a4f');
+    rn3S(x-.42,.52*sq,z+.48,.1,.05,.03,'#ff9fc4'); rn3S(x+.42,.52*sq,z+.48,.1,.05,.03,'#ff9fc4'); }
+}
+function rn3Draw(){
+  var R=RG, gl=R.gl, L=R.GL, night=R.scene==='night', W=R.W, H=R.H, pz=-R.dist, px=R.lx*RN3_LW, t=R.t;
+  /* ท้องฟ้า */
+  var sk=R.sky, g=sk.createLinearGradient(0,0,0,H*.62); if(night){ g.addColorStop(0,'#140f35'); g.addColorStop(1,'#4a2f7a'); } else { g.addColorStop(0,'#5fb8ff'); g.addColorStop(1,'#d6efff'); }
+  sk.fillStyle=g; sk.fillRect(0,0,W,H);
+  if(night){ R.stars.forEach(function(s){ sk.globalAlpha=.4+.6*Math.abs(Math.sin(t*s[2]+s[0]*9)); sk.fillStyle='#fff'; sk.fillRect(s[0]*W,s[1]*H*.8,2,2); }); sk.globalAlpha=1; sk.fillStyle='#fff6c9'; sk.beginPath(); sk.arc(W*.78,H*.14,24,0,7); sk.fill(); sk.fillStyle='#211a4a'; sk.beginPath(); sk.arc(W*.78+10,H*.14-6,22,0,7); sk.fill(); }
+  else { sk.fillStyle='rgba(255,255,255,.95)'; [[.12,.12],[.42,.06],[.7,.16],[.9,.08]].forEach(function(k,i){ var x=((k[0]*W+t*6*(i%2+1))%(W+200))-100, y=k[1]*H; sk.beginPath(); sk.arc(x,y,20,0,7); sk.arc(x+24,y-10,26,0,7); sk.arc(x+50,y,20,0,7); sk.fill(); }); }
+  /* กล้อง */
+  var cw=gl.canvas.width, ch=gl.canvas.height; gl.viewport(0,0,cw,ch); gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  var narrow=W<600, eye=[px*.55,narrow?4.4:3.7,pz+(narrow?8.2:6.6)], tgt=[px*.35,1.1,pz-14];
+  var VP=M4.mul(M4.persp(narrow?1.05:.95,cw/ch,.3,160),M4.look(eye,tgt,[0,1,0])); R.VP=VP;
+  gl.uniformMatrix4fv(L.uVP,false,new Float32Array(VP)); gl.uniform3fv(L.uEye,eye); gl.uniform2fv(L.uFogR,[38,52]); gl.uniform3fv(L.uFog,night?[.29,.18,.48]:[.84,.94,1]); gl.uniform1f(L.uAmb,night?.62:1);
+  R.bound=null; rn3D; rn3Bind(R.chunk); var k0=Math.floor(R.dist/RN3_CH)-1; for(var k=k0;k<=k0+2;k++) rn3D(R.chunk,M4.T(0,0,-k*RN3_CH),null,0);
+  rn3Bind(R.cube);
+  var labels=[];
+  R.objs.forEach(function(o){ var z=-o.pos, dz=o.pos-R.dist; if(dz<-2||dz>62) return; if(o.done&&o.t!=='gate') return; var x=(o.lane||0)*RN3_LW;
+    if(o.t==='coin'){ rn3Bind(R.cyl); rn3D(R.cyl,M4.chain(M4.T(x,.85,z),M4.Ry(t*3+o.pos),M4.Rx(Math.PI/2),M4.S(.42,.12,.42)),'#ffc93c',.35); rn3Bind(R.cube); }
+    else if(o.t==='heart'){ var hy=1+Math.sin(t*4)*.15, HM=M4.chain(M4.T(x,hy,z),M4.Ry(Math.sin(t*2)*.6)); rn3S(-.2,.08,0,.28,.28,.2,'#ff4f7a',.4,HM); rn3S(.2,.08,0,.28,.28,.2,'#ff4f7a',.4,HM); rn3D(RG.cone,M4.chain(HM,M4.T(0,-.22,0),M4.Rz(Math.PI),M4.S(.42,.5,.2)),'#ff4f7a',.4); rn3S(-.25,.18,.12,.08,.06,.04,'#ffffff',.8,HM); }
+    else if(o.t==='obs') rn3Obs(o.k,x,z,t);
+    else if(o.t==='gate'&&!o.done&&R.q){ var cols=['#ff4f9a','#8b5cf6','#1f9ad6'];
+      [-1,0,1].forEach(function(l,i){ var gx=l*RN3_LW; rn3Box(gx-.85,.9,z,.12,1.8,.12,'#e5e7eb'); rn3Box(gx+.85,.9,z,.12,1.8,.12,'#e5e7eb');
+        rn3Box(gx,1.75,z,2.0,1.25,.16,cols[i],0,.15); rn3Box(gx,1.72,z+.09,1.82,1.0,.02,'#ffffff',0,.35);
+        rn3Bind(R.cyl); rn3D(R.cyl,M4.chain(M4.T(gx,.02,z),M4.S(.95,.03,.95)),cols[i],.3+.2*Math.sin(t*5)); rn3D(R.cyl,M4.chain(M4.T(gx,.03,z),M4.S(.72,.03,.72)),night?[.22,.23,.33]:'#6b7287',0); rn3Bind(R.cube);
+        if(dz<48) labels.push({i:i,x:gx,z:z+.1,col:cols[i]}); }); }
+  });
+  if(!(R.inv>0&&Math.floor(t*16)%2)){ rn3S(px,.01,pz,R.opt.veh==='car'?.75:.45,.02,R.opt.veh==='car'?1:.45,[.12,.12,.2]); rn3Char(px,R.jy*1.25,pz,R.opt.ch,t,R.jy>.05); }
+  /* ป้ายคำตอบบนประตู */
+  var c=R.c; c.clearRect(0,0,W,H);
+  labels.forEach(function(lb){ var a=rn3Proj(lb.x-.9,2.22,lb.z), b=rn3Proj(lb.x+.9,1.22,lb.z); if(!a||!b) return; var w=b[0]-a[0], h=b[1]-a[1]; if(w<18) return;
+    var fs=Math.max(8,Math.min(22,w/7)); c.save(); c.beginPath(); c.rect(a[0],a[1],w,h); c.clip();
+    c.fillStyle=lb.col; c.font='700 '+Math.round(fs*1.05)+'px Kanit,sans-serif'; c.textAlign='left'; c.textBaseline='top'; c.fillText('ABC'[lb.i],a[0]+fs*.4,a[1]+fs*.2);
+    c.fillStyle='#2d1b3d'; c.font='600 '+Math.round(fs)+'px Kanit,sans-serif'; c.textAlign='center';
+    var words=String(R.q.ch[lb.i]), lines=[], cur='', maxW=w-fs*.6;
+    Array.from(words).forEach(function(ch){ if(c.measureText(cur+ch).width>maxW){ lines.push(cur); cur=ch; } else cur+=ch; }); if(cur) lines.push(cur);
+    var maxL=Math.max(1,Math.floor((h-fs*1.3)/(fs*1.2))); if(lines.length>maxL){ lines=lines.slice(0,maxL); lines[maxL-1]=lines[maxL-1].slice(0,-1)+'…'; }
+    var y0=a[1]+fs*1.25+Math.max(0,(h-fs*1.3-lines.length*fs*1.2)/2); lines.forEach(function(s,i){ c.fillText(s,a[0]+w/2,y0+i*fs*1.2); }); c.restore(); });
+  if(R.flash>0){ c.fillStyle='rgba(255,60,90,'+(R.flash*.8)+')'; c.fillRect(0,0,W,H); }
+}
+
 </script>
 </body>
 </html>
