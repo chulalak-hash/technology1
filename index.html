@@ -8,7 +8,10 @@
 <script>
 /* ========== ตั้งค่า: วางลิงก์ Web app ของ Apps Script (ม.1) ระหว่างเครื่องหมาย ' ' ==========
    ต้องเป็นรูปแบบ https://script.google.com/macros/s/xxxxxxxx/exec  */
-var FLIP_API = 'https://script.google.com/a/macros/nongtong.ac.th/s/AKfycbxmgWq1j9iT52SxHsCIQMB_6VkKWmpAZzS09IZpZKj2dSj2NdRQoMywoYZxsmPIaCk/exec';
+var FLIP_API = 'https://script.google.com/a/macros/nongtong.ac.th/s/AKfycby9WgBjZRlMxDRI6-SHJbzv8USfKsjEKMasJkWsSUGv_HS5npvPzDPMYAc-uJS0YVhp/exec';
+/* ========== เกมเล่นทั้งห้อง D&T Survivor: วางลิงก์ Web app ของเกม (ลงท้าย /exec) ระหว่าง ' ' ==========
+   ขึ้นเป็นเกมแรกใน "มุมเกมการศึกษา" · ถ้ายังไม่ใส่ลิงก์ เกมนี้จะซ่อนไว้ */
+var GAME_URL = 'https://script.google.com/macros/s/AKfycbzxVm8CqkcGVCKvPyS3DHXhbEhSHYialEuym4LmZqUGmsYWrGOr7pIO7LkEBl_0lquQ/exec';
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -978,6 +981,9 @@ body.rn-on{overflow:hidden}
 .rn-hero{background:linear-gradient(135deg,#ff8a3d,#ff4f9a 50%,#b18cff);position:relative;overflow:hidden}
 .rn-hero:before{content:'';position:absolute;left:-10%;right:-10%;bottom:-38px;height:70px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 40px,transparent 40px 80px);transform:skewX(-30deg);opacity:.5}
 .rn-hero .q-hero-a canvas{width:120px;height:136px}
+.gf-surv{background:linear-gradient(135deg,#1E4FD8,#4f8bff 55%,#22c1ee)}
+.gf-surv .go{background:#F5B800;color:#14213D}
+.gf-surv .gf-tag{display:inline-block;font-size:11px;background:#F5B800;color:#14213D;border-radius:99px;padding:0 8px;margin-left:6px;vertical-align:middle;font-family:'Kanit'}
 </style>
 </head>
 <body>
@@ -2614,11 +2620,12 @@ var GAMES=[
   {id:'edp',art:'robot',icon:'reorder',t:'เรียงขั้นตอน EDP',d:'แข่งกันเรียง 6 ขั้นกระบวนการออกแบบเชิงวิศวกรรมให้เร็วที่สุด (หน่วยที่ 6)',c:['#8b5cf6','#b69bff']}
 ];
 function gamesBox(){
-  var GV=GAMES.filter(function(g){ return g.id!=='runner'&&gameOn(g.id); }), q=gameOn('quest'), rn=gameOn('runner'); S._gvN=GV.length;
+  var GV=GAMES.filter(function(g){ return g.id!=='runner'&&gameOn(g.id); }), q=gameOn('quest'), rn=gameOn('runner'), sv=survivorOK()&&gameOn('survivor'); S._gvN=GV.length;
   return '<div><div class="sec-title">'+ic('sports_esports')+'<h3>มุมเกมการศึกษา</h3></div>'+
+    (sv?'<div class="game-feat gf-surv" onclick="openSurvivor()"><div class="gf-i">🏝️</div><div><b>D&amp;T Survivor</b><span class="gf-tag">เล่นทั้งห้อง</span><small>เกมนำเข้าสู่บทเรียน! เดินไปยืนบนเกาะคำตอบ ตอบถูกรอด ตอบผิดตกน้ำ หลุดโลก ลุ้นขึ้นบัลลังก์ 👑 (ใส่รหัสห้องจากจอครู)</small></div><span class="go">เข้าเกม ▶</span></div>':'')+
     (q?'<div class="game-feat" onclick="go(\'quest\')"><div class="gf-i">☁️</div><div><b>FLIP Candy Quest 3D</b><small>ผจญภัยในเมืองนักประดิษฐ์ลอยฟ้า 7 ย่าน ข้ามสะพานสายรุ้ง ตอบคำถามที่ฐาน เก็บแต้ม หลบบั๊กจอมซน</small></div><span class="go">เล่นเลย ▶</span></div>':'')+
     (rn?'<div class="game-feat gf-run" onclick="go(\'game/runner\')"><div class="gf-i">🏃‍♀️</div><div><b>FLIP Candy Runner 3D</b><small>วิ่งเท้าหรือขับรถคันจิ๋วในเมืองการ์ตูน วิ่งผ่านป้ายคำตอบที่ถูก เก็บเหรียญ หลบสไลม์ 3 ด่าน ง่าย·กลาง·ยาก</small></div><span class="go">วิ่งเลย ▶</span></div>':'')+
-    (!q&&!rn&&!GV.length?'<div class="card games-empty">'+kawaii('robot',70,'bob')+'<div class="kanit">ครูยังไม่เปิดเกม รอสักครู่นะ 🎮</div></div>':'')+
+    (!q&&!rn&&!sv&&!GV.length?'<div class="card games-empty">'+kawaii('robot',70,'bob')+'<div class="kanit">ครูยังไม่เปิดเกม รอสักครู่นะ 🎮</div></div>':'')+
     '<div class="games'+(S.gamesAll?' all':'')+'" id="gamesGrid">'+GV.map(function(g,i){
     return '<div class="game-c'+(i>=GAMES_SHOW?' g-more':'')+'" onclick="go(\'game/'+g.id+'\')"><div class="gi kwbox" style="'+grad(g.c)+'">'+kawaii(g.art,52,'bob')+'</div><div><b>'+g.t+'</b><div class="small muted">'+g.d+'</div></div>'+ic('play_circle','color:'+g.c[0]+';font-size:32px')+'</div>';
   }).join('')+'</div>'+(GV.length>GAMES_SHOW?'<button class="btn btn-ghost btn-sm games-more" onclick="gamesToggle(this)">'+ic(S.gamesAll?'expand_less':'expand_more')+(S.gamesAll?' ย่อเกม':' ดูเกมเพิ่มเติม ('+(GV.length-GAMES_SHOW)+' เกม)')+'</button>':'')+'</div>';
@@ -2648,7 +2655,9 @@ function gamePage(title,icon,inner){
   return topbar()+'<div class="page"><div class="crumb"><a onclick="go(\'\')">'+ic('home','font-size:18px')+' หน้าแรก</a>'+ic('chevron_right','font-size:18px')+'<span>มุมเกมการศึกษา</span></div>'+
     '<div class="card panel game-panel"><h3>'+ic(icon)+title+'</h3>'+inner+'</div></div>'+footer();
 }
-function openGame(id){ (({picker:gPicker,circuit:gCircuit,edp:gEdp})[id]||function(){go('');})(); }
+function survivorOK(){ return /^https:\/\/script\.google\.com\/.+\/exec/.test(GAME_URL); }
+function openSurvivor(){ if(!survivorOK()){ toast('ครูยังไม่ได้ใส่ลิงก์เกม D&T Survivor',true); return; } window.open(GAME_URL,'_blank'); }
+function openGame(id){ (({picker:gPicker,circuit:gCircuit,edp:gEdp,survivor:function(){ openSurvivor(); go(''); }})[id]||function(){go('');})(); }
 function sKey(k,v){ try{ if(v===undefined) return JSON.parse(localStorage.getItem(NS+'tflg_'+k)||'null'); localStorage.setItem(NS+'tflg_'+k,JSON.stringify(v)); }catch(e){ return null; } }
 function confetti(){
   var box=document.createElement('div'); box.className='confetti';
@@ -4271,12 +4280,12 @@ function ecRound(){
 
 /* ===================== ครูเปิด/ปิดเกม ===================== */
 var GAME_KEY='เกมที่เปิด';
-function gameAll(){ return [{id:'quest',art:'cloud',t:'FLIP Candy Quest 3D',d:'เกมผจญภัย 3 มิติในเมืองนักประดิษฐ์ลอยฟ้า 7 ย่าน',c:['#ff4f9a','#b18cff']}].concat(GAMES); }
+function gameAll(){ return [{id:'survivor',art:'star',t:'D&T Survivor (เล่นทั้งห้อง)',d:'เกมนำเข้าสู่บทเรียน ตอบถูกรอด ตอบผิดตกน้ำ ครูเปิดจอเกมขึ้นโปรเจกเตอร์',c:['#1E4FD8','#22c1ee']},{id:'quest',art:'cloud',t:'FLIP Candy Quest 3D',d:'เกมผจญภัย 3 มิติในเมืองนักประดิษฐ์ลอยฟ้า 7 ย่าน',c:['#ff4f9a','#b18cff']}].concat(GAMES); }
 function gameOnList(){ var C=(S.home&&S.home.course)||{}, v=C[GAME_KEY];
   if(v==null||String(v).trim()==='') return gameAll().map(function(g){ return g.id; });
   if(String(v).trim()==='-') return [];
   return String(v).split(',').map(function(x){ return x.trim(); }).filter(String); }
-function gameOn(id){ return gameOnList().indexOf(id)>-1; }
+function gameOn(id){ if(id==='survivor'){ var v=String(((S.home&&S.home.course)||{})[GAME_KEY]||''); if(v.indexOf('survivor-off')<0) return true; } return gameOnList().indexOf(id)>-1; }
 function isTeacherU(){ return S.user&&S.user.role==='teacher'; }
 var _openGame2=openGame;
 function gameGuard(id,fn){ if(isTeacherU()) return fn(); var chk=function(){ if(!gameOn(id)){ toast('เกมนี้ครูยังไม่เปิดให้เล่นนะ 🔒'); return go(''); } fn(); }; if(S.home&&S.home.course) return chk(); loadHome().then(chk,chk); }
@@ -4285,12 +4294,13 @@ var _openQuest0=openQuest;
 openQuest=function(){ gameGuard('quest',_openQuest0); };
 
 var GM={};
+function gmOnInit(){ var a=gameOnList().filter(function(x){ return x!=='survivor-off'&&x!=='-'; }); if(gameOn('survivor')&&a.indexOf('survivor')<0) a.unshift('survivor'); return a; }
 function tGames(D){
   $('#tbody').innerHTML='<div class="card panel"><h3>'+ic('sports_esports')+'เลือกเกมที่เปิดให้นักเรียนเห็น</h3><div class="small muted">เปิด = นักเรียนเห็นในมุมเกมการศึกษาบนหน้าแรกและเข้าเล่นได้ · ปิด = ซ่อนจากนักเรียน (ครูยังกดทดลองเล่นได้) · กดบันทึกแล้วนักเรียนเห็นผลเมื่อรีเฟรชหน้าเว็บ</div>'+
     '<div class="gm-bar"><button class="btn btn-ghost btn-sm" onclick="gmAll(true)">'+ic('visibility')+' เปิดทั้งหมด</button><button class="btn btn-ghost btn-sm" onclick="gmAll(false)">'+ic('visibility_off')+' ปิดทั้งหมด</button><span class="grow"></span><button class="btn btn-pink" id="gmSave">'+ic('save')+' บันทึก</button></div>'+
     '<div id="gmList"><div class="empty">กำลังโหลด...</div></div></div>';
   GM.on=null;
-  Promise.all([loadHome(), call('getEditData',S.token,'course')]).then(function(r){ GM.R=r[1]; S.home=r[0]; GM.on=gameOnList(); gmRender(); }).catch(function(){ GM.on=gameOnList(); gmRender(); });
+  Promise.all([loadHome(), call('getEditData',S.token,'course')]).then(function(r){ GM.R=r[1]; S.home=r[0]; GM.on=gmOnInit(); gmRender(); }).catch(function(){ GM.on=gmOnInit(); gmRender(); });
   $('#gmSave').onclick=gmSave;
 }
 function gmRender(){
@@ -4305,6 +4315,7 @@ function gmRender(){
 function gmAll(v){ GM.on=v?gameAll().map(function(g){ return g.id; }):[]; gmRender(); }
 function gmSave(){
   var R=GM.R, val=GM.on.length?gameAll().map(function(g){ return g.id; }).filter(function(id){ return GM.on.indexOf(id)>-1; }).join(','):'-';
+  if(GM.on.indexOf('survivor')<0) val+=',survivor-off';
   var fail=function(){ modal('<h3 class="kanit">'+ic('info')+' บันทึกอัตโนมัติไม่สำเร็จ</h3><div style="margin:10px 0">เปิดชีต <b>"คำอธิบายรายวิชา"</b> แล้วเพิ่มแถวใหม่ 1 แถว<br>ช่องแรกพิมพ์ <b>'+GAME_KEY+'</b> ช่องที่สองวาง:</div><div class="box" style="word-break:break-all;font-family:monospace">'+esc(val)+'</div><div class="small muted" style="margin-top:8px">ทำครั้งเดียว ครั้งต่อไปกดบันทึกจากหน้านี้ได้เลย</div>'); };
   if(!R||!R.keys||R.keys.length<2) return fail();
   var k0=R.keys[0], k1=R.keys[1], hit=(R.rows||[]).filter(function(r){ return String(r[k0]).trim()===GAME_KEY; })[0], o={};
